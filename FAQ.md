@@ -16,4 +16,5 @@
 -   [Docker install](./faq/docker-install.md)
 -   [Docker compose install](./faq/docker-compose-install.md)
 -   [Nginx install and configure](./faq/nginx-install-and-configure.md)
+-   [Letsencrypt configure](./faq/letsencrypt-configure.md)
 -   [Create daemon service](./faq/create-daemon-service-spring-boot.md)
