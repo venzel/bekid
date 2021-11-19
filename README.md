@@ -6,24 +6,28 @@
 
 <p align="center"><img src="./media/logos/bekid-v1.png" width="240" /></p>
 
-### Autores
+## Autores
 
 👉 <a href="https://www.linkedin.com/in/venzel">Edivam Enéas de Almeida Júnior</a><br />
 👉 <a href="https://www.linkedin.com/in/joab-maia-383097202">Joab da Silva Maia</a>
 
-### Back-end
+## Back-end
 
 -   Java
 -   Spring Boot
 -   JPA / Hibernate
 -   MySQL (Docker)
 
-### Links
+## Links
 
 👉 <a href="https://github.com/venzel/bekid-tcc">Repositório TCC</a><br />
 👉 <a href="https://github.com/venzel/bekid-frontend">Repositório do front-end</a>
 
-<hr />
+## Gitflow
+
+<p align="center"><img src="./media/images/gitflow-v1.png" width="650" /></p>
+
+👉 [Documentação passo a passo](./documentations/gitflow.md)
 
 ## Como executar o projeto
 
