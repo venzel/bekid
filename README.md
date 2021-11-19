@@ -11,14 +11,19 @@
 👉 <a href="https://www.linkedin.com/in/venzel">Edivam Enéas de Almeida Júnior</a><br />
 👉 <a href="https://www.linkedin.com/in/joab-maia-383097202">Joab da Silva Maia</a>
 
-<hr />
-
 ### Back-end
 
 -   Java
 -   Spring Boot
 -   JPA / Hibernate
 -   MySQL (Docker)
+
+### Links
+
+👉 <a href="https://github.com/venzel/bekid-tcc">Repositório TCC</a><br />
+👉 <a href="https://github.com/venzel/bekid-frontend">Repositório do front-end</a>
+
+<hr />
 
 ## Como executar o projeto
 
