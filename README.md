@@ -26,9 +26,9 @@
 
 ## Gitflow
 
-<p align="center"><img src="./media/images/gitflow-v1.png" width="650" /></p>
+<p align="center"><img src="./media/images/gitflow-v1.png" width="500" /></p>
 
-👉 [Documentação passo a passo](./documentations/gitflow.md)
+👉 [Documentação passo a passo](./faq/gitflow.md)
 
 ## Como executar o projeto
 
