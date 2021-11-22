@@ -18,6 +18,12 @@
 -   JPA / Hibernate
 -   MySQL (Docker)
 
+## Diagrama
+
+\* importante observar nesse primeiro momento, apenas os relacionamentos.
+
+<p align="center"><img src="./media/diagrams/diagram-v1.png" width="600" /></p>
+
 ## Links
 
 👉 <a href="https://github.com/venzel/bekid-tcc">Repositório TCC</a><br />
