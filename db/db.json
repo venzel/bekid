@@ -1,0 +1,144 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Vanessa",
+            "role": "admin"
+        },
+        {
+            "id": 2,
+            "name": "tiago",
+            "role": "user"
+        },
+        {
+            "id": 3,
+            "name": "alex",
+            "role": "user"
+        },
+        {
+            "id": 4,
+            "name": "liz",
+            "role": "user"
+        }
+    ],
+    "groups": [
+        {
+            "id": 1,
+            "name": "4 serie fundamental - turma A"
+        },
+        {
+            "id": 2,
+            "name": "5 serie fundamental - turma A"
+        }
+    ],
+    "users_groups": [
+        {
+            "user_id": 2,
+            "group_id": 1
+        },
+        {
+            "user_id": 3,
+            "group_id": 1
+        },
+        {
+            "user_id": 4,
+            "group_id": 1
+        }
+    ],
+    "campaigns": [
+        {
+            "id": 1,
+            "group_id": 1,
+            "owner_id": 1,
+            "name": "Primeira dinamica em grupo"
+        },
+        {
+            "id": 2,
+            "group_id": 1,
+            "owner_id": 1,
+            "name": "Segunda dinamica em grupo"
+        }
+    ],
+    "emotions": [
+        {
+            "id": 1,
+            "name": "feliz"
+        },
+        {
+            "id": 2,
+            "name": "triste"
+        },
+        {
+            "id": 3,
+            "name": "zangado"
+        },
+        {
+            "id": 4,
+            "name": "pensativo"
+        }
+    ],
+    "questions": [
+        {
+            "id": 1,
+            "emotion_id": 2,
+            "name": "Me apelidaram"
+        },
+        {
+            "id": 2,
+            "emotion_id": 2,
+            "name": "Bateram em mim"
+        },
+        {
+            "id": 3,
+            "emotion_id": 2,
+            "name": "Meu pai esta doente"
+        },
+        {
+            "id": 4,
+            "emotion_id": 2,
+            "name": "Cai da biscicleta"
+        }
+    ],
+    "votes": [
+        {
+            "id": 1,
+            "campaign_id": 1,
+            "emotion_id": 1,
+            "user_id": 2
+        },
+        {
+            "id": 2,
+            "campaign_id": 1,
+            "emotion_id": 1,
+            "user_id": 3
+        }
+    ],
+    "vote_questions": [
+        {
+            "id": 1,
+            "vote_id": 1,
+            "user_id": 2,
+            "question_id": 1
+        },
+        {
+            "id": 1,
+            "vote_id": 1,
+            "user_id": 2,
+            "question_id": 2
+        },
+        {
+            "id": 1,
+            "vote_id": 1,
+            "user_id": 2,
+            "question_id": 3
+        }
+    ],
+    "vote_comments": [
+        {
+            "id": 1,
+            "vote_id": 1,
+            "user_id": 2,
+            "comment": "Estou com fome"
+        }
+    ]
+}
