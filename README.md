@@ -13,10 +13,9 @@
 
 ## Back-end
 
--   Java
--   Spring Boot
--   JPA / Hibernate
--   MySQL (Docker)
+-   Typescript
+-   NodeJS / Express / Jest / TypeORM
+-   Postgres / MongoDB / Redis
 
 ## Diagrama
 
@@ -40,10 +39,10 @@
 
 ### Pré-requisitos
 
--   Java 11
+-   NodeJs
+-   NPM/Yarn
 -   Docker
 -   Docker compose
--   Maven
 
 ```bash
 # Para clonar repositório
@@ -55,6 +54,6 @@ cd bekid-backend
 # Para subir o container do mysql na porta 3306
 make up
 
-# Para executar o projeto na porta 8080
+# Para executar o projeto na porta 3000
 make run
 ```
