@@ -1,6 +1,6 @@
 interface IUpdateAvatarUserDTO {
     filename: string | undefined;
-    owner_id: string;
+    user_id: string;
 }
 
 export { IUpdateAvatarUserDTO };

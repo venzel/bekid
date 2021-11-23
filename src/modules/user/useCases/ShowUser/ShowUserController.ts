@@ -6,13 +6,11 @@ import { generateStatus } from '@shared/helpers/status';
 
 class ShowUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { owner_id, role } = req.auth;
-
-        const user_params_id = String(req.params.id);
+        const userId = req.params.id?.toString();
 
         const service = container.resolve(ShowUserService);
 
-        const user = await service.execute({ user_params_id, owner_id, role });
+        const user = await service.execute(userId);
 
         const status = generateStatus(false, 200, 'Succesfully showed user!');
 

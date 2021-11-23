@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
-import { IUpdateEmotionDTO } from '../../dtos/IUpdateEmotionDTO';
+import { IUpdateEmotionDTO } from './IUpdateEmotionDTO';
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
 import { AppException } from '@shared/exceptions/AppException';
 
@@ -24,7 +24,7 @@ class UpdateEmotionService {
         /* Exception estrategy guard */
 
         if (existsEmotionWithId.name === name) {
-            throw new AppException('It is not allowed to change to the same name!', 404);
+            throw new AppException('It is not allowed to change to the same name!', 400);
         }
 
         /* Find emotion by name */

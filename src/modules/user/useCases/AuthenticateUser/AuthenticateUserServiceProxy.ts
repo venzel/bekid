@@ -24,6 +24,8 @@ class AuthenticateUserServiceProxy {
 
         const existsKeyInCache = await this._cacheProvider.findByKey(authKeyCache);
 
+        /* Exception estrategy guard */
+
         if (!existsKeyInCache) {
             const authenticateUserService = container.resolve(AuthenticateUserService);
 
@@ -36,11 +38,13 @@ class AuthenticateUserServiceProxy {
 
         const dataParseToJSON = JSON.parse(existsKeyInCache);
 
-        const { password: cache_password } = dataParseToJSON;
+        const { password: cache_password } = JSON.parse(existsKeyInCache);
 
         /* Compare password and cache_password */
 
         const isPasswordEquals: boolean = await this._hashProvider.compareHash(password, cache_password);
+
+        /* Exception estrategy guard */
 
         if (!isPasswordEquals) {
             throw new AppException('Email or password invalid!', 403);

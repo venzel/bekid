@@ -6,7 +6,7 @@ interface IUserTokenRepository {
 
     create(data: ICreateTokenDTO): Promise<string>;
 
-    deleteTokensByOwnerId(owner_id: string): Promise<void>;
+    deleteTokensByOwnerId(user_id: string): Promise<void>;
 }
 
 export { IUserTokenRepository };

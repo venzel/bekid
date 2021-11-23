@@ -16,17 +16,25 @@ class ResetPasswordUserService {
     public async execute(data: IResetPasswordUserDTO): Promise<void> {
         const { new_password, token } = data;
 
+        /* Find user token by toeken */
+
         const existsUserWithToken = await this._userTokenRepository.findOneByToken(token);
+
+        /* Exception estrategy guard */
 
         if (!existsUserWithToken) {
             throw new AppException('User token does not exists!', 404);
         }
 
-        /* Var owner_id used in two locals */
+        /* Destructuring object */
 
-        const { owner_id } = existsUserWithToken;
+        const { user_id } = existsUserWithToken;
 
-        const existsUserWithId = await this._userRepository.findOneById(owner_id);
+        /* Find user token by toeken */
+
+        const existsUserWithId = await this._userRepository.findOneById(user_id);
+
+        /* Exception estrategy guard */
 
         if (!existsUserWithId) {
             throw new AppException('User does not exists!', 404);
@@ -42,7 +50,7 @@ class ResetPasswordUserService {
 
         /* Delete all tokens */
 
-        await this._userTokenRepository.deleteTokensByOwnerId(owner_id);
+        await this._userTokenRepository.deleteTokensByOwnerId(user_id);
     }
 }
 

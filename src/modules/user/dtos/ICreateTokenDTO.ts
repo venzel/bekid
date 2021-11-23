@@ -1,6 +1,6 @@
 interface ICreateTokenDTO {
     token: string;
-    owner_id: string;
+    user_id: string;
 }
 
 export { ICreateTokenDTO };

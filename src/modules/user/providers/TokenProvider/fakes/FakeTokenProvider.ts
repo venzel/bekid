@@ -11,11 +11,11 @@ class FakeTokenProvider implements ITokenProvider {
     }
 
     public validateToken(payload: string): IPayloadDTO {
-        const owner_id: string = randomBytes(2).toString('hex');
+        const userId: string = randomBytes(2).toString('hex');
 
         return {
             user: {
-                owner_id,
+                user_id: userId,
                 role: 'USER',
                 activated: true,
             },

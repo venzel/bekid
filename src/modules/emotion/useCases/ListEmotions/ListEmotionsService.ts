@@ -7,7 +7,7 @@ class ListEmotionsService {
     constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
 
     public async execute(): Promise<IEmotionEntity[]> {
-        return this._emotionRepository.list();
+        return await this._emotionRepository.list();
     }
 }
 

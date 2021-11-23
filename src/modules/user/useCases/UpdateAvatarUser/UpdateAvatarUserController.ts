@@ -6,13 +6,13 @@ import { generateStatus } from '@shared/helpers/status';
 
 class UpdateAvatarUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { owner_id } = req.auth;
+        const { user_id } = req.auth;
 
         const filename = req.file?.filename;
 
         const service = container.resolve(UpdateAvatarUserService);
 
-        const user = await service.execute({ filename, owner_id });
+        const user = await service.execute({ filename, user_id });
 
         const status = generateStatus(false, 200, 'Succesfully updated avatar user!');
 

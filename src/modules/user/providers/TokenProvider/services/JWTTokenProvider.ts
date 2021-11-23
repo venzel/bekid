@@ -7,12 +7,12 @@ import { AppException } from '@shared/exceptions/AppException';
 
 class JWTTokenProvider implements ITokenProvider {
     public async generateToken(data: ICreatePayloadDTO): Promise<string> {
-        const { owner_id, role, activated } = data;
+        const { user_id, role, activated } = data;
 
         try {
             const payload: IPayloadDTO = {
                 user: {
-                    owner_id,
+                    user_id,
                     role,
                     activated,
                 },

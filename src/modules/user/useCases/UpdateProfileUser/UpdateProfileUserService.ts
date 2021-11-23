@@ -12,24 +12,38 @@ class UpdateProfileUserService {
         @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
-    public async execute(data: IProfileUpdateUserDTO): Promise<IUserEntity> {
-        const { name, email, current_password, owner_id } = data;
+    public async execute(userId: string, data: IProfileUpdateUserDTO): Promise<IUserEntity> {
+        const { name, email, current_password } = data;
 
-        const existsUserWithEmail = await this._userRepository.findOneByEmail(email);
+        /* Find user by id */
 
-        if (existsUserWithEmail && existsUserWithEmail.id !== owner_id) {
-            throw new AppException('User email already exists!', 400);
-        }
+        const existsUserWithId = await this._userRepository.findOneById(userId);
 
-        const existsUserWithId = await this._userRepository.findOneById(owner_id);
+        /* Exception estrategy guard */
 
         if (!existsUserWithId) {
             throw new AppException('User not exists!', 404);
         }
 
-        const userDataPassword = existsUserWithId.password;
+        /* Find user by email */
 
-        const isPasswordEquals: boolean = await this._hashProvider.compareHash(current_password, userDataPassword);
+        const existsUserWithEmail = await this._userRepository.findOneByEmail(email);
+
+        /* Exception estrategy guard */
+
+        if (email !== existsUserWithId.email && existsUserWithEmail) {
+            throw new AppException('User email already exists!', 400);
+        }
+
+        /* Extract password */
+
+        const { password } = existsUserWithId;
+
+        /* Check if password is equals */
+
+        const isPasswordEquals: boolean = await this._hashProvider.compareHash(current_password, password);
+
+        /* Exception estrategy guard */
 
         if (!isPasswordEquals) {
             throw new AppException('Password not equals!', 400);
@@ -38,11 +52,14 @@ class UpdateProfileUserService {
         /* Data update */
 
         existsUserWithId.name = name;
+
         existsUserWithId.email = email;
 
-        /* End data update */
+        /* Save user in repository */
 
         const savedUser = await this._userRepository.save(existsUserWithId);
+
+        /* Return saved user */
 
         return savedUser;
     }

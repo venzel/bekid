@@ -3,7 +3,7 @@ import { IHashProvider } from '@modules/user/providers/HashProvider/models/IHash
 import { ITokenProvider } from '@modules/user/providers/TokenProvider/models/ITokenProvider';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IQueueProvider } from '@shared/providers/QueueProvider/models/IQueueProvider';
-import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
+import { ICreateUserDTO } from '@modules/user/useCases/CreateUser/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { ICreatePayloadDTO } from '@modules/user/dtos/ICreatePayloadDTO';
 import { IGenerateIdProvider } from '@shared/providers/generateIdProvider/model/IGenerateIdProvider';
@@ -59,7 +59,7 @@ class CreateUserService {
         /* Payload generated */
 
         const generatedPayload: ICreatePayloadDTO = {
-            owner_id: createdUser.id,
+            user_id: createdUser.id,
             activated: dataActivated,
             role: dataRole,
         };

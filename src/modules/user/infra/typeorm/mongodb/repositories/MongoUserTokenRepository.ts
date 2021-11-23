@@ -16,17 +16,17 @@ class MongoUserTokenRepository implements IUserTokenRepository {
     }
 
     public async create(data: ICreateTokenDTO): Promise<string> {
-        const { token, owner_id } = data;
+        const { token, user_id } = data;
 
-        const createdUserToken = this._repository.create({ token, owner_id });
+        const createdUserToken = this._repository.create({ token, user_id });
 
         await this._repository.save(createdUserToken);
 
         return token;
     }
 
-    public async deleteTokensByOwnerId(owner_id: string): Promise<void> {
-        await this._repository.delete({ owner_id });
+    public async deleteTokensByOwnerId(user_id: string): Promise<void> {
+        await this._repository.delete({ user_id });
     }
 }
 

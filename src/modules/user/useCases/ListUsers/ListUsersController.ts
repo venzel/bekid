@@ -5,23 +5,16 @@ import { ListUsersService } from './ListUsersService';
 import { generateStatus } from '@shared/helpers/status';
 
 class ListUsersController {
-    public async handle(req: Request, res: Response): Promise<Response> {
-        const { owner_id } = req.auth;
-
-        const { count } = req.query;
-
-        // TODO: aqui
-        const query_count = Number(count);
-
+    public async handle(_: Request, res: Response): Promise<Response> {
         const service = container.resolve(ListUsersService);
 
-        const users = await service.execute({ query_count, owner_id });
+        const users = await service.execute();
 
         const status = generateStatus(false, 200, 'Succesfully listed users!');
 
-        const doc = classToClass(users);
+        const docs = classToClass(users);
 
-        return res.status(200).json({ status, doc });
+        return res.status(200).json({ status, docs });
     }
 }
 

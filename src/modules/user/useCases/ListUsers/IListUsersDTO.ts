@@ -1,6 +1,6 @@
 interface IListUsersDTO {
     query_count: number;
-    owner_id: string;
+    user_id: string;
 }
 
 export { IListUsersDTO };

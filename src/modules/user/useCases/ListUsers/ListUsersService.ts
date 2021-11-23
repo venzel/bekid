@@ -7,12 +7,8 @@ import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 class ListUsersService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
-    public async execute(data: IListUsersDTO): Promise<IUserEntity[]> {
-        const { query_count, owner_id } = data;
-
-        const users = await this._userRepository.list();
-
-        return users;
+    public async execute(): Promise<IUserEntity[]> {
+        return await this._userRepository.list();
     }
 }
 

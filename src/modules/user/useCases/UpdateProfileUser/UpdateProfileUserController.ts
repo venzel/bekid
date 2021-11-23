@@ -6,13 +6,13 @@ import { generateStatus } from '@shared/helpers/status';
 
 class UpdateProfileUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { owner_id } = req.auth;
+        const userId = req.auth.user_id;
 
         const { name, email, current_password } = req.body;
 
         const service = container.resolve(UpdateProfileUserService);
 
-        const user = await service.execute({ name, email, current_password, owner_id });
+        const user = await service.execute(userId, { name, email, current_password });
 
         const status = generateStatus(false, 200, 'Succesfully profile user, updated!');
 

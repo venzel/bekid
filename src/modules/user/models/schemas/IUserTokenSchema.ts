@@ -1,6 +1,6 @@
 interface IUserTokenSchema {
     _id: any;
-    owner_id: string;
+    user_id: string;
     token: string;
     created_at: Date;
     updated_at: Date;

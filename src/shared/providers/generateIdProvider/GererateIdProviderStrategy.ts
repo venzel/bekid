@@ -2,7 +2,7 @@ import { container } from 'tsyringe';
 import { IGenerateIdProvider } from './model/IGenerateIdProvider';
 import { UUIDGenerateIdProvider } from './services/UUIDGenerateIdProvider';
 import { RandomGenerateIdProvider } from './services/RandomGenerateIdProvider';
-import { StringGenerateIdProvider } from './services/StringGenerateIdProvider';
+import { HashGenerateIdProvider } from './services/HashGenerateIdProvider';
 
 class GererateIdProviderStrategy {
     private _strategies: any = {};
@@ -10,7 +10,7 @@ class GererateIdProviderStrategy {
     constructor() {
         this._strategies['uuid'] = () => UUIDGenerateIdProvider;
         this._strategies['random'] = () => RandomGenerateIdProvider;
-        this._strategies['string'] = () => StringGenerateIdProvider;
+        this._strategies['hash'] = () => HashGenerateIdProvider;
     }
 
     public setStrategy(service: string): void {

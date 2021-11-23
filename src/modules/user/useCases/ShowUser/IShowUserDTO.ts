@@ -1,6 +1,6 @@
 interface IShowUserDTO {
     user_params_id: string;
-    owner_id: string;
+    user_id: string;
     role: string;
 }
 

@@ -9,7 +9,7 @@ class MongoUserTokenSchema implements IUserTokenSchema {
     public _id: ObjectID;
 
     @Column()
-    public owner_id: string;
+    public user_id: string;
 
     @Column()
     public token: string;

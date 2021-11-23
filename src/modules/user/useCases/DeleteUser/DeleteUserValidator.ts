@@ -4,16 +4,16 @@ import { AppException } from '@shared/exceptions/AppException';
 
 class DeleteUserValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const { owner_id } = req.auth;
+        const ownerId = req.auth.user_id;
 
-        const user_params_id = req.params.id?.toString();
+        const userId = req.params.id?.toString();
 
-        if (!isIdValid(user_params_id, 'string')) {
-            throw new AppException('User id invalid!');
+        if (ownerId === userId) {
+            throw new AppException('it is not possible to delete itself!');
         }
 
-        if (owner_id === user_params_id) {
-            throw new AppException('It is not possible to delete yourself!');
+        if (!isIdValid(userId, 'hash')) {
+            throw new AppException('User id invalid!');
         }
 
         return next();

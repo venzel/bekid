@@ -16,7 +16,7 @@ class FakeUserTokenRepository implements IUserTokenRepository {
     }
 
     public async create(data: ICreateTokenDTO): Promise<string> {
-        const { owner_id } = data;
+        const { user_id } = data;
 
         const fakeUserToken = new FakeUserTokenSchema();
 
@@ -24,15 +24,15 @@ class FakeUserTokenRepository implements IUserTokenRepository {
 
         const id: string = uuid();
 
-        Object.assign(fakeUserToken, { id, token, owner_id });
+        Object.assign(fakeUserToken, { id, token, user_id });
 
         this._repository.push(fakeUserToken);
 
         return token;
     }
 
-    public async deleteTokensByOwnerId(owner_id: string): Promise<void> {
-        this._repository = this._repository.filter((data) => data.owner_id !== owner_id);
+    public async deleteTokensByOwnerId(user_id: string): Promise<void> {
+        this._repository = this._repository.filter((data) => data.user_id !== user_id);
     }
 }
 

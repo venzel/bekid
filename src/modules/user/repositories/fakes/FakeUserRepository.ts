@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid';
-import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
+import { ICreateUserDTO } from '@modules/user/useCases/CreateUser/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { FakeUserEntity } from '../../models/entities/fakes/FakeUserEntity';

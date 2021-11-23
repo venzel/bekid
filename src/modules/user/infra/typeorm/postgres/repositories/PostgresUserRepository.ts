@@ -1,5 +1,5 @@
 import { getRepository, Repository } from 'typeorm';
-import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
+import { ICreateUserDTO } from '@modules/user/useCases/CreateUser/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { PostgresUserEntity } from '../entities/PostgresUserEntity';
