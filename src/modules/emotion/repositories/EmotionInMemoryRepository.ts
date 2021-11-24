@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 import { ICreateEmotionDTO } from '@modules/emotion/dtos/ICreateEmotionDTO';
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
-import { FakeEmotionEntity } from '../models/entities/EmotionInMemoryEntity';
+import { EmotionInMemoryEntity } from '../models/entities/EmotionInMemoryEntity';
 
 class FakeEmotionRepository implements IEmotionRepository {
     private _repository: IEmotionEntity[];
@@ -22,15 +22,15 @@ class FakeEmotionRepository implements IEmotionRepository {
     public async create(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
         const { name, slug, description } = data;
 
-        const emotionFake = new FakeEmotionEntity();
+        const emotionInMemoryEntity = new EmotionInMemoryEntity();
 
         const id = uuid();
 
-        Object.assign(emotionFake, { id, name, slug, description });
+        Object.assign(emotionInMemoryEntity, { id, name, slug, description });
 
-        this._repository.push(emotionFake);
+        this._repository.push(emotionInMemoryEntity);
 
-        return emotionFake;
+        return emotionInMemoryEntity;
     }
 
     public async save(emotion: IEmotionEntity): Promise<IEmotionEntity> {

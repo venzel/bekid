@@ -1,6 +1,6 @@
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
 
-class FakeEmotionEntity implements IEmotionEntity {
+class EmotionInMemoryEntity implements IEmotionEntity {
     id: string;
     name: string;
     slug: string;
@@ -8,4 +8,4 @@ class FakeEmotionEntity implements IEmotionEntity {
     created_at: Date;
 }
 
-export { FakeEmotionEntity };
+export { EmotionInMemoryEntity };
