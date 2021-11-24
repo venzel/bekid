@@ -18,15 +18,15 @@ class QuestionInMemoryRepository implements IQuestionRepository {
     public async create(data: ICreateQuestionDTO): Promise<IQuestionEntity> {
         const { description } = data;
 
-        const questionInMemory = new QuestionInMemoryEntity();
+        const questionInMemoryEntity = new QuestionInMemoryEntity();
 
         const id = uuid();
 
-        Object.assign(questionInMemory, { id, description });
+        Object.assign(questionInMemoryEntity, { id, description });
 
-        this._repository.push(questionInMemory);
+        this._repository.push(questionInMemoryEntity);
 
-        return questionInMemory;
+        return questionInMemoryEntity;
     }
 
     public async save(question: IQuestionEntity): Promise<IQuestionEntity> {
