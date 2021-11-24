@@ -3,7 +3,7 @@ import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity'
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
 
 @injectable()
-class ListEmotionsService {
+class ListEmotionService {
     constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
 
     public async execute(): Promise<IEmotionEntity[]> {
@@ -11,4 +11,4 @@ class ListEmotionsService {
     }
 }
 
-export { ListEmotionsService };
+export { ListEmotionService };

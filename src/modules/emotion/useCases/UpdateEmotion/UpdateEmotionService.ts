@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
-import { IUpdateEmotionDTO } from './IUpdateEmotionDTO';
+import { IUpdateEmotionDTO } from '../../dtos/IUpdateEmotionDTO';
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
 import { AppException } from '@shared/exceptions/AppException';
 

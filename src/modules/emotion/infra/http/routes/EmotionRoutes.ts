@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ListEmotionsMiddleware } from '@modules/emotion/useCases/ListEmotions/ListEmotionsMiddleware';
+import { ListEmotionMiddleware } from '@modules/emotion/useCases/ListEmotion/ListEmotionMiddleware';
 import { ShowEmotionMiddleware } from '@modules/emotion/useCases/ShowEmotion/ShowEmotionMiddleware';
 import { CreateEmotionMiddleware } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionMiddleware';
 import { UpdateEmotionMiddleware } from '@modules/emotion/useCases/UpdateEmotion/UpdateEmotionMiddleware';
@@ -14,7 +14,7 @@ class EmotionRoutes {
         new UpdateEmotionMiddleware().register(router, 'put', '/emotions/:id');
 
         // List
-        new ListEmotionsMiddleware().register(router, 'get', '/emotions');
+        new ListEmotionMiddleware().register(router, 'get', '/emotions');
 
         // Show
         new ShowEmotionMiddleware().register(router, 'get', '/emotions/:id');

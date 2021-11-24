@@ -1,14 +1,14 @@
 import { getRepository, Repository } from 'typeorm';
 import { ICreateEmotionDTO } from '@modules/emotion/dtos/ICreateEmotionDTO';
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
-import { PostgresEmotionEntity } from '../entities/PostgresEmotionEntity';
+import { EmotionPostgresEntity } from '../entities/EmotionPostgresEntity';
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
 
-class PostgresEmotionRepository implements IEmotionRepository {
+class EmotionPostgresRepository implements IEmotionRepository {
     private _repository: Repository<IEmotionEntity>;
 
     constructor() {
-        this._repository = getRepository(PostgresEmotionEntity, 'default');
+        this._repository = getRepository(EmotionPostgresEntity, 'default');
     }
 
     public async findOneById(emotionId: string): Promise<IEmotionEntity | undefined> {
@@ -36,7 +36,7 @@ class PostgresEmotionRepository implements IEmotionRepository {
     }
 
     public async delete(emotion: IEmotionEntity): Promise<IEmotionEntity> {
-        await this._repository.delete(emotion);
+        await this._repository.remove(emotion);
 
         return emotion;
     }
@@ -46,4 +46,4 @@ class PostgresEmotionRepository implements IEmotionRepository {
     }
 }
 
-export { PostgresEmotionRepository };
+export { EmotionPostgresRepository };

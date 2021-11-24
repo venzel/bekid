@@ -3,7 +3,7 @@ import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity'
 import { Expose } from 'class-transformer';
 
 @Entity('emotions')
-class PostgresEmotionEntity implements IEmotionEntity {
+class EmotionPostgresEntity implements IEmotionEntity {
     @Expose({ name: 'emotion_id' })
     @PrimaryColumn()
     public id: string;
@@ -21,4 +21,4 @@ class PostgresEmotionEntity implements IEmotionEntity {
     public created_at: Date;
 }
 
-export { PostgresEmotionEntity };
+export { EmotionPostgresEntity };

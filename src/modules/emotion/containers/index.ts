@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
-import { PostgresEmotionRepository } from '../infra/typeorm/postgres/repositories/PostgresEmotionRepository';
+import { EmotionPostgresRepository } from '../infra/typeorm/postgres/repositories/EmotionPostgresRepository';
 
-container.registerSingleton<IEmotionRepository>('EmotionRepository', PostgresEmotionRepository);
+container.registerSingleton<IEmotionRepository>('EmotionRepository', EmotionPostgresRepository);

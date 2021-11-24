@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 import { ICreateEmotionDTO } from '@modules/emotion/dtos/ICreateEmotionDTO';
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
-import { FakeEmotionEntity } from '../../models/entities/fakes/FakeEmotionEntity';
+import { FakeEmotionEntity } from '../models/entities/EmotionInMemoryEntity';
 
 class FakeEmotionRepository implements IEmotionRepository {
     private _repository: IEmotionEntity[];

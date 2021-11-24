@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
-import { ListEmotionsService } from './ListEmotionsService';
+import { ListEmotionService } from './ListEmotionService';
 import { generateStatus } from '@shared/helpers/status';
 
-class ListEmotionsController {
+class ListEmotionController {
     public async handle(_: Request, res: Response): Promise<Response> {
-        const service = container.resolve(ListEmotionsService);
+        const service = container.resolve(ListEmotionService);
 
         const emotions = await service.execute();
 
@@ -18,4 +18,4 @@ class ListEmotionsController {
     }
 }
 
-export { ListEmotionsController };
+export { ListEmotionController };
