@@ -62,19 +62,23 @@
     "emotions": [
         {
             "id": 1,
-            "name": "feliz"
+            "slug": "alegre",
+            "name": "Alegre"
         },
         {
             "id": 2,
-            "name": "triste"
+            "slug": "triste",
+            "name": "Triste"
         },
         {
             "id": 3,
-            "name": "zangado"
+            "slug": "raiva",
+            "name": "Raiva"
         },
         {
             "id": 4,
-            "name": "pensativo"
+            "slug": "medo",
+            "name": "Medo"
         }
     ],
     "questions": [

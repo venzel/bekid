@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { UserRoutes } from '@modules/user/infra/http/routes/UserRoutes';
 import { EmotionRoutes } from '@modules/emotion/infra/http/routes/EmotionRoutes';
+import { QuestionRoutes } from '@modules/question/infra/http/routes/QuestionRoutes';
 
 class Route {
     public execute(): Router {
@@ -11,6 +12,9 @@ class Route {
 
         // EMOTION
         new EmotionRoutes().registerAll(router);
+
+        // QUESTION
+        new QuestionRoutes().registerAll(router);
 
         return router;
     }
