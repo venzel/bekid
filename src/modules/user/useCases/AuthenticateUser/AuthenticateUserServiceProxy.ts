@@ -1,11 +1,11 @@
 import { injectable, inject, container } from 'tsyringe';
 import { IHashProvider } from '@modules/user/providers/HashProvider/models/IHashProvider';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
-import { IAuthenticateUserDTO } from './IAuthenticateUserDTO';
+import { IAuthenticateUserDTO } from '../../dtos/IAuthenticateUserDTO';
 import { ICacheProvider } from '@shared/providers/CacheProvider/models/ICacheProvider';
 import { AuthenticateUserService } from './AuthenticateUserService';
 import { AppException } from '@shared/exceptions/AppException';
-import { PostgresUserEntity } from '@modules/user/infra/typeorm/postgres/entities/PostgresUserEntity';
+import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 
 @injectable()
 class AuthenticateUserServiceProxy {
@@ -52,7 +52,7 @@ class AuthenticateUserServiceProxy {
 
         /* Create user */
 
-        const user = new PostgresUserEntity();
+        const user = new UserPostgresEntity();
 
         /* End generate token by provider */
 

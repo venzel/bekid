@@ -1,6 +1,6 @@
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 
-class FakeUserEntity implements IUserEntity {
+class UserInMemoryEntity implements IUserEntity {
     public id: string;
     public name: string;
     public email: string;
@@ -14,4 +14,4 @@ class FakeUserEntity implements IUserEntity {
     public deleted_at: Date | null;
 }
 
-export { FakeUserEntity };
+export { UserInMemoryEntity };

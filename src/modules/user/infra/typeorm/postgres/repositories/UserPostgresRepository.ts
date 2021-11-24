@@ -1,14 +1,14 @@
 import { getRepository, Repository } from 'typeorm';
-import { ICreateUserDTO } from '@modules/user/useCases/CreateUser/ICreateUserDTO';
+import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
-import { PostgresUserEntity } from '../entities/PostgresUserEntity';
+import { UserPostgresEntity } from '../entities/UserPostgresEntity';
 
-class PostgresUserRepository implements IUserRepository {
+class UserPostgresRepository implements IUserRepository {
     private _repository: Repository<IUserEntity>;
 
     constructor() {
-        this._repository = getRepository<IUserEntity>(PostgresUserEntity, 'default');
+        this._repository = getRepository<IUserEntity>(UserPostgresEntity, 'default');
     }
 
     public async count(): Promise<number> {
@@ -79,4 +79,4 @@ class PostgresUserRepository implements IUserRepository {
     }
 }
 
-export { PostgresUserRepository };
+export { UserPostgresRepository };

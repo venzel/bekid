@@ -4,7 +4,7 @@ import { api_url } from '@configs/geral';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 
 @Entity('users')
-class PostgresUserEntity implements IUserEntity {
+class UserPostgresEntity implements IUserEntity {
     @Expose({ name: 'user_id' })
     @PrimaryColumn('varchar')
     public id: string;
@@ -48,4 +48,4 @@ class PostgresUserEntity implements IUserEntity {
     public deleted_at: Date | null;
 }
 
-export { PostgresUserEntity };
+export { UserPostgresEntity };

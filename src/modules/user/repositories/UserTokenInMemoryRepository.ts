@@ -2,9 +2,9 @@ import { v4 as uuid } from 'uuid';
 import { IUserTokenSchema } from '@modules/user/models/schemas/IUserTokenSchema';
 import { IUserTokenRepository } from '@modules/user/repositories/IUserTokenRepository';
 import { ICreateTokenDTO } from '@modules/user/dtos/ICreateTokenDTO';
-import { FakeUserTokenSchema } from '../../models/schemas/fakes/FakeUserToken';
+import { UserTokenInMemorySchema } from '../models/schemas/UserTokenInMemorySchema';
 
-class FakeUserTokenRepository implements IUserTokenRepository {
+class UserTokenInMemoryRepository implements IUserTokenRepository {
     private _repository: IUserTokenSchema[];
 
     constructor() {
@@ -18,15 +18,15 @@ class FakeUserTokenRepository implements IUserTokenRepository {
     public async create(data: ICreateTokenDTO): Promise<string> {
         const { user_id } = data;
 
-        const fakeUserToken = new FakeUserTokenSchema();
+        const userTokenInMemorySchema = new UserTokenInMemorySchema();
 
         const token: string = uuid();
 
         const id: string = uuid();
 
-        Object.assign(fakeUserToken, { id, token, user_id });
+        Object.assign(userTokenInMemorySchema, { id, token, user_id });
 
-        this._repository.push(fakeUserToken);
+        this._repository.push(userTokenInMemorySchema);
 
         return token;
     }
@@ -36,4 +36,4 @@ class FakeUserTokenRepository implements IUserTokenRepository {
     }
 }
 
-export { FakeUserTokenRepository };
+export { UserTokenInMemoryRepository };

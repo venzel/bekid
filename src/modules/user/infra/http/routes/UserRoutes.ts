@@ -9,7 +9,7 @@ import { UpdateProfileUserMiddleware } from '@modules/user/useCases/UpdateProfil
 import { ToggleRoleUserMiddleware } from '@modules/user/useCases/ToggleRoleUser/ToggleRoleUserMiddleware';
 import { ShowUserMiddleware } from '@modules/user/useCases/ShowUser/ShowUserMiddleware';
 import { DeleteUserMiddleware } from '@modules/user/useCases/DeleteUser/DeleteUserMiddleware';
-import { ListUsersMiddleware } from '@modules/user/useCases/ListUsers/ListUsersMiddleware';
+import { ListUserMiddleware } from '@modules/user/useCases/ListUser/ListUserMiddleware';
 import { ToggleAllowUserMiddleware } from '@modules/user/useCases/ToogleAllowUser/ToggleAllowUserMiddleware';
 
 class UserRoutes {
@@ -18,7 +18,7 @@ class UserRoutes {
         new CreateUserMiddleware().register(router, 'post', '/users');
 
         // List
-        new ListUsersMiddleware().register(router, 'get', '/users');
+        new ListUserMiddleware().register(router, 'get', '/users');
 
         // Show
         new ShowUserMiddleware().register(router, 'get', '/users/:id');

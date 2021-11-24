@@ -4,7 +4,7 @@ import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IUserTokenRepository } from '@modules/user/repositories/IUserTokenRepository';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { AppException } from '@shared/exceptions/AppException';
-import { IUpdatePasswordDTO } from './IUpdatePasswordDTO';
+import { IUpdatePasswordDTO } from '../../dtos/IUpdatePasswordDTO';
 import { ICacheProvider } from '@shared/providers/CacheProvider/models/ICacheProvider';
 
 @injectable()

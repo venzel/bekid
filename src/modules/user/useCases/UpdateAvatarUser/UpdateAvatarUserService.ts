@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IStorageProvider } from '@shared/providers/StorageProvider/models/IStorageProvider';
-import { IUpdateAvatarUserDTO } from './IUpdateAvatarUserDTO';
+import { IUpdateAvatarUserDTO } from '../../dtos/IUpdateAvatarUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { AppException } from '@shared/exceptions/AppException';
 

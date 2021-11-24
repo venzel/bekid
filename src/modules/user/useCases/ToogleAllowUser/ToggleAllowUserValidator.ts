@@ -6,13 +6,13 @@ class ToggleAllowUserValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
         const { user_id } = req.auth;
 
-        const user_params_id = req.params.id?.toString();
+        const userId = req.params.id?.toString();
 
-        if (!isIdValid(user_params_id, 'string')) {
+        if (!isIdValid(userId, 'string')) {
             throw new AppException('User id invalid!', 400);
         }
 
-        if (user_id === user_params_id) {
+        if (user_id === userId) {
             throw new AppException('It is not possible to update allow yourself!');
         }
 

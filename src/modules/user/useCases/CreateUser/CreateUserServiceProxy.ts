@@ -1,7 +1,7 @@
 import { injectable, inject, container } from 'tsyringe';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { ICacheProvider } from '@shared/providers/CacheProvider/models/ICacheProvider';
-import { ICreateUserDTO } from '@modules/user/useCases/CreateUser/ICreateUserDTO';
+import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { CreateUserService } from './CreateUserService';
 import { environment } from '@configs/geral';

@@ -3,11 +3,11 @@ import { container } from 'tsyringe';
 import '@modules/user/providers';
 
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
-import { PostgresUserRepository } from '@modules/user/infra/typeorm/postgres/repositories/PostgresUserRepository';
+import { UserPostgresRepository } from '@modules/user/infra/typeorm/postgres/repositories/UserPostgresRepository';
 
 import { IUserTokenRepository } from '@modules/user/repositories/IUserTokenRepository';
-import { MongoUserTokenRepository } from '@modules/user/infra/typeorm/mongodb/repositories/MongoUserTokenRepository';
+import { UserTokenMongoRepository } from '@modules/user/infra/typeorm/mongodb/repositories/UserTokenMongoRepository';
 
-container.registerSingleton<IUserRepository>('UserRepository', PostgresUserRepository);
+container.registerSingleton<IUserRepository>('UserRepository', UserPostgresRepository);
 
-container.registerSingleton<IUserTokenRepository>('UserTokenRepository', MongoUserTokenRepository);
+container.registerSingleton<IUserTokenRepository>('UserTokenRepository', UserTokenMongoRepository);

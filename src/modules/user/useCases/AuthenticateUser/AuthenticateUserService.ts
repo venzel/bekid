@@ -3,7 +3,7 @@ import { IHashProvider } from '@modules/user/providers/HashProvider/models/IHash
 import { ITokenProvider } from '@modules/user/providers/TokenProvider/models/ITokenProvider';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
-import { IAuthenticateUserDTO } from './IAuthenticateUserDTO';
+import { IAuthenticateUserDTO } from '../../dtos/IAuthenticateUserDTO';
 import { AppException } from '@shared/exceptions/AppException';
 
 @injectable()

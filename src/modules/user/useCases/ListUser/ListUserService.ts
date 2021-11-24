@@ -1,10 +1,9 @@
 import { injectable, inject } from 'tsyringe';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
-import { IListUsersDTO } from './IListUsersDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 
 @injectable()
-class ListUsersService {
+class ListUserService {
     constructor(@inject('UserRepository') private _userRepository: IUserRepository) {}
 
     public async execute(): Promise<IUserEntity[]> {
@@ -12,4 +11,4 @@ class ListUsersService {
     }
 }
 
-export { ListUsersService };
+export { ListUserService };

@@ -3,7 +3,7 @@ import { Expose } from 'class-transformer';
 import { IUserTokenSchema } from '@modules/user/models/schemas/IUserTokenSchema';
 
 @Entity('user_tokens')
-class MongoUserTokenSchema implements IUserTokenSchema {
+class UserTokenMongoSchema implements IUserTokenSchema {
     @Expose({ name: 'token_user_Id' })
     @ObjectIdColumn()
     public _id: ObjectID;
@@ -21,4 +21,4 @@ class MongoUserTokenSchema implements IUserTokenSchema {
     public updated_at: Date;
 }
 
-export { MongoUserTokenSchema };
+export { UserTokenMongoSchema };

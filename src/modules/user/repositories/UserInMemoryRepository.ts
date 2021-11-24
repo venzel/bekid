@@ -1,10 +1,10 @@
 import { v4 as uuid } from 'uuid';
-import { ICreateUserDTO } from '@modules/user/useCases/CreateUser/ICreateUserDTO';
+import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
-import { FakeUserEntity } from '../../models/entities/fakes/FakeUserEntity';
+import { UserInMemoryEntity } from '../models/entities/UserInMemoryEntity';
 
-class FakeUserRepository implements IUserRepository {
+class UserInMemoryRepository implements IUserRepository {
     private _repository: IUserEntity[];
 
     constructor() {
@@ -30,15 +30,15 @@ class FakeUserRepository implements IUserRepository {
     public async create(user: ICreateUserDTO): Promise<IUserEntity> {
         const { name, email, password, role, activated } = user;
 
-        const fakeUser: IUserEntity = new FakeUserEntity();
+        const userInMemoryEntity: IUserEntity = new UserInMemoryEntity();
 
         const id: string = uuid();
 
-        Object.assign(fakeUser, { id, name, email, password, role, activated });
+        Object.assign(userInMemoryEntity, { id, name, email, password, role, activated });
 
-        this._repository.push(fakeUser);
+        this._repository.push(userInMemoryEntity);
 
-        return fakeUser;
+        return userInMemoryEntity;
     }
 
     public async save(user: IUserEntity): Promise<IUserEntity> {
@@ -75,4 +75,4 @@ class FakeUserRepository implements IUserRepository {
     }
 }
 
-export { FakeUserRepository };
+export { UserInMemoryRepository };

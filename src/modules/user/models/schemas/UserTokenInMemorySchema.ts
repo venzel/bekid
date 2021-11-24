@@ -1,6 +1,6 @@
 import { IUserTokenSchema } from '@modules/user/models/schemas/IUserTokenSchema';
 
-class FakeUserTokenSchema implements IUserTokenSchema {
+class UserTokenInMemorySchema implements IUserTokenSchema {
     public _id: string;
     public user_id: string;
     public token: string;
@@ -8,4 +8,4 @@ class FakeUserTokenSchema implements IUserTokenSchema {
     public updated_at: Date;
 }
 
-export { FakeUserTokenSchema };
+export { UserTokenInMemorySchema };

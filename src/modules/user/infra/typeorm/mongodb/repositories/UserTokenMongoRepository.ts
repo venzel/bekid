@@ -1,14 +1,14 @@
 import { MongoRepository, getMongoRepository } from 'typeorm';
 import { IUserTokenSchema } from '@modules/user/models/schemas/IUserTokenSchema';
-import { MongoUserTokenSchema } from '../schemas/MongoUserTokenSchema';
+import { UserTokenMongoSchema } from '../schemas/UserTokenMongoSchema';
 import { IUserTokenRepository } from '@modules/user/repositories/IUserTokenRepository';
 import { ICreateTokenDTO } from '@modules/user/dtos/ICreateTokenDTO';
 
-class MongoUserTokenRepository implements IUserTokenRepository {
+class UserTokenMongoRepository implements IUserTokenRepository {
     private _repository: MongoRepository<IUserTokenSchema>;
 
     constructor() {
-        this._repository = getMongoRepository(MongoUserTokenSchema, 'mongodb');
+        this._repository = getMongoRepository(UserTokenMongoSchema, 'mongodb');
     }
 
     public async findOneByToken(token: string): Promise<IUserTokenSchema | undefined> {
@@ -30,4 +30,4 @@ class MongoUserTokenRepository implements IUserTokenRepository {
     }
 }
 
-export { MongoUserTokenRepository };
+export { UserTokenMongoRepository };

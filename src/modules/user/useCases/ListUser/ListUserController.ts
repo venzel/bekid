@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
-import { ListUsersService } from './ListUsersService';
+import { ListUserService } from './ListUserService';
 import { generateStatus } from '@shared/helpers/status';
 
-class ListUsersController {
+class ListUserController {
     public async handle(_: Request, res: Response): Promise<Response> {
-        const service = container.resolve(ListUsersService);
+        const service = container.resolve(ListUserService);
 
         const users = await service.execute();
 
@@ -18,4 +18,4 @@ class ListUsersController {
     }
 }
 
-export { ListUsersController };
+export { ListUserController };

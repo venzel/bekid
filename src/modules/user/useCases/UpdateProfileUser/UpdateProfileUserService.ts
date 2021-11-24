@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
-import { IProfileUpdateUserDTO } from './IUpdateProfileUserDTO';
+import { IProfileUpdateUserDTO } from '../../dtos/IUpdateProfileUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IHashProvider } from '@modules/user/providers/HashProvider/models/IHashProvider';
 import { AppException } from '@shared/exceptions/AppException';
