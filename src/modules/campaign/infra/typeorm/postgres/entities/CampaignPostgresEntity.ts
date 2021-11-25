@@ -2,7 +2,7 @@ import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Dele
 import { ICampaignEntity } from '@modules/campaign/models/entities/ICampaignEntity';
 import { Expose } from 'class-transformer';
 
-@Entity('campaigns')
+@Entity('CAMPAIGNS')
 class CampaignPostgresEntity implements ICampaignEntity {
     @Expose({ name: 'campaign_id' })
     @PrimaryColumn()

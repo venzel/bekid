@@ -2,7 +2,7 @@ import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
 import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEntity';
 import { Expose } from 'class-transformer';
 
-@Entity('questions')
+@Entity('QUESTIONS')
 class QuestionPostgresEntity implements IQuestionEntity {
     @Expose({ name: 'question_id' })
     @PrimaryColumn()

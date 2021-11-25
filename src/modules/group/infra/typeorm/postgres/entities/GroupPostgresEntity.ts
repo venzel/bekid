@@ -2,7 +2,7 @@ import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Dele
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
 import { Expose } from 'class-transformer';
 
-@Entity('groups')
+@Entity('GROUPS')
 class GroupPostgresEntity implements IGroupEntity {
     @Expose({ name: 'group_id' })
     @PrimaryColumn()

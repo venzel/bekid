@@ -4,7 +4,7 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'votes',
+                name: 'VOTES',
                 columns: [
                     {
                         name: 'id',
@@ -35,10 +35,10 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'votes',
+            'VOTES',
             new TableForeignKey({
                 name: 'VoteCampaign',
-                referencedTableName: 'campaigns',
+                referencedTableName: 'CAMPAIGNS',
                 referencedColumnNames: ['id'],
                 columnNames: ['campaign_id'],
                 onDelete: 'CASCADE',
@@ -47,10 +47,10 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'votes',
+            'VOTES',
             new TableForeignKey({
                 name: 'VoteEmotion',
-                referencedTableName: 'emotions',
+                referencedTableName: 'EMOTIONS',
                 referencedColumnNames: ['id'],
                 columnNames: ['emotion_id'],
                 onDelete: 'SET NULL',
@@ -59,10 +59,10 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'votes',
+            'VOTES',
             new TableForeignKey({
                 name: 'VoteUser',
-                referencedTableName: 'users',
+                referencedTableName: 'USERS',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
                 onDelete: 'CASCADE',
@@ -72,6 +72,6 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('votes');
+        await queryRunner.dropTable('VOTES');
     }
 }

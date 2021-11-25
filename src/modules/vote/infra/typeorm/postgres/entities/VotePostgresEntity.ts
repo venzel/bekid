@@ -6,7 +6,7 @@ import { CampaignPostgresEntity } from '@modules/campaign/infra/typeorm/postgres
 import { EmotionPostgresEntity } from '@modules/emotion/infra/typeorm/postgres/entities/EmotionPostgresEntity';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 
-@Entity('votes')
+@Entity('VOTES')
 class VotePostgresEntity implements IVoteEntity {
     @Expose({ name: 'vote_id' })
     @PrimaryColumn()

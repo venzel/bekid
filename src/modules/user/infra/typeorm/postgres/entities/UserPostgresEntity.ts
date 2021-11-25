@@ -3,7 +3,7 @@ import { Exclude, Expose } from 'class-transformer';
 import { api_url } from '@configs/geral';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 
-@Entity('users')
+@Entity('USERS')
 class UserPostgresEntity implements IUserEntity {
     @Expose({ name: 'user_id' })
     @PrimaryColumn('varchar')

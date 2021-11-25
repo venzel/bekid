@@ -2,7 +2,7 @@ import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
 import { Expose } from 'class-transformer';
 
-@Entity('emotions')
+@Entity('EMOTIONS')
 class EmotionPostgresEntity implements IEmotionEntity {
     @Expose({ name: 'emotion_id' })
     @PrimaryColumn()
