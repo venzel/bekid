@@ -53,8 +53,8 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
                 referencedTableName: 'emotions',
                 referencedColumnNames: ['id'],
                 columnNames: ['emotion_id'],
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE',
+                onDelete: 'SET NULL',
+                onUpdate: 'SET NULL',
             })
         );
 

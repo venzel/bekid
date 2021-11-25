@@ -29,6 +29,7 @@ class VotePostgresEntity implements IVoteEntity {
     @Column()
     public user_id: string;
 
+    // @ManyToOne(() => UserPostgresEntity, { lazy: true })
     @ManyToOne(() => UserPostgresEntity)
     @JoinColumn({ name: 'user_id' })
     public user: UserPostgresEntity;
