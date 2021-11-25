@@ -3,6 +3,7 @@ import { UserRoutes } from '@modules/user/infra/http/routes/UserRoutes';
 import { EmotionRoutes } from '@modules/emotion/infra/http/routes/EmotionRoutes';
 import { QuestionRoutes } from '@modules/question/infra/http/routes/QuestionRoutes';
 import { GroupRoutes } from '@modules/group/infra/http/routes/GroupRoutes';
+import { CampaignRoutes } from '@modules/campaign/infra/http/routes/CampaignRoutes';
 
 class Route {
     public execute(): Router {
@@ -19,6 +20,9 @@ class Route {
 
         // GROUP
         new GroupRoutes().registerAll(router);
+
+        // CAMPAIGN
+        new CampaignRoutes().registerAll(router);
 
         return router;
     }
