@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateQuestions1637767522692 implements MigrationInterface {
+export default class CreateGroups1637772239805 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'questions',
+                name: 'groups',
                 columns: [
                     {
                         name: 'id',
@@ -13,7 +13,7 @@ export default class CreateQuestions1637767522692 implements MigrationInterface 
                         isPrimary: true,
                     },
                     {
-                        name: 'description',
+                        name: 'name',
                         type: 'varchar',
                     },
                     {
@@ -22,12 +22,24 @@ export default class CreateQuestions1637767522692 implements MigrationInterface 
                         isNullable: false,
                         default: 'now()',
                     },
+                    {
+                        name: 'updated_at',
+                        type: 'timestamp',
+                        isNullable: false,
+                        default: 'now()',
+                    },
+                    {
+                        name: 'deleted_at',
+                        type: 'timestamp',
+                        isNullable: true,
+                        default: null,
+                    },
                 ],
             })
         );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('questions');
+        await queryRunner.dropTable('groups');
     }
 }
