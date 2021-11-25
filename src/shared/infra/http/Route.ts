@@ -4,6 +4,7 @@ import { EmotionRoutes } from '@modules/emotion/infra/http/routes/EmotionRoutes'
 import { QuestionRoutes } from '@modules/question/infra/http/routes/QuestionRoutes';
 import { GroupRoutes } from '@modules/group/infra/http/routes/GroupRoutes';
 import { CampaignRoutes } from '@modules/campaign/infra/http/routes/CampaignRoutes';
+import { VoteRoutes } from '@modules/vote/infra/http/routes/VoteRoutes';
 
 class Route {
     public execute(): Router {
@@ -23,6 +24,9 @@ class Route {
 
         // CAMPAIGN
         new CampaignRoutes().registerAll(router);
+
+        // VOTE
+        new VoteRoutes().registerAll(router);
 
         return router;
     }
