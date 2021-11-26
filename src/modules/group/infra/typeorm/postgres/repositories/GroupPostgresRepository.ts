@@ -42,7 +42,9 @@ class GroupPostgresRepository implements IGroupRepository {
     }
 
     public async list(): Promise<IGroupEntity[]> {
-        return await this._repository.find();
+        return await this._repository.find({
+            relations: ['users'],
+        });
     }
 }
 

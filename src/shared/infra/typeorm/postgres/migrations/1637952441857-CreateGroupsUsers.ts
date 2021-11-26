@@ -7,12 +7,6 @@ export default class CreateGroupsUsers1637952441857 implements MigrationInterfac
                 name: 'GROUPS_USERS',
                 columns: [
                     {
-                        name: 'id',
-                        type: 'varchar',
-                        isUnique: true,
-                        isPrimary: true,
-                    },
-                    {
                         name: 'group_id',
                         type: 'varchar',
                     },
@@ -37,8 +31,8 @@ export default class CreateGroupsUsers1637952441857 implements MigrationInterfac
                 referencedTableName: 'GROUPS',
                 referencedColumnNames: ['id'],
                 columnNames: ['group_id'],
-                onDelete: 'SET NULL',
-                onUpdate: 'SET NULL',
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             })
         );
 
@@ -49,8 +43,8 @@ export default class CreateGroupsUsers1637952441857 implements MigrationInterfac
                 referencedTableName: 'USERS',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
-                onDelete: 'SET NULL',
-                onUpdate: 'SET NULL',
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             })
         );
     }

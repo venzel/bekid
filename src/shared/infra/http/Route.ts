@@ -1,8 +1,9 @@
 import { Router } from 'express';
+
 import { UserRoutes } from '@modules/user/infra/http/routes/UserRoutes';
+import { GroupRoutes } from '@modules/group/infra/http/routes/GroupRoutes';
 import { EmotionRoutes } from '@modules/emotion/infra/http/routes/EmotionRoutes';
 import { QuestionRoutes } from '@modules/question/infra/http/routes/QuestionRoutes';
-import { GroupRoutes } from '@modules/group/infra/http/routes/GroupRoutes';
 import { CampaignRoutes } from '@modules/campaign/infra/http/routes/CampaignRoutes';
 import { VoteRoutes } from '@modules/vote/infra/http/routes/VoteRoutes';
 import { VoteQuestionRoutes } from '@modules/vote_question/infra/http/routes/VoteQuestionRoutes';
@@ -15,14 +16,14 @@ class Route {
         // USER
         new UserRoutes().registerAll(router);
 
+        // GROUP
+        new GroupRoutes().registerAll(router);
+
         // EMOTION
         new EmotionRoutes().registerAll(router);
 
         // QUESTION
         new QuestionRoutes().registerAll(router);
-
-        // GROUP
-        new GroupRoutes().registerAll(router);
 
         // CAMPAIGN
         new CampaignRoutes().registerAll(router);

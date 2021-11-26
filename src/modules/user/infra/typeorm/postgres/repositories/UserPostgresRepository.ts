@@ -15,6 +15,10 @@ class UserPostgresRepository implements IUserRepository {
         return this._repository.count({ where: { deleted_at: null } });
     }
 
+    public async findAllByIds(userIds: string[]): Promise<IUserEntity[]> {
+        return await this._repository.findByIds(userIds);
+    }
+
     public async findOneById(userId: string): Promise<IUserEntity | undefined> {
         return await this._repository.findOne({ where: { id: userId, deleted_at: null } });
     }
