@@ -14,15 +14,13 @@ class CreateVoteController {
 
         const userId = req.auth.user_id;
 
-        console.log(userId);
-
         const service = container.resolve(CreateVoteService);
 
-        const group = await service.handle({ campaign_id: campaignId, emotion_id: emotionId, user_id: userId });
+        const vote = await service.handle({ campaign_id: campaignId, emotion_id: emotionId, user_id: userId });
 
-        const status = generateStatus(false, 201, 'Succesfully created group!');
+        const status = generateStatus(false, 201, 'Succesfully created vote!');
 
-        const doc = classToClass(group);
+        const doc = classToClass(vote);
 
         return res.status(201).json({ status, doc });
     }
