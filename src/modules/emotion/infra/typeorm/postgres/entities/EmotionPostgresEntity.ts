@@ -1,10 +1,10 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
+
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
-import { Expose } from 'class-transformer';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
 @Entity('EMOTIONS')
 class EmotionPostgresEntity implements IEmotionEntity {
-    @Expose({ name: 'emotion_id' })
     @PrimaryColumn()
     public id: string;
 
@@ -19,6 +19,12 @@ class EmotionPostgresEntity implements IEmotionEntity {
 
     @CreateDateColumn()
     public created_at: Date;
+
+    constructor() {
+        if (!this.id) {
+            this.id = GenerateId.strategy('hash');
+        }
+    }
 }
 
 export { EmotionPostgresEntity };

@@ -1,13 +1,12 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { Expose } from 'class-transformer';
 
 import { IVoteCommentEntity } from '@modules/vote_comment/models/entities/IVoteCommentEntity';
 import { VotePostgresEntity } from '@modules/vote/infra/typeorm/postgres/entities/VotePostgresEntity';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
 @Entity('VOTES_COMMENTS')
 class VoteCommentPostgresEntity implements IVoteCommentEntity {
-    @Expose({ name: 'vote_comment_id' })
     @PrimaryColumn()
     public id: string;
 
@@ -30,6 +29,12 @@ class VoteCommentPostgresEntity implements IVoteCommentEntity {
 
     @CreateDateColumn()
     public created_at: Date;
+
+    constructor() {
+        if (!this.id) {
+            this.id = GenerateId.strategy('hash');
+        }
+    }
 }
 
 export { VoteCommentPostgresEntity };

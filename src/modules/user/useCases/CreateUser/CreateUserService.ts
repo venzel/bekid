@@ -5,14 +5,12 @@ import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { ICreatePayloadDTO } from '@modules/user/dtos/ICreatePayloadDTO';
-import { IGenerateIdProvider } from '@shared/providers/generateIdProvider/model/IGenerateIdProvider';
 import { AppException } from '@shared/exceptions/AppException';
 
 @injectable()
 class CreateUserService {
     constructor(
         @inject('UserRepository') private _userRepository: IUserRepository,
-        @inject('GenerateIdProvider') private _generateIdProvider: IGenerateIdProvider,
         @inject('HashProvider') private _hashProvider: IHashProvider,
         @inject('TokenProvider') private _tokenProvider: ITokenProvider
     ) {}
@@ -30,10 +28,6 @@ class CreateUserService {
             throw new AppException('User email already exists!', 400);
         }
 
-        /* Generate user id by provider */
-
-        const generatedUserId: string = this._generateIdProvider.generateId();
-
         /* Generate hash password by provider */
 
         const generatedHashPassword: string = await this._hashProvider.gererateHash(password);
@@ -47,7 +41,6 @@ class CreateUserService {
         /* User created */
 
         const createdUser = await this._userRepository.create({
-            user_id: generatedUserId,
             name,
             email,
             password: generatedHashPassword,

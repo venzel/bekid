@@ -1,4 +1,4 @@
-import { GererateIdProviderStrategy } from './generateIdProvider/GererateIdProviderStrategy';
+import { GererateIdProviderStrategy } from './GenerateIdProvider/GererateIdProviderStrategy';
 import { CacheProviderStrategy } from './CacheProvider/CacheProviderStrategy';
 import { MailProviderStrategy } from './MailProvider/MailProviderStrategy';
 import { QueueProviderStrategy } from './QueueProvider/QueueProviderStrategy';

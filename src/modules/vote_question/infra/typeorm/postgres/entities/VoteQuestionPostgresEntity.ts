@@ -1,14 +1,13 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { Expose } from 'class-transformer';
 
 import { IVoteQuestionEntity } from '@modules/vote_question/models/entities/IVoteQuestionEntity';
 import { VotePostgresEntity } from '@modules/vote/infra/typeorm/postgres/entities/VotePostgresEntity';
 import { QuestionPostgresEntity } from '@modules/question/infra/typeorm/postgres/entities/QuestionPostgresEntity';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
 @Entity('VOTES_QUESTIONS')
 class VoteQuestionPostgresEntity implements IVoteQuestionEntity {
-    @Expose({ name: 'vote_question_id' })
     @PrimaryColumn()
     public id: string;
 
@@ -35,6 +34,12 @@ class VoteQuestionPostgresEntity implements IVoteQuestionEntity {
 
     @CreateDateColumn()
     public created_at: Date;
+
+    constructor() {
+        if (!this.id) {
+            this.id = GenerateId.strategy('hash');
+        }
+    }
 }
 
 export { VoteQuestionPostgresEntity };

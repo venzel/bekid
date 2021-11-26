@@ -15,17 +15,27 @@ class UpdateAvatarUserService {
     public async execute(data: IUpdateAvatarUserDTO): Promise<IUserEntity> {
         const { filename, user_id } = data;
 
+        /* Find user by id */
+
         const existsUser = await this._userRepository.findOneById(user_id);
+
+        /* Exception estrategy guard */
 
         if (!existsUser) {
             throw new AppException('User not exists!', 404);
         }
 
+        /* Destructuring object */
+
         const { avatar } = existsUser;
+
+        /* If exists avatar, delete file */
 
         if (avatar) {
             await this._storageProvider.deleteFile(avatar);
         }
+
+        /* Save file */
 
         const nameFileSaved: string = await this._storageProvider.saveFile(filename);
 

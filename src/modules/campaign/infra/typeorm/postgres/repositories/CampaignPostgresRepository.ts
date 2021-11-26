@@ -20,9 +20,9 @@ class CampaignPostgresRepository implements ICampaignRepository {
     }
 
     public async create(data: ICreateCampaignDTO): Promise<ICampaignEntity> {
-        const { campaign_id: id, name } = data;
+        const { name } = data;
 
-        const campaignCreated = this._repository.create({ id, name });
+        const campaignCreated = this._repository.create({ name });
 
         await this._repository.save(campaignCreated);
 

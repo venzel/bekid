@@ -20,9 +20,9 @@ class GroupPostgresRepository implements IGroupRepository {
     }
 
     public async create(data: ICreateGroupDTO): Promise<IGroupEntity> {
-        const { group_id: id, name } = data;
+        const { name } = data;
 
-        const groupCreated = this._repository.create({ id, name });
+        const groupCreated = this._repository.create({ name });
 
         await this._repository.save(groupCreated);
 

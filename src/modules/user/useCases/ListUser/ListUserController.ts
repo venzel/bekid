@@ -13,6 +13,7 @@ class ListUserController {
         const status = generateStatus(false, 200, 'Succesfully listed users!');
 
         const docs = classToClass(users);
+        console.log(docs);
 
         return res.status(200).json({ status, docs });
     }

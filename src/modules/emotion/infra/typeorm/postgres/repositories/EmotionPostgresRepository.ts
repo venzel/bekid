@@ -20,9 +20,9 @@ class EmotionPostgresRepository implements IEmotionRepository {
     }
 
     public async create(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
-        const { emotion_id: id, name, slug, description } = data;
+        const { name, slug, description } = data;
 
-        const emotionCreated = this._repository.create({ id, name, slug, description });
+        const emotionCreated = this._repository.create({ name, slug, description });
 
         await this._repository.save(emotionCreated);
 

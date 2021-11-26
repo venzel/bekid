@@ -1,10 +1,10 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
+
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
-import { Expose } from 'class-transformer';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
 @Entity('GROUPS')
 class GroupPostgresEntity implements IGroupEntity {
-    @Expose({ name: 'group_id' })
     @PrimaryColumn()
     public id: string;
 
@@ -19,6 +19,12 @@ class GroupPostgresEntity implements IGroupEntity {
 
     @DeleteDateColumn()
     public deleted_at: Date | null;
+
+    constructor() {
+        if (!this.id) {
+            this.id = GenerateId.strategy('hash');
+        }
+    }
 }
 
 export { GroupPostgresEntity };

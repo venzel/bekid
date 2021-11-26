@@ -4,11 +4,11 @@ import { IUserEntity } from '../models/entities/IUserEntity';
 interface IUserRepository {
     count(): Promise<number>;
 
-    findOneById(user_id: string): Promise<IUserEntity | undefined>;
+    findOneById(userId: string): Promise<IUserEntity | undefined>;
 
-    findOneByName(user_name: string): Promise<IUserEntity | undefined>;
+    findOneByName(userName: string): Promise<IUserEntity | undefined>;
 
-    findOneByEmail(user_email: string): Promise<IUserEntity | undefined>;
+    findOneByEmail(userEmail: string): Promise<IUserEntity | undefined>;
 
     create(data: ICreateUserDTO): Promise<IUserEntity>;
 

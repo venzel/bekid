@@ -32,9 +32,7 @@ class VoteInMemoryRepository implements IVoteRepository {
 
         const voteInMemoryEntity = new VoteInMemoryEntity();
 
-        const id = uuid();
-
-        Object.assign(voteInMemoryEntity, { id, campaign_id, emotion_id, user_id });
+        Object.assign(voteInMemoryEntity, { campaign_id, emotion_id, user_id });
 
         this._repository.push(voteInMemoryEntity);
 

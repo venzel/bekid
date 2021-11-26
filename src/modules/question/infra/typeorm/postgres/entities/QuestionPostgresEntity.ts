@@ -1,10 +1,10 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
+
 import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEntity';
-import { Expose } from 'class-transformer';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
 @Entity('QUESTIONS')
 class QuestionPostgresEntity implements IQuestionEntity {
-    @Expose({ name: 'question_id' })
     @PrimaryColumn()
     public id: string;
 
@@ -13,6 +13,12 @@ class QuestionPostgresEntity implements IQuestionEntity {
 
     @CreateDateColumn()
     public created_at: Date;
+
+    constructor() {
+        if (!this.id) {
+            this.id = GenerateId.strategy('hash');
+        }
+    }
 }
 
 export { QuestionPostgresEntity };

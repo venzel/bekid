@@ -1,12 +1,13 @@
 import { Entity, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, PrimaryColumn } from 'typeorm';
 import { Exclude, Expose } from 'class-transformer';
+
 import { api_url } from '@configs/geral';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
 @Entity('USERS')
 class UserPostgresEntity implements IUserEntity {
-    @Expose({ name: 'user_id' })
-    @PrimaryColumn('varchar')
+    @PrimaryColumn()
     public id: string;
 
     @Column()
@@ -46,6 +47,12 @@ class UserPostgresEntity implements IUserEntity {
     @Exclude()
     @DeleteDateColumn()
     public deleted_at: Date | null;
+
+    constructor() {
+        if (!this.id) {
+            this.id = GenerateId.strategy('hash');
+        }
+    }
 }
 
 export { UserPostgresEntity };

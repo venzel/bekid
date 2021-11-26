@@ -20,9 +20,9 @@ class QuestionPostgresRepository implements IQuestionRepository {
     }
 
     public async create(data: ICreateQuestionDTO): Promise<IQuestionEntity> {
-        const { question_id: id, description } = data;
+        const { description } = data;
 
-        const questionCreated = this._repository.create({ id, description });
+        const questionCreated = this._repository.create({ description });
 
         await this._repository.save(questionCreated);
 

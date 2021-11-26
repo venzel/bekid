@@ -1,10 +1,10 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
+
 import { ICampaignEntity } from '@modules/campaign/models/entities/ICampaignEntity';
-import { Expose } from 'class-transformer';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
 @Entity('CAMPAIGNS')
 class CampaignPostgresEntity implements ICampaignEntity {
-    @Expose({ name: 'campaign_id' })
     @PrimaryColumn()
     public id: string;
 
@@ -19,6 +19,12 @@ class CampaignPostgresEntity implements ICampaignEntity {
 
     @DeleteDateColumn()
     public deleted_at: Date | null;
+
+    constructor() {
+        if (!this.id) {
+            this.id = GenerateId.strategy('hash');
+        }
+    }
 }
 
 export { CampaignPostgresEntity };

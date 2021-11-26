@@ -15,35 +15,26 @@ class UserPostgresRepository implements IUserRepository {
         return this._repository.count({ where: { deleted_at: null } });
     }
 
-    public async findOneById(user_id: string): Promise<IUserEntity | undefined> {
-        return await this._repository.findOne({ where: { id: user_id, deleted_at: null } });
+    public async findOneById(userId: string): Promise<IUserEntity | undefined> {
+        return await this._repository.findOne({ where: { id: userId, deleted_at: null } });
     }
 
-    public async findOneByName(user_name: string): Promise<IUserEntity | undefined> {
-        return await this._repository.findOne({ where: { name: user_name, deleted_at: null } });
+    public async findOneByName(userName: string): Promise<IUserEntity | undefined> {
+        return await this._repository.findOne({ where: { name: userName, deleted_at: null } });
     }
 
-    public async findOneByEmail(user_email: string): Promise<IUserEntity | undefined> {
-        return await this._repository.findOne({ where: { email: user_email, deleted_at: null } });
+    public async findOneByEmail(userEmail: string): Promise<IUserEntity | undefined> {
+        return await this._repository.findOne({ where: { email: userEmail, deleted_at: null } });
     }
 
     public async create(data: ICreateUserDTO): Promise<IUserEntity> {
-        const { user_id: id, name, email, password, role, activated } = data;
+        const { name, email, password, role, activated } = data;
 
         const avatar = '';
 
         const allowed = true;
 
-        const createdUser = this._repository.create({
-            id,
-            name,
-            email,
-            password,
-            role,
-            avatar,
-            allowed,
-            activated,
-        });
+        const createdUser = this._repository.create({ name, email, password, role, avatar, allowed, activated });
 
         await this._repository.save(createdUser);
 
