@@ -49,7 +49,7 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
         await queryRunner.createForeignKey(
             'CAMPAIGNS',
             new TableForeignKey({
-                name: 'CampaignGroup',
+                name: 'FKCampaignGroup',
                 referencedTableName: 'GROUPS',
                 referencedColumnNames: ['id'],
                 columnNames: ['group_id'],
@@ -61,7 +61,7 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
         await queryRunner.createForeignKey(
             'CAMPAIGNS',
             new TableForeignKey({
-                name: 'CampaignUser',
+                name: 'FKCampaignUser',
                 referencedTableName: 'USERS',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
@@ -72,6 +72,10 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey('CAMPAIGNS', 'FKCampaignUser');
+
+        await queryRunner.dropForeignKey('CAMPAIGNS', 'FKCampaignGroup');
+
         await queryRunner.dropTable('CAMPAIGNS');
     }
 }

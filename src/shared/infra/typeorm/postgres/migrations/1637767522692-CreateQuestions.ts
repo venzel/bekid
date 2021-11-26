@@ -33,7 +33,7 @@ export default class CreateQuestions1637767522692 implements MigrationInterface 
         await queryRunner.createForeignKey(
             'QUESTIONS',
             new TableForeignKey({
-                name: 'QuestionEmotion',
+                name: 'FKQuestionEmotion',
                 referencedTableName: 'EMOTIONS',
                 referencedColumnNames: ['id'],
                 columnNames: ['emotion_id'],
@@ -44,6 +44,8 @@ export default class CreateQuestions1637767522692 implements MigrationInterface 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey('CAMPAIGNS', 'FKQuestionEmotion');
+
         await queryRunner.dropTable('QUESTIONS');
     }
 }

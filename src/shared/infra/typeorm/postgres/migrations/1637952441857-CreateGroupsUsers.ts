@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
-export default class CreateVotes1637857081430 implements MigrationInterface {
+export default class CreateGroupsUsers1637952441857 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'VOTES',
+                name: 'GROUPS_USERS',
                 columns: [
                     {
                         name: 'id',
@@ -13,11 +13,7 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
                         isPrimary: true,
                     },
                     {
-                        name: 'campaign_id',
-                        type: 'varchar',
-                    },
-                    {
-                        name: 'emotion_id',
+                        name: 'group_id',
                         type: 'varchar',
                     },
                     {
@@ -35,49 +31,35 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'VOTES',
+            'GROUPS_USERS',
             new TableForeignKey({
-                name: 'FKVoteCampaign',
-                referencedTableName: 'CAMPAIGNS',
+                name: 'FKGroupUser',
+                referencedTableName: 'GROUPS',
                 referencedColumnNames: ['id'],
-                columnNames: ['campaign_id'],
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE',
-            })
-        );
-
-        await queryRunner.createForeignKey(
-            'VOTES',
-            new TableForeignKey({
-                name: 'FKVoteEmotion',
-                referencedTableName: 'EMOTIONS',
-                referencedColumnNames: ['id'],
-                columnNames: ['emotion_id'],
+                columnNames: ['group_id'],
                 onDelete: 'SET NULL',
                 onUpdate: 'SET NULL',
             })
         );
 
         await queryRunner.createForeignKey(
-            'VOTES',
+            'GROUPS_USERS',
             new TableForeignKey({
-                name: 'FKVoteUser',
+                name: 'FKUserGroup',
                 referencedTableName: 'USERS',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE',
+                onDelete: 'SET NULL',
+                onUpdate: 'SET NULL',
             })
         );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('VOTES', 'FKVoteUser');
+        await queryRunner.dropForeignKey('GROUPS_USERS', 'FKUserGroup');
 
-        await queryRunner.dropForeignKey('VOTES', 'FKVoteEmotion');
+        await queryRunner.dropForeignKey('GROUPS_USERS', 'FKGroupUser');
 
-        await queryRunner.dropForeignKey('VOTES', 'FKVoteCampaign');
-
-        await queryRunner.dropTable('VOTES');
+        await queryRunner.dropTable('GROUPS_USERS');
     }
 }

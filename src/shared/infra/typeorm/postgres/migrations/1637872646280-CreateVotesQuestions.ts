@@ -37,7 +37,7 @@ export class CreateVotesQuestions1637872646280 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'VOTES_QUESTIONS',
             new TableForeignKey({
-                name: 'VoteQuestionVote',
+                name: 'FKVoteQuestionVote',
                 referencedTableName: 'VOTES',
                 referencedColumnNames: ['id'],
                 columnNames: ['vote_id'],
@@ -49,7 +49,7 @@ export class CreateVotesQuestions1637872646280 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'VOTES_QUESTIONS',
             new TableForeignKey({
-                name: 'VoteQuestionQuestion',
+                name: 'FKVoteQuestionQuestion',
                 referencedTableName: 'QUESTIONS',
                 referencedColumnNames: ['id'],
                 columnNames: ['question_id'],
@@ -61,7 +61,7 @@ export class CreateVotesQuestions1637872646280 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'VOTES_QUESTIONS',
             new TableForeignKey({
-                name: 'VoteUser',
+                name: 'FKVoteUser',
                 referencedTableName: 'USERS',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
@@ -72,6 +72,12 @@ export class CreateVotesQuestions1637872646280 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey('VOTES_QUESTIONS', 'FKVoteUser');
+
+        await queryRunner.dropForeignKey('VOTES_QUESTIONS', 'FKVoteQuestionQuestion');
+
+        await queryRunner.dropForeignKey('VOTES_QUESTIONS', 'FKVoteQuestionVote');
+
         await queryRunner.dropTable('VOTES_QUESTIONS');
     }
 }

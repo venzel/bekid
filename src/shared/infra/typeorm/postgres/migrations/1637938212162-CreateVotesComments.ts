@@ -37,7 +37,7 @@ export class CreateVotesComments1637938212162 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'VOTES_COMMENTS',
             new TableForeignKey({
-                name: 'VoteCommentVote',
+                name: 'FKVoteCommentVote',
                 referencedTableName: 'VOTES',
                 referencedColumnNames: ['id'],
                 columnNames: ['vote_id'],
@@ -49,7 +49,7 @@ export class CreateVotesComments1637938212162 implements MigrationInterface {
         await queryRunner.createForeignKey(
             'VOTES_COMMENTS',
             new TableForeignKey({
-                name: 'VoteUser',
+                name: 'FKVoteUser',
                 referencedTableName: 'USERS',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
@@ -60,6 +60,10 @@ export class CreateVotesComments1637938212162 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey('VOTES_COMMENTS', 'FKVoteUser');
+
+        await queryRunner.dropForeignKey('VOTES_COMMENTS', 'FKVoteCommentVote');
+
         await queryRunner.dropTable('VOTES_COMMENTS');
     }
 }
