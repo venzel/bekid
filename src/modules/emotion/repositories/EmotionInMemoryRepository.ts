@@ -20,13 +20,13 @@ class FakeEmotionRepository implements IEmotionRepository {
     }
 
     public async create(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
-        const { name, slug, description } = data;
+        const { name, slug } = data;
 
         const emotionInMemoryEntity = new EmotionInMemoryEntity();
 
         const id = uuid();
 
-        Object.assign(emotionInMemoryEntity, { id, name, slug, description });
+        Object.assign(emotionInMemoryEntity, { id, name, slug });
 
         this._repository.push(emotionInMemoryEntity);
 

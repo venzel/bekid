@@ -9,7 +9,7 @@ class CreateEmotionService {
     constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
 
     public async handle(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
-        const { name, slug, description } = data;
+        const { name, slug } = data;
 
         /* Find emotion by name */
 
@@ -23,7 +23,7 @@ class CreateEmotionService {
 
         /* End generate emotion id provider */
 
-        const createdEmotion = await this._emotionRepository.create({ slug, name, description });
+        const createdEmotion = await this._emotionRepository.create({ slug, name });
 
         /* Return the emotion created */
 

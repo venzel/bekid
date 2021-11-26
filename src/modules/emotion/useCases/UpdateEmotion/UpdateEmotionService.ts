@@ -9,7 +9,7 @@ class UpdateEmotionService {
     constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
 
     public async execute(emotionId: string, data: IUpdateEmotionDTO): Promise<IEmotionEntity> {
-        const { name, slug, description } = data;
+        const { name, slug } = data;
 
         /* Find emotion by id */
 
@@ -42,8 +42,6 @@ class UpdateEmotionService {
         existsEmotionWithId.name = name;
 
         existsEmotionWithId.slug = slug;
-
-        existsEmotionWithId.description = description;
 
         /* Data saved in repository */
 

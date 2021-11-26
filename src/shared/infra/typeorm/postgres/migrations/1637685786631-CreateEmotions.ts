@@ -21,10 +21,6 @@ export default class CreateEmotions1637685786631 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
-                        name: 'description',
-                        type: 'varchar',
-                    },
-                    {
                         name: 'created_at',
                         type: 'timestamp',
                         isNullable: false,

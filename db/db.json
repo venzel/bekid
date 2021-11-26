@@ -31,31 +31,34 @@
             "name": "5 serie fundamental - turma A"
         }
     ],
-    "users_groups": [
+    "groups_users": [
         {
-            "user_id": 2,
-            "group_id": 1
+            "id": 1,
+            "group_id": 1,
+            "user_id": 2
         },
         {
-            "user_id": 3,
-            "group_id": 1
+            "id": 2,
+            "group_id": 1,
+            "user_id": 3
         },
         {
-            "user_id": 4,
-            "group_id": 1
+            "id": 3,
+            "group_id": 1,
+            "user_id": 4
         }
     ],
     "campaigns": [
         {
             "id": 1,
             "group_id": 1,
-            "owner_id": 1,
+            "user_id": 1,
             "name": "Primeira dinamica em grupo"
         },
         {
             "id": 2,
             "group_id": 1,
-            "owner_id": 1,
+            "user_id": 1,
             "name": "Segunda dinamica em grupo"
         }
     ],

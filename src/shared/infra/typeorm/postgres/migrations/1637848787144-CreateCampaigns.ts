@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export default class CreateCampaigns1637848787144 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
@@ -14,6 +14,14 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
                     },
                     {
                         name: 'name',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'group_id',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'user_id',
                         type: 'varchar',
                     },
                     {
@@ -35,6 +43,30 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
                         default: null,
                     },
                 ],
+            })
+        );
+
+        await queryRunner.createForeignKey(
+            'CAMPAIGNS',
+            new TableForeignKey({
+                name: 'CampaignGroup',
+                referencedTableName: 'GROUPS',
+                referencedColumnNames: ['id'],
+                columnNames: ['group_id'],
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
+            })
+        );
+
+        await queryRunner.createForeignKey(
+            'CAMPAIGNS',
+            new TableForeignKey({
+                name: 'CampaignUser',
+                referencedTableName: 'USERS',
+                referencedColumnNames: ['id'],
+                columnNames: ['user_id'],
+                onDelete: 'SET NULL',
+                onUpdate: 'SET NULL',
             })
         );
     }

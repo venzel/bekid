@@ -14,9 +14,6 @@ class EmotionPostgresEntity implements IEmotionEntity {
     @Column()
     public slug: string;
 
-    @Column()
-    public description: string;
-
     @CreateDateColumn()
     public created_at: Date;
 
