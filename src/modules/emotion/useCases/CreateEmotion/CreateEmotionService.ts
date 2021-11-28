@@ -18,7 +18,11 @@ class CreateEmotionService {
         /* Exception estrategy guard */
 
         if (existsEmotion) {
-            throw new AppException('Emotion already exists!', 400);
+            const { id, name } = existsEmotion;
+
+            const payload = { id, name };
+
+            throw new AppException(`Emotion already exists!`, 400, payload);
         }
 
         /* End generate emotion id provider */

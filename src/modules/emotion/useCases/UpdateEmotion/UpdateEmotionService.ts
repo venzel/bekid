@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
 import { IUpdateEmotionDTO } from '../../dtos/IUpdateEmotionDTO';
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
@@ -18,7 +19,7 @@ class UpdateEmotionService {
         /* Exception estrategy guard */
 
         if (!existsEmotionWithId) {
-            throw new AppException('Emotion not found!', 404);
+            throw new AppException(`Emotion id ${emotionId} not exists!`, 404);
         }
 
         /* Exception estrategy guard */
@@ -34,7 +35,11 @@ class UpdateEmotionService {
         /* Exception estrategy guard */
 
         if (existsEmotionWithName) {
-            throw new AppException('Emotion already exists in found!', 404);
+            const { id, name } = existsEmotionWithName;
+
+            const payload = { id, name };
+
+            throw new AppException('Emotion already exists in found!', 400, payload);
         }
 
         /* Data update */

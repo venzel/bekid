@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
 

@@ -19,7 +19,7 @@ class EmotionPostgresEntity implements IEmotionEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy('hash');
+            this.id = GenerateId.strategy();
         }
     }
 }

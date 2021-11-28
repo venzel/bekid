@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IEmotionRepository } from '@modules/emotion/repositories/IEmotionRepository';
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
 import { AppException } from '@shared/exceptions/AppException';
@@ -15,14 +16,18 @@ class DeleteEmotionService {
         /* Exception estrategy guard */
 
         if (!existsEmotion) {
-            throw new AppException('Emotion not exists!', 404);
+            throw new AppException(`Emotion id ${emotionId} not exists!`, 404);
         }
 
-        /* Data delete (update) in repository */
+        /* Data delete in repository */
 
         await this._emotionRepository.delete(existsEmotion);
 
-        /* Returns the emotion found */
+        /* Update id of emotion deleted */
+
+        existsEmotion.id = emotionId;
+
+        /* Return emotion deleted */
 
         return existsEmotion;
     }

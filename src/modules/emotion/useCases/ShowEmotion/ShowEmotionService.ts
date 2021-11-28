@@ -11,7 +11,7 @@ class ShowEmotionService {
         const existsEmotion = await this._emotionRepository.findOneById(emotionId);
 
         if (!existsEmotion) {
-            throw new AppException('Emotion not exists!', 404);
+            throw new AppException(`Emotion id ${emotionId} not found!`, 404);
         }
 
         return existsEmotion;

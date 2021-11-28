@@ -7,7 +7,7 @@ import { AppException } from '../../exceptions/AppException';
 class Exception {
     static async execute(err: Errback, req: Request, res: Response, _: NextFunction): Promise<Response> {
         if (err instanceof AppException) {
-            const status = generateStatus(true, err.code, err.message);
+            const status = generateStatus(true, err.code, err.message, err.payload);
 
             return res.status(err.code).json({ status });
         }

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { CreateEmotionValidator } from './CreateEmotionValidator';
 import { CreateEmotionController } from './CreateEmotionController';
 import { AuthenticateUserMiddleware } from '@modules/user/middlewares/AuthenticateUserMiddleware';
