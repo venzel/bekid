@@ -1,12 +1,15 @@
 import { ICacheProvider } from '../models/ICacheProvider';
 import IORedis, { Redis } from 'ioredis';
 import { redis_host, redis_port, redis_key_prefix, redis_password } from '@configs/redis';
+import { environment } from '@configs/geral';
 
 class RedisCacheProvider implements ICacheProvider {
     private _cache: Redis;
 
     constructor() {
-        this._cache = new IORedis(redis_port, redis_host, {
+        const host = environment === 'development' ? 'localhost' : redis_host;
+
+        this._cache = new IORedis(redis_port, host, {
             keyPrefix: redis_key_prefix,
             password: redis_password,
         });

@@ -12,10 +12,20 @@ const _environment = (): string => {
     return env;
 };
 
-const _serverPort = (): string => {
-    const env = process.env.SERVER_PORT;
-    if (!env) throw new Error('Error in var ambient: SERVER_PORT!');
+const _serverPortDevelopment = (): string => {
+    const env = process.env.SERVER_PORT_DEVELOPMENT;
+    if (!env) throw new Error('Error in var ambient: SERVER_PORT_DEVELOPMENT!');
     return env;
+};
+
+const _serverPortProduction = (): string => {
+    const env = process.env.SERVER_PORT_PRODUCTION;
+    if (!env) throw new Error('Error in var ambient: SERVER_PORT_PRODUCTION!');
+    return env;
+};
+
+const _serverPort = (): string => {
+    return _environment() === 'development' ? _serverPortDevelopment() : _serverPortProduction();
 };
 
 const _apiHost = (): string => {

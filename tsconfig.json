@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
-        "target": "es2019",
+        "target": "es5",
         "module": "commonjs",
+        "rootDir": "./",
+        "baseUrl": "./src",
         "outDir": "./dist",
-        "rootDir": "./src",
         "removeComments": true,
         "noEmitOnError": true,
         "strict": true,
         "strictPropertyInitialization": false,
-        "baseUrl": "./src",
         "paths": {
             "@modules/*": ["modules/*"],
             "@configs/*": ["configs/*"],
@@ -18,8 +18,7 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
-    },
-    "include": ["./src"],
-    "exclude": ["node_modules", "dist"]
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true
+    }
 }

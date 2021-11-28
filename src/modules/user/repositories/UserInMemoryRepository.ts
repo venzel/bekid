@@ -16,16 +16,20 @@ class UserInMemoryRepository implements IUserRepository {
         return this._repository.length;
     }
 
-    public async findOneById(user_id: string): Promise<IUserEntity | undefined> {
-        return this._repository.find((user) => user.id === user_id);
+    public async findOneById(userId: string): Promise<IUserEntity | undefined> {
+        return this._repository.find((user) => user.id === userId);
     }
 
-    public async findOneByName(user_name: string): Promise<IUserEntity | undefined> {
-        return this._repository.find((user) => user.name === user_name);
+    public async findAllByIds(userIds: string[]): Promise<IUserEntity[]> {
+        return [];
     }
 
-    public async findOneByEmail(user_email: string): Promise<IUserEntity | undefined> {
-        return this._repository.find((user) => user.email === user_email);
+    public async findOneByName(userName: string): Promise<IUserEntity | undefined> {
+        return this._repository.find((user) => user.name === userName);
+    }
+
+    public async findOneByEmail(userEmail: string): Promise<IUserEntity | undefined> {
+        return this._repository.find((user) => user.email === userEmail);
     }
 
     public async create(user: ICreateUserDTO): Promise<IUserEntity> {
