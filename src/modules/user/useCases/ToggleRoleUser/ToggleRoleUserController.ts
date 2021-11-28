@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { ToggleRoleUserService } from './ToggleRoleUserService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -12,11 +13,13 @@ class ToggleRoleUserController {
 
         const user = await service.execute(userId);
 
-        const status = generateStatus(false, 200, 'Succesfully toggle role user!');
+        const codeStatus = 200;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully toggle role user!');
 
         const doc = classToClass(user);
 
-        return res.status(200).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

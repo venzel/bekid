@@ -1,5 +1,6 @@
 import { container } from 'tsyringe';
 import { Request, Response, NextFunction } from 'express';
+
 import { ITokenProvider } from '../providers/TokenProvider/models/ITokenProvider';
 import { AppException } from '@shared/exceptions/AppException';
 
@@ -23,7 +24,6 @@ class AuthenticateUserMiddleware {
             throw new AppException('Token parts invalid!', 403);
         }
 
-        // TODO: aqui
         const tokenProvider = container.resolve<ITokenProvider>('TokenProvider');
 
         const payload = tokenProvider.validateToken(token);

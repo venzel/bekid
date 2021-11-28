@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { AppException } from '@shared/exceptions/AppException';
@@ -15,7 +16,7 @@ class ToggleRoleUserService {
         /* Exception estrategy guard */
 
         if (!existsUser) {
-            throw new AppException('User not exists!', 404);
+            throw new AppException(`User id ${userId} not exists!`, 404);
         }
 
         /* Apply effective toggle */

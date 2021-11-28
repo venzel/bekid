@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { ToggleAllowUserService } from './ToggleAllowUserService';
 import { generateStatus } from '@shared/helpers/status';
 

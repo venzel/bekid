@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 

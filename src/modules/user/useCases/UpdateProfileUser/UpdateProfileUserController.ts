@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { UpdateProfileUserService } from './UpdateProfileUserService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -14,11 +15,13 @@ class UpdateProfileUserController {
 
         const user = await service.execute(userId, { name, email, current_password });
 
-        const status = generateStatus(false, 200, 'Succesfully profile user, updated!');
+        const codeStatus = 200;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully profile user, updated!');
 
         const doc = classToClass(user);
 
-        return res.status(200).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

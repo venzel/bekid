@@ -1,4 +1,5 @@
 import { injectable, inject, container } from 'tsyringe';
+
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { ICacheProvider } from '@shared/providers/CacheProvider/models/ICacheProvider';
 import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';

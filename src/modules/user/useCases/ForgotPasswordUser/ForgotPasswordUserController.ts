@@ -1,5 +1,6 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
+
 import { generateStatus } from '@shared/helpers/status';
 import { ForgotPasswordUserService } from './ForgotPasswordUserService';
 
@@ -11,11 +12,13 @@ class ForgotPasswordUserController {
 
         const token: string = await service.execute(email);
 
-        const status = generateStatus(false, 200, 'Succesfully forgot user password!');
+        const codeStatus = 200;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully forgot user password!');
 
         const doc = { token };
 
-        return res.status(200).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

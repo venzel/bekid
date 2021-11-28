@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { CreateUserServiceProxy } from './CreateUserServiceProxy';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -12,11 +13,13 @@ class CreateUserController {
 
         const user = await serviceProxy.execute({ name, email, password });
 
-        const status = generateStatus(false, 201, 'Succesfully created user!');
+        const codeStatus = 201;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully created user!');
 
         const doc = classToClass(user);
 
-        return res.status(201).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

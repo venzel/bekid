@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IStorageProvider } from '@shared/providers/StorageProvider/models/IStorageProvider';
 import { IUpdateAvatarUserDTO } from '../../dtos/IUpdateAvatarUserDTO';
@@ -22,7 +23,7 @@ class UpdateAvatarUserService {
         /* Exception estrategy guard */
 
         if (!existsUser) {
-            throw new AppException('User not exists!', 404);
+            throw new AppException(`User id ${user_id} not exists!`, 404);
         }
 
         /* Destructuring object */

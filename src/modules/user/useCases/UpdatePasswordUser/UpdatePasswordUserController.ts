@@ -1,5 +1,6 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
+
 import { UpdatePasswordUserService } from './UpdatePasswordUserService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -13,9 +14,11 @@ class UpdatePasswordUserController {
 
         await service.execute({ current_password, new_password, user_id });
 
-        const status = generateStatus(false, 200, 'Succesfully password user updated!');
+        const codeStatus = 200;
 
-        return res.status(200).json({ status });
+        const status = generateStatus(false, codeStatus, 'Succesfully password user updated!');
+
+        return res.status(codeStatus).json({ status });
     }
 }
 

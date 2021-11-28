@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { DeleteUserService } from './DeleteUserService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -12,11 +13,13 @@ class DeleteUserController {
 
         const user = await service.execute(userId);
 
-        const status = generateStatus(false, 200, 'Succesfully deleted user!');
+        const codeStatus = 202;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully deleted user!');
 
         const doc = classToClass(user);
 
-        return res.status(201).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

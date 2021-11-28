@@ -1,6 +1,7 @@
+import { randomBytes } from 'crypto';
+
 import { ICreatePayloadDTO } from '@modules/user/dtos/ICreatePayloadDTO';
 import { IPayloadDTO } from '@modules/user/dtos/IPayloadDTO';
-import { randomBytes } from 'crypto';
 import { ITokenProvider } from '../models/ITokenProvider';
 
 class FakeTokenProvider implements ITokenProvider {

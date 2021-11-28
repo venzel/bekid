@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+
 import { isPasswordValid, isIdValid } from '@shared/helpers/validator';
 import { AppException } from '@shared/exceptions/AppException';
 

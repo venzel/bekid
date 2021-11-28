@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IHashProvider } from '@modules/user/providers/HashProvider/models/IHashProvider';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IUserTokenRepository } from '@modules/user/repositories/IUserTokenRepository';
@@ -26,7 +27,7 @@ class UpdatePasswordUserService {
         /* Exception estrategy guard */
 
         if (!existsUser) {
-            throw new AppException('User not exists!', 404);
+            throw new AppException(`User ${user_id} not exists!`, 404);
         }
 
         /* Destructuring object */

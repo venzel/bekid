@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { AppException } from '@shared/exceptions/AppException';
@@ -11,7 +12,7 @@ class DeleteUserService {
         const existsUser = await this._userRepository.findOneById(userId);
 
         if (!existsUser) {
-            throw new AppException('User not found!', 404);
+            throw new AppException(`User id ${userId} not found!`, 404);
         }
 
         const deletedUser = await this._userRepository.delete(existsUser);

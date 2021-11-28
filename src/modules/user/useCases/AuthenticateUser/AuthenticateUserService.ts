@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IHashProvider } from '@modules/user/providers/HashProvider/models/IHashProvider';
 import { ITokenProvider } from '@modules/user/providers/TokenProvider/models/ITokenProvider';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';

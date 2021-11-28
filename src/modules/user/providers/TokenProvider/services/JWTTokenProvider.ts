@@ -1,4 +1,5 @@
 import { sign, verify } from 'jsonwebtoken';
+
 import { token_secret, token_expires } from '@configs/token';
 import { ICreatePayloadDTO } from '@modules/user/dtos/ICreatePayloadDTO';
 import { IPayloadDTO } from '@modules/user/dtos/IPayloadDTO';

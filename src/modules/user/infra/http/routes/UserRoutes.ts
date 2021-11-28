@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { AuthenticateUserMiddleware } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserMiddleware';
 import { CreateUserMiddleware } from '@modules/user/useCases/CreateUser/CreateUserMiddleware';
 import { UpdatePasswordUserMiddleware } from '@modules/user/useCases/UpdatePasswordUser/UpdatePasswordUserMiddleware';
@@ -15,40 +16,40 @@ import { ToggleAllowUserMiddleware } from '@modules/user/useCases/ToogleAllowUse
 class UserRoutes {
     public registerAll(router: Router): void {
         // Create
-        new CreateUserMiddleware().register(router, 'post', '/users');
+        new CreateUserMiddleware().register(router, 'post', 'ALL', '/users');
 
         // List
-        new ListUserMiddleware().register(router, 'get', '/users');
+        new ListUserMiddleware().register(router, 'get', 'ADMIN', '/users');
 
         // Show
-        new ShowUserMiddleware().register(router, 'get', '/users/:id');
+        new ShowUserMiddleware().register(router, 'get', ['ADMIN', 'USER'], '/users/:id');
 
         // Delete
-        new DeleteUserMiddleware().register(router, 'delete', '/users/:id');
+        new DeleteUserMiddleware().register(router, 'delete', 'ADMIN', '/users/:id');
 
         // Login
-        new AuthenticateUserMiddleware().register(router, 'post', '/login');
+        new AuthenticateUserMiddleware().register(router, 'post', 'ALL', '/login');
 
         // Change passsword
-        new UpdatePasswordUserMiddleware().register(router, 'put', '/change_password');
+        new UpdatePasswordUserMiddleware().register(router, 'put', ['ADMIN', 'USER'], '/change_password');
 
         // Forgot password
-        new ForgotPasswordUserMiddleware().register(router, 'put', '/forgot_password');
+        new ForgotPasswordUserMiddleware().register(router, 'put', 'ALL', '/forgot_password');
 
         // Reset password
-        new ResetPasswordUserMiddleware().register(router, 'patch', '/reset_password');
+        new ResetPasswordUserMiddleware().register(router, 'patch', 'ALL', '/reset_password');
 
         // Change avatar
-        new UpdateAvatarUserMiddleware().register(router, 'patch', '/change_avatar');
+        new UpdateAvatarUserMiddleware().register(router, 'patch', ['ADMIN', 'USER'], '/change_avatar');
 
         // Change profile
-        new UpdateProfileUserMiddleware().register(router, 'put', '/change_profile');
+        new UpdateProfileUserMiddleware().register(router, 'put', ['ADMIN', 'USER'], '/change_profile');
 
         // Toggle role
-        new ToggleRoleUserMiddleware().register(router, 'patch', '/toggle_role/:id');
+        new ToggleRoleUserMiddleware().register(router, 'patch', 'ADMIN', '/toggle_role/:id');
 
         // Toggle allow
-        new ToggleAllowUserMiddleware().register(router, 'patch', '/toggle_allow/:id');
+        new ToggleAllowUserMiddleware().register(router, 'patch', 'ADMIN', '/toggle_allow/:id');
     }
 }
 

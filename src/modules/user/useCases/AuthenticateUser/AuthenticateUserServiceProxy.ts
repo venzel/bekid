@@ -1,4 +1,5 @@
 import { injectable, inject, container } from 'tsyringe';
+
 import { IHashProvider } from '@modules/user/providers/HashProvider/models/IHashProvider';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IAuthenticateUserDTO } from '../../dtos/IAuthenticateUserDTO';

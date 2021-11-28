@@ -1,4 +1,5 @@
 import { MongoRepository, getMongoRepository } from 'typeorm';
+
 import { IUserTokenSchema } from '@modules/user/models/schemas/IUserTokenSchema';
 import { UserTokenMongoSchema } from '../schemas/UserTokenMongoSchema';
 import { IUserTokenRepository } from '@modules/user/repositories/IUserTokenRepository';

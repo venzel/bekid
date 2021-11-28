@@ -28,7 +28,7 @@ class UserPostgresEntity implements IUserEntity {
     public avatar: string;
 
     @Expose({ name: 'avatar_url' })
-    get getAvatarUrl(): string | null {
+    public get getAvatarUrl(): string | null {
         return this.avatar !== '' ? `${api_url}/file/${this.avatar}` : null;
     }
 
@@ -50,7 +50,7 @@ class UserPostgresEntity implements IUserEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy('hash');
+            this.id = GenerateId.strategy();
         }
     }
 }

@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IProfileUpdateUserDTO } from '../../dtos/IUpdateProfileUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
@@ -22,7 +23,7 @@ class UpdateProfileUserService {
         /* Exception estrategy guard */
 
         if (!existsUserWithId) {
-            throw new AppException('User not exists!', 404);
+            throw new AppException(`User id ${userId} not exists!`, 404);
         }
 
         /* Find user by email */
@@ -32,7 +33,7 @@ class UpdateProfileUserService {
         /* Exception estrategy guard */
 
         if (email !== existsUserWithId.email && existsUserWithEmail) {
-            throw new AppException('User email already exists!', 400);
+            throw new AppException(`User email ${email} already exists!`, 400);
         }
 
         /* Extract password */

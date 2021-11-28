@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { UpdateAvatarUserService } from './UpdateAvatarUserService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -14,11 +15,13 @@ class UpdateAvatarUserController {
 
         const user = await service.execute({ filename, user_id });
 
-        const status = generateStatus(false, 200, 'Succesfully updated avatar user!');
+        const codeStatus = 200;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully updated avatar user!');
 
         const doc = classToClass(user);
 
-        return res.status(200).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 
