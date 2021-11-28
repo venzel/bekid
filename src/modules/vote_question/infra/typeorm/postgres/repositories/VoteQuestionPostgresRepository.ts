@@ -1,4 +1,5 @@
 import { getRepository, Repository } from 'typeorm';
+
 import { ICreateVoteQuestionDTO } from '@modules/vote_question/dtos/ICreateVoteQuestionDTO';
 import { IVoteQuestionEntity } from '@modules/vote_question/models/entities/IVoteQuestionEntity';
 import { VoteQuestionPostgresEntity } from '../entities/VoteQuestionPostgresEntity';
@@ -11,8 +12,8 @@ class VoteQuestionPostgresRepository implements IVoteQuestionRepository {
         this._repository = getRepository(VoteQuestionPostgresEntity, 'default');
     }
 
-    public async findOneById(vote_questionId: string): Promise<IVoteQuestionEntity | undefined> {
-        return await this._repository.findOne({ where: { id: vote_questionId } });
+    public async findOneById(voteQuestionId: string): Promise<IVoteQuestionEntity | undefined> {
+        return await this._repository.findOne({ where: { id: voteQuestionId } });
     }
 
     public async findOneByCampaignId(campaignId: string): Promise<IVoteQuestionEntity | undefined> {

@@ -17,6 +17,10 @@ class DeleteUserService {
 
         const deletedUser = await this._userRepository.delete(existsUser);
 
+        /* Set group id in object */
+
+        existsUser.id = userId;
+
         return deletedUser;
     }
 }

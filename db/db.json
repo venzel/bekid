@@ -24,10 +24,12 @@
     "groups": [
         {
             "id": 1,
+            "manager_id": 2,
             "name": "4 serie fundamental - turma A"
         },
         {
             "id": 2,
+            "manager_id": 2,
             "name": "5 serie fundamental - turma A"
         }
     ],
@@ -52,13 +54,13 @@
         {
             "id": 1,
             "group_id": 1,
-            "owner_id": 1,
+            "manager_id": 1,
             "name": "Primeira dinamica em grupo"
         },
         {
             "id": 2,
             "group_id": 1,
-            "owner_id": 1,
+            "manager_id": 1,
             "name": "Segunda dinamica em grupo"
         }
     ],

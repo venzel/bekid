@@ -18,7 +18,7 @@ class CampaignPostgresEntity implements ICampaignEntity {
     @JoinColumn({ name: 'group_id' })
     public group: GroupPostgresEntity;
 
-    @Expose({ name: 'owner_id' })
+    @Expose({ name: 'manager_id' })
     @Column()
     public user_id: string;
 

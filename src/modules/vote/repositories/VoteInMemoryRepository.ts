@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+
 import { ICreateVoteDTO } from '@modules/vote/dtos/ICreateVoteDTO';
 import { IVoteEntity } from '@modules/vote/models/entities/IVoteEntity';
 import { IVoteRepository } from '@modules/vote/repositories/IVoteRepository';
@@ -32,7 +33,9 @@ class VoteInMemoryRepository implements IVoteRepository {
 
         const voteInMemoryEntity = new VoteInMemoryEntity();
 
-        Object.assign(voteInMemoryEntity, { campaign_id, emotion_id, user_id });
+        const id = uuid();
+
+        Object.assign(voteInMemoryEntity, { id, campaign_id, emotion_id, user_id });
 
         this._repository.push(voteInMemoryEntity);
 

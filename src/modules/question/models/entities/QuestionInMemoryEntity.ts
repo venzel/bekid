@@ -2,6 +2,7 @@ import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEnti
 
 class QuestionInMemoryEntity implements IQuestionEntity {
     id: string;
+    emotion_id: string;
     description: string;
     created_at: Date;
 }

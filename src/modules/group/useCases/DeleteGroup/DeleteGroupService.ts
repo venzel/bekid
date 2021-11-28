@@ -23,6 +23,10 @@ class DeleteGroupService {
 
         await this._groupRepository.delete(existsGroup);
 
+        /* Set group id in object */
+
+        existsGroup.id = groupId;
+
         /* Returns the group found */
 
         return existsGroup;

@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { DeleteVoteService } from './DeleteVoteService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -12,11 +13,13 @@ class DeleteVoteController {
 
         const vote = await service.execute(voteId);
 
-        const status = generateStatus(false, 200, 'Succesfully deleted vote!');
+        const statusCode = 202;
+
+        const status = generateStatus(false, statusCode, 'Succesfully deleted vote!');
 
         const doc = classToClass(vote);
 
-        return res.status(200).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

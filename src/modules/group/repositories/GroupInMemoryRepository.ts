@@ -21,13 +21,13 @@ class GroupInMemoryRepository implements IGroupRepository {
     }
 
     public async create(data: ICreateGroupDTO): Promise<IGroupEntity> {
-        const { name } = data;
+        const { user_id, name } = data;
 
         const groupInMemoryEntity = new GroupInMemoryEntity();
 
         const id = uuid();
 
-        Object.assign(groupInMemoryEntity, { id, name });
+        Object.assign(groupInMemoryEntity, { id, user_id, name });
 
         this._repository.push(groupInMemoryEntity);
 

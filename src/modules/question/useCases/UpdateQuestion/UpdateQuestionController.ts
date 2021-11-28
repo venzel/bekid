@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { UpdateQuestionService } from './UpdateQuestionService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -14,11 +15,13 @@ class UpdateQuestionController {
 
         const question = await service.execute(questionId, { description });
 
-        const status = generateStatus(false, 201, 'Succesfully updated question!');
+        const statusCode = 200;
+
+        const status = generateStatus(false, statusCode, 'Succesfully updated question!');
 
         const doc = classToClass(question);
 
-        return res.status(200).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

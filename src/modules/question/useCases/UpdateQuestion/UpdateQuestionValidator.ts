@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+
 import { AppException } from '@shared/exceptions/AppException';
 
 class UpdateQuestionValidator {
@@ -6,7 +7,7 @@ class UpdateQuestionValidator {
         const { description } = req.body;
 
         if (!description || description.length < 3 || description.length > 15) {
-            throw new AppException('Question name invalid!', 400);
+            throw new AppException(`Question description ${description} invalid!`, 400);
         }
 
         return next();

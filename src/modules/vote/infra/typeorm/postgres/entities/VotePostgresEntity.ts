@@ -38,7 +38,7 @@ class VotePostgresEntity implements IVoteEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy('hash');
+            this.id = GenerateId.strategy();
         }
     }
 }

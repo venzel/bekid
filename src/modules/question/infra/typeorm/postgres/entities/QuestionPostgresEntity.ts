@@ -10,21 +10,21 @@ class QuestionPostgresEntity implements IQuestionEntity {
     public id: string;
 
     @Column()
-    public description: string;
-
-    @Column()
     public emotion_id: string;
 
     @ManyToOne(() => EmotionPostgresEntity)
     @JoinColumn({ name: 'emotion_id' })
     public emotion: EmotionPostgresEntity;
 
+    @Column()
+    public description: string;
+
     @CreateDateColumn()
     public created_at: Date;
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy('hash');
+            this.id = GenerateId.strategy();
         }
     }
 }

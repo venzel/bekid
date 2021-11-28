@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IQuestionRepository } from '@modules/question/repositories/IQuestionRepository';
 import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEntity';
 import { AppException } from '@shared/exceptions/AppException';
@@ -15,12 +16,16 @@ class DeleteQuestionService {
         /* Exception estrategy guard */
 
         if (!existsQuestion) {
-            throw new AppException('Question not exists!', 404);
+            throw new AppException(`Question id ${questionId} not exists`, 404);
         }
 
         /* Data delete (update) in repository */
 
         await this._questionRepository.delete(existsQuestion);
+
+        /* Set group id in object */
+
+        existsQuestion.id = questionId;
 
         /* Returns the question found */
 

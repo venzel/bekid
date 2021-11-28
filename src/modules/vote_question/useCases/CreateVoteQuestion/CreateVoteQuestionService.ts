@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IVoteQuestionEntity } from '@modules/vote_question/models/entities/IVoteQuestionEntity';
 import { IVoteQuestionRepository } from '@modules/vote_question/repositories/IVoteQuestionRepository';
 import { ICreateVoteQuestionDTO } from '@modules/vote_question/dtos/ICreateVoteQuestionDTO';

@@ -9,9 +9,11 @@ class CreateGroupController {
     public async handle(req: Request, res: Response): Promise<Response> {
         const { name } = req.body;
 
+        const { user_id } = req.auth;
+
         const service = container.resolve(CreateGroupService);
 
-        const group = await service.handle({ name });
+        const group = await service.handle({ user_id, name });
 
         const codeStatus = 201;
 

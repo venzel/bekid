@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEntity';
 import { IQuestionRepository } from '@modules/question/repositories/IQuestionRepository';
 

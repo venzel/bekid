@@ -61,7 +61,7 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
         await queryRunner.createForeignKey(
             'CAMPAIGNS',
             new TableForeignKey({
-                name: 'FKCampaignUser',
+                name: 'FKCampaignUserOwner',
                 referencedTableName: 'USERS',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],

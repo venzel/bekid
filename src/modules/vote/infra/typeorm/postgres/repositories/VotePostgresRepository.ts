@@ -1,4 +1,5 @@
 import { getRepository, Repository } from 'typeorm';
+
 import { ICreateVoteDTO } from '@modules/vote/dtos/ICreateVoteDTO';
 import { IVoteEntity } from '@modules/vote/models/entities/IVoteEntity';
 import { VotePostgresEntity } from '../entities/VotePostgresEntity';

@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IVoteEntity } from '@modules/vote/models/entities/IVoteEntity';
 import { IVoteRepository } from '@modules/vote/repositories/IVoteRepository';
 import { ICreateVoteDTO } from '@modules/vote/dtos/ICreateVoteDTO';

@@ -23,6 +23,10 @@ class DeleteCampaignService {
 
         await this._campaignRepository.delete(existsCampaign);
 
+        /* Set campaign id in object */
+
+        existsCampaign.id = campaignId;
+
         /* Returns the campaign found */
 
         return existsCampaign;

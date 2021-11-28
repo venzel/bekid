@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { ListVoteService } from './ListVoteService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -10,11 +11,13 @@ class ListVoteController {
 
         const votes = await service.execute();
 
-        const status = generateStatus(false, 201, 'Succesfully listed votes!');
+        const statusCode = 200;
+
+        const status = generateStatus(false, statusCode, 'Succesfully listed votes!');
 
         const docs = classToClass(votes);
 
-        return res.status(201).json({ status, docs });
+        return res.status(statusCode).json({ status, docs });
     }
 }
 

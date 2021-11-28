@@ -1,4 +1,5 @@
 import { getRepository, Repository } from 'typeorm';
+
 import { ICreateQuestionDTO } from '@modules/question/dtos/ICreateQuestionDTO';
 import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEntity';
 import { QuestionPostgresEntity } from '../entities/QuestionPostgresEntity';
@@ -20,9 +21,9 @@ class QuestionPostgresRepository implements IQuestionRepository {
     }
 
     public async create(data: ICreateQuestionDTO): Promise<IQuestionEntity> {
-        const { description } = data;
+        const { emotion_id, description } = data;
 
-        const questionCreated = this._repository.create({ description });
+        const questionCreated = this._repository.create({ emotion_id, description });
 
         await this._repository.save(questionCreated);
 

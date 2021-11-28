@@ -13,7 +13,11 @@ class GroupPostgresRepository implements IGroupRepository {
     }
 
     public async findOneById(groupId: string): Promise<IGroupEntity | undefined> {
-        return await this._repository.findOne({ where: { id: groupId } });
+        return await this._repository.findOne({ where: { id: groupId }, relations: ['users'] });
+    }
+
+    public async findOneByUserIdAndGroupName(userId: string, name: string): Promise<IGroupEntity | undefined> {
+        return await this._repository.findOne({ where: { user_id: userId, name } });
     }
 
     public async findOneByName(name: string): Promise<IGroupEntity | undefined> {
@@ -21,9 +25,9 @@ class GroupPostgresRepository implements IGroupRepository {
     }
 
     public async create(data: ICreateGroupDTO): Promise<IGroupEntity> {
-        const { name } = data;
+        const { user_id, name } = data;
 
-        const groupCreated = this._repository.create({ name });
+        const groupCreated = this._repository.create({ user_id, name });
 
         await this._repository.save(groupCreated);
 

@@ -23,7 +23,7 @@ class DeleteEmotionService {
 
         await this._emotionRepository.delete(existsEmotion);
 
-        /* Update id of emotion deleted */
+        /* Set emotion id in object */
 
         existsEmotion.id = emotionId;
 

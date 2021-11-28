@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+
 import { ICreateVoteQuestionDTO } from '@modules/vote_question/dtos/ICreateVoteQuestionDTO';
 import { IVoteQuestionEntity } from '@modules/vote_question/models/entities/IVoteQuestionEntity';
 import { IVoteQuestionRepository } from '@modules/vote_question/repositories/IVoteQuestionRepository';
@@ -11,8 +12,8 @@ class VoteQuestionInMemoryRepository implements IVoteQuestionRepository {
         this._repository = [];
     }
 
-    public async findOneById(vote_questionId: string): Promise<IVoteQuestionEntity | undefined> {
-        return this._repository.find((data) => data.id === vote_questionId);
+    public async findOneById(voteQuestionId: string): Promise<IVoteQuestionEntity | undefined> {
+        return this._repository.find((data) => data.id === voteQuestionId);
     }
 
     public async create(data: ICreateVoteQuestionDTO): Promise<IVoteQuestionEntity> {

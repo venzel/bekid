@@ -9,19 +9,19 @@ import { ListCampaignMiddleware } from '@modules/campaign/useCases/ListCampaign/
 class CampaignRoutes {
     public registerAll(router: Router): void {
         // Create
-        new CreateCampaignMiddleware().register(router, 'post', '/campaigns');
+        new CreateCampaignMiddleware().register(router, 'post', 'MANAGER', '/campaigns');
 
         // Update
-        new UpdateCampaignMiddleware().register(router, 'put', '/campaigns/:id');
+        new UpdateCampaignMiddleware().register(router, 'put', 'MANAGER', '/campaigns/:id');
 
         // List
-        new ListCampaignMiddleware().register(router, 'get', '/campaigns');
+        new ListCampaignMiddleware().register(router, 'get', 'MANAGER', '/campaigns');
 
         // Show
-        new ShowCampaignMiddleware().register(router, 'get', '/campaigns/:id');
+        new ShowCampaignMiddleware().register(router, 'get', 'MANAGER', '/campaigns/:id');
 
         // Delete
-        new DeleteCampaignMiddleware().register(router, 'delete', '/campaigns/:id');
+        new DeleteCampaignMiddleware().register(router, 'delete', 'MANAGER', '/campaigns/:id');
     }
 }
 

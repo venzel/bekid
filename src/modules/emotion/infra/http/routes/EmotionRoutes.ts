@@ -9,19 +9,19 @@ import { DeleteEmotionMiddleware } from '@modules/emotion/useCases/DeleteEmotion
 class EmotionRoutes {
     public registerAll(router: Router): void {
         // Create
-        new CreateEmotionMiddleware().register(router, 'post', '/emotions');
+        new CreateEmotionMiddleware().register(router, 'post', 'ADMIN', '/emotions');
 
         // Update
-        new UpdateEmotionMiddleware().register(router, 'put', '/emotions/:id');
+        new UpdateEmotionMiddleware().register(router, 'put', 'ADMIN', '/emotions/:id');
 
         // List
-        new ListEmotionMiddleware().register(router, 'get', '/emotions');
+        new ListEmotionMiddleware().register(router, 'get', 'ADMIN', '/emotions');
 
         // Show
-        new ShowEmotionMiddleware().register(router, 'get', '/emotions/:id');
+        new ShowEmotionMiddleware().register(router, 'get', 'ADMIN', '/emotions/:id');
 
         // Delete
-        new DeleteEmotionMiddleware().register(router, 'delete', '/emotions/:id');
+        new DeleteEmotionMiddleware().register(router, 'delete', 'ADMIN', '/emotions/:id');
     }
 }
 

@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+
 import { ICreateQuestionDTO } from '@modules/question/dtos/ICreateQuestionDTO';
 import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEntity';
 import { IQuestionRepository } from '@modules/question/repositories/IQuestionRepository';
@@ -11,18 +12,18 @@ class QuestionInMemoryRepository implements IQuestionRepository {
         this._repository = [];
     }
 
-    public async findOneById(question_id: string): Promise<IQuestionEntity | undefined> {
-        return this._repository.find((data) => data.id === question_id);
+    public async findOneById(questionId: string): Promise<IQuestionEntity | undefined> {
+        return this._repository.find((data) => data.id === questionId);
     }
 
     public async create(data: ICreateQuestionDTO): Promise<IQuestionEntity> {
-        const { description } = data;
+        const { emotion_id, description } = data;
 
         const questionInMemoryEntity = new QuestionInMemoryEntity();
 
         const id = uuid();
 
-        Object.assign(questionInMemoryEntity, { id, description });
+        Object.assign(questionInMemoryEntity, { id, emotion_id, description });
 
         this._repository.push(questionInMemoryEntity);
 

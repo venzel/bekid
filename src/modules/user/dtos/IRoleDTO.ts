@@ -1,3 +1,3 @@
-type IRoleDTO = 'ALL' | 'ADMIN' | 'USER';
+type IRoleDTO = 'ALL' | 'ADMIN' | 'USER' | 'MANAGER';
 
 export { IRoleDTO };

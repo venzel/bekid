@@ -1,4 +1,5 @@
 import { getRepository, Repository } from 'typeorm';
+
 import { ICreateVoteCommentDTO } from '@modules/vote_comment/dtos/ICreateVoteCommentDTO';
 import { IVoteCommentEntity } from '@modules/vote_comment/models/entities/IVoteCommentEntity';
 import { VoteCommentPostgresEntity } from '../entities/VoteCommentPostgresEntity';
@@ -11,8 +12,8 @@ class VoteCommentPostgresRepository implements IVoteCommentRepository {
         this._repository = getRepository(VoteCommentPostgresEntity, 'default');
     }
 
-    public async findOneById(vote_questionId: string): Promise<IVoteCommentEntity | undefined> {
-        return await this._repository.findOne({ where: { id: vote_questionId } });
+    public async findOneById(voteQuestionId: string): Promise<IVoteCommentEntity | undefined> {
+        return await this._repository.findOne({ where: { id: voteQuestionId } });
     }
 
     public async findOneByCampaignId(campaignId: string): Promise<IVoteCommentEntity | undefined> {

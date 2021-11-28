@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { ShowQuestionService } from './ShowQuestionService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -12,11 +13,13 @@ class ShowQuestionController {
 
         const question = await service.execute(questionId);
 
-        const status = generateStatus(false, 200, 'Succesfully showed question!');
+        const statusCode = 200;
+
+        const status = generateStatus(false, statusCode, 'Succesfully showed question!');
 
         const doc = classToClass(question);
 
-        return res.status(200).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

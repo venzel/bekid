@@ -14,8 +14,6 @@ class CreateCampaignService {
     ) {}
 
     public async execute(data: ICreateCampaignDTO): Promise<ICampaignEntity> {
-        console.log('teste');
-
         const { group_id, user_id, name } = data;
 
         /* Find group by id */

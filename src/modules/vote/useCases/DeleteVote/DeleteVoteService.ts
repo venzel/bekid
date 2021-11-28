@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IVoteRepository } from '@modules/vote/repositories/IVoteRepository';
 import { IVoteEntity } from '@modules/vote/models/entities/IVoteEntity';
 import { AppException } from '@shared/exceptions/AppException';

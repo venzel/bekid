@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { CreateVoteService } from './CreateVoteService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -18,11 +19,13 @@ class CreateVoteController {
 
         const vote = await service.handle({ campaign_id: campaignId, emotion_id: emotionId, user_id: userId });
 
-        const status = generateStatus(false, 201, 'Succesfully created vote!');
+        const statusCode = 201;
+
+        const status = generateStatus(false, statusCode, 'Succesfully created vote!');
 
         const doc = classToClass(vote);
 
-        return res.status(201).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

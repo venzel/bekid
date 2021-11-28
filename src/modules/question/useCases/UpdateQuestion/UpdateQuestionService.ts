@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IQuestionRepository } from '@modules/question/repositories/IQuestionRepository';
 import { IUpdateQuestionDTO } from '../../dtos/IUpdateQuestionDTO';
 import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEntity';
@@ -18,7 +19,7 @@ class UpdateQuestionService {
         /* Exception estrategy guard */
 
         if (!existsQuestionWithId) {
-            throw new AppException('Question not found!', 404);
+            throw new AppException(`Question id ${questionId} not found!`, 404);
         }
 
         /* Data update */

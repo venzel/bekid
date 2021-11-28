@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { ShowQuestionMiddleware } from '@modules/question/useCases/ShowQuestion/ShowQuestionMiddleware';
 import { CreateQuestionMiddleware } from '@modules/question/useCases/CreateQuestion/CreateQuestionMiddleware';
 import { UpdateQuestionMiddleware } from '@modules/question/useCases/UpdateQuestion/UpdateQuestionMiddleware';
@@ -8,19 +9,19 @@ import { ListQuestionMiddleware } from '@modules/question/useCases/ListQuestion/
 class QuestionRoutes {
     public registerAll(router: Router): void {
         // Create
-        new CreateQuestionMiddleware().register(router, 'post', '/questions');
+        new CreateQuestionMiddleware().register(router, 'post', 'ADMIN', '/questions');
 
         // Update
-        new UpdateQuestionMiddleware().register(router, 'put', '/questions/:id');
+        new UpdateQuestionMiddleware().register(router, 'put', 'ADMIN', '/questions/:id');
 
         // List
-        new ListQuestionMiddleware().register(router, 'get', '/questions');
+        new ListQuestionMiddleware().register(router, 'get', 'ADMIN', '/questions');
 
         // Show
-        new ShowQuestionMiddleware().register(router, 'get', '/questions/:id');
+        new ShowQuestionMiddleware().register(router, 'get', 'ADMIN', '/questions/:id');
 
         // Delete
-        new DeleteQuestionMiddleware().register(router, 'delete', '/questions/:id');
+        new DeleteQuestionMiddleware().register(router, 'delete', 'ADMIN', '/questions/:id');
     }
 }
 
