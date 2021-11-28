@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+
 import { ICreateGroupDTO } from '@modules/group/dtos/ICreateGroupDTO';
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
 import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
@@ -11,8 +12,12 @@ class GroupInMemoryRepository implements IGroupRepository {
         this._repository = [];
     }
 
-    public async findOneById(group_id: string): Promise<IGroupEntity | undefined> {
-        return this._repository.find((data) => data.id === group_id);
+    public async findOneById(groupId: string): Promise<IGroupEntity | undefined> {
+        return this._repository.find((data) => data.id === groupId);
+    }
+
+    public async findOneByName(name: string): Promise<IGroupEntity | undefined> {
+        return this._repository.find((data) => data.name === name);
     }
 
     public async create(data: ICreateGroupDTO): Promise<IGroupEntity> {

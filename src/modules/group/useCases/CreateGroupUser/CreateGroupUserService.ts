@@ -1,9 +1,11 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
 import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
 import { ICreateGroupUserDTO } from '@modules/group/dtos/ICreateGroupUserDTO';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { AppException } from '@shared/exceptions/AppException';
+import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 
 @injectable()
 class CreateGroupUserService {
@@ -22,17 +24,19 @@ class CreateGroupUserService {
         /* Exception estrategy guard */
 
         if (!existsGroup) {
-            throw new AppException('Grpup not exists!', 404);
+            throw new AppException(`Grpup id ${group_id} not exists!`, 404);
         }
 
         /* Find group by id */
 
-        const existsUsers = await this._userRepository.findAllByIds(users_ids);
+        const existsUsers: IUserEntity[] = await this._userRepository.findAllByIds(users_ids);
 
         /* Exception estrategy guard */
 
         if (!existsUsers) {
-            throw new AppException('Users not exists!', 404);
+            const payload = { ids: users_ids };
+
+            throw new AppException(`Users not exists!`, 404, payload);
         }
 
         /* Set users in group */

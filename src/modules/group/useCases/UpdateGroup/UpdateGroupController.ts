@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { UpdateGroupService } from './UpdateGroupService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -14,11 +15,13 @@ class UpdateGroupController {
 
         const group = await service.execute(groupId, { name });
 
-        const status = generateStatus(false, 201, 'Succesfully updated group!');
+        const codeStatus = 200;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully updated group!');
 
         const doc = classToClass(group);
 
-        return res.status(200).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

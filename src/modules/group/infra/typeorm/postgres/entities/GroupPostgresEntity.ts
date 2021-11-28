@@ -31,7 +31,7 @@ class GroupPostgresEntity implements IGroupEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy('hash');
+            this.id = GenerateId.strategy();
         }
     }
 }

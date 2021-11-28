@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
 import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
 

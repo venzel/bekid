@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { CreateGroupValidator } from './CreateGroupValidator';
 import { CreateGroupController } from './CreateGroupController';
 import { AuthenticateUserMiddleware } from '@modules/user/middlewares/AuthenticateUserMiddleware';

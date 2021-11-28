@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+
 import { AppException } from '@shared/exceptions/AppException';
 
 class CreateGroupUserValidator {

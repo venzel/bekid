@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid';
+
 import { IUserTokenSchema } from '@modules/user/models/schemas/IUserTokenSchema';
 import { IUserTokenRepository } from '@modules/user/repositories/IUserTokenRepository';
 import { ICreateTokenDTO } from '@modules/user/dtos/ICreateTokenDTO';

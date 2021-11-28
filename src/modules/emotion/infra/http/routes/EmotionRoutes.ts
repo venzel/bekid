@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { ListEmotionMiddleware } from '@modules/emotion/useCases/ListEmotion/ListEmotionMiddleware';
 import { ShowEmotionMiddleware } from '@modules/emotion/useCases/ShowEmotion/ShowEmotionMiddleware';
 import { CreateEmotionMiddleware } from '@modules/emotion/useCases/CreateEmotion/CreateEmotionMiddleware';

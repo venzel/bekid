@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { ListGroupService } from './ListGroupService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -10,11 +11,13 @@ class ListGroupController {
 
         const groups = await service.execute();
 
-        const status = generateStatus(false, 201, 'Succesfully listed groups!');
+        const codeStatus = 200;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully listed groups!');
 
         const docs = classToClass(groups);
 
-        return res.status(201).json({ status, docs });
+        return res.status(codeStatus).json({ status, docs });
     }
 }
 

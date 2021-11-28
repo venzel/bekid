@@ -1,6 +1,7 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
-import { IUpdateGroupDTO } from '../../dtos/IUpdateGroupDTO';
+import { IUpdateGroupDTO } from '@modules/group/dtos/IUpdateGroupDTO';
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
 import { AppException } from '@shared/exceptions/AppException';
 
@@ -18,7 +19,7 @@ class UpdateGroupService {
         /* Exception estrategy guard */
 
         if (!existsGroupWithId) {
-            throw new AppException('Group not found!', 404);
+            throw new AppException(`Group id ${groupId} not found!`, 404);
         }
 
         /* Data update */

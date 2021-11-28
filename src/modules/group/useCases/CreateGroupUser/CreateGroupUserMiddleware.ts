@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { CreateGroupUserController } from './CreateGroupUserController';
 import { CreateGroupUserValidator } from './CreateGroupUserValidator';
 

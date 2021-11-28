@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { CreateGroupService } from './CreateGroupService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -12,11 +13,13 @@ class CreateGroupController {
 
         const group = await service.handle({ name });
 
-        const status = generateStatus(false, 201, 'Succesfully created group!');
+        const codeStatus = 201;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully created group!');
 
         const doc = classToClass(group);
 
-        return res.status(201).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

@@ -13,11 +13,11 @@ class DeleteEmotionController {
 
         const emotion = await service.execute(emotionId);
 
-        const status = generateStatus(false, 200, 'Succesfully deleted emotion!');
+        const status = generateStatus(false, 202, 'Succesfully deleted emotion!');
 
         const doc = classToClass(emotion);
 
-        return res.status(200).json({ status, doc });
+        return res.status(202).json({ status, doc });
     }
 }
 

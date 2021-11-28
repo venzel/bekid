@@ -15,11 +15,13 @@ class UpdateEmotionController {
 
         const emotion = await service.execute(emotionId, { name, slug });
 
-        const status = generateStatus(false, 201, 'Succesfully updated emotion!');
+        const codeStatus = 201;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully updated emotion!');
 
         const doc = classToClass(emotion);
 
-        return res.status(200).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

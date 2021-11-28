@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
 import { AppException } from '@shared/exceptions/AppException';
@@ -15,7 +16,7 @@ class DeleteGroupService {
         /* Exception estrategy guard */
 
         if (!existsGroup) {
-            throw new AppException('Group not exists!', 404);
+            throw new AppException(`Group id ${groupId} not exists!`, 404);
         }
 
         /* Data delete (update) in repository */

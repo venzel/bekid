@@ -9,7 +9,7 @@ class GenerateId {
     };
 
     public static strategy(strategy?: IStrateyId): string {
-        return strategy || this._strategies[generate_id_provider]();
+        return strategy ? this._strategies[strategy]() : this._strategies[generate_id_provider]();
     }
 }
 

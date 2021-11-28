@@ -6,7 +6,7 @@ interface IUserRepository {
 
     findOneById(userId: string): Promise<IUserEntity | undefined>;
 
-    findAllByIds(userIds: string[]): Promise<IUserEntity[]>;
+    findAllByIds(usersIds: string[]): Promise<IUserEntity[]>;
 
     findOneByName(userName: string): Promise<IUserEntity | undefined>;
 

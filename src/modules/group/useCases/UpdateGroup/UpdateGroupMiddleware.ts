@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { AuthenticateUserMiddleware } from '@modules/user/middlewares/AuthenticateUserMiddleware';
 import { RoleUserMiddleware } from '@modules/user/middlewares/RoleUserMiddleware';
 import { UpdateGroupValidator } from './UpdateGroupValidator';

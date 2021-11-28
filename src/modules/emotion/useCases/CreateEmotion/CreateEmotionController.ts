@@ -13,11 +13,13 @@ class CreateEmotionController {
 
         const emotion = await service.handle({ name, slug });
 
-        const status = generateStatus(false, 201, 'Succesfully created emotion!');
+        const codeStatus = 201;
+
+        const status = generateStatus(false, codeStatus, 'Succesfully created emotion!');
 
         const doc = classToClass(emotion);
 
-        return res.status(201).json({ status, doc });
+        return res.status(codeStatus).json({ status, doc });
     }
 }
 

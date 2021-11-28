@@ -4,6 +4,8 @@ import { ICreateGroupDTO } from '@modules/group/dtos/ICreateGroupDTO';
 interface IGroupRepository {
     findOneById(groupId: string): Promise<IGroupEntity | undefined>;
 
+    findOneByName(name: string): Promise<IGroupEntity | undefined>;
+
     create(data: ICreateGroupDTO): Promise<IGroupEntity>;
 
     save(group: IGroupEntity): Promise<IGroupEntity>;
