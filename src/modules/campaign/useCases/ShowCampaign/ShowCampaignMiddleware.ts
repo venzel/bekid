@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { AuthenticateUserMiddleware } from '@modules/user/middlewares/AuthenticateUserMiddleware';
 import { ShowCampaignValidator } from './ShowCampaignValidator';
 import { ShowCampaignController } from './ShowCampaignController';

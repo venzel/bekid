@@ -52,13 +52,13 @@
         {
             "id": 1,
             "group_id": 1,
-            "user_id": 1,
+            "owner_id": 1,
             "name": "Primeira dinamica em grupo"
         },
         {
             "id": 2,
             "group_id": 1,
-            "user_id": 1,
+            "owner_id": 1,
             "name": "Segunda dinamica em grupo"
         }
     ],

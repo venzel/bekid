@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { DeleteCampaignService } from './DeleteCampaignService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -12,11 +13,13 @@ class DeleteCampaignController {
 
         const campaign = await service.execute(campaignId);
 
-        const status = generateStatus(false, 200, 'Succesfully deleted campaign!');
+        const statusCode = 202;
+
+        const status = generateStatus(false, statusCode, 'Succesfully deleted campaign!');
 
         const doc = classToClass(campaign);
 
-        return res.status(200).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

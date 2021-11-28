@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { ICampaignRepository } from '@modules/campaign/repositories/ICampaignRepository';
 import { IUpdateCampaignDTO } from '../../dtos/IUpdateCampaignDTO';
 import { ICampaignEntity } from '@modules/campaign/models/entities/ICampaignEntity';
@@ -18,7 +19,7 @@ class UpdateCampaignService {
         /* Exception estrategy guard */
 
         if (!existsCampaignWithId) {
-            throw new AppException('Campaign not found!', 404);
+            throw new AppException(`Campaign id ${campaignId} not found!`, 404);
         }
 
         /* Data update */

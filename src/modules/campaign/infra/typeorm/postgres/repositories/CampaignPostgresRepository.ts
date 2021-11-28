@@ -1,4 +1,5 @@
 import { getRepository, Repository } from 'typeorm';
+
 import { ICreateCampaignDTO } from '@modules/campaign/dtos/ICreateCampaignDTO';
 import { ICampaignEntity } from '@modules/campaign/models/entities/ICampaignEntity';
 import { CampaignPostgresEntity } from '../entities/CampaignPostgresEntity';
@@ -15,14 +16,14 @@ class CampaignPostgresRepository implements ICampaignRepository {
         return await this._repository.findOne({ where: { id: campaignId } });
     }
 
-    public async findOneByName(name: string): Promise<ICampaignEntity | undefined> {
-        return await this._repository.findOne({ where: { name } });
+    public async findOneByName(campaignName: string): Promise<ICampaignEntity | undefined> {
+        return await this._repository.findOne({ where: { name: campaignName } });
     }
 
     public async create(data: ICreateCampaignDTO): Promise<ICampaignEntity> {
-        const { name } = data;
+        const { group_id, user_id, name } = data;
 
-        const campaignCreated = this._repository.create({ name });
+        const campaignCreated = this._repository.create({ group_id, user_id, name });
 
         await this._repository.save(campaignCreated);
 

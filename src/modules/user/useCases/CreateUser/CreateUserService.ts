@@ -26,7 +26,7 @@ class CreateUserService {
         /* Exception estrategy guard */
 
         if (existsUser) {
-            throw new AppException('User email already exists!', 400);
+            throw new AppException(`User email ${email} already exists!`, 400);
         }
 
         /* Generate hash password by provider */

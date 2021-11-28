@@ -13,15 +13,15 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
                         isPrimary: true,
                     },
                     {
-                        name: 'name',
-                        type: 'varchar',
-                    },
-                    {
                         name: 'group_id',
                         type: 'varchar',
                     },
                     {
                         name: 'user_id',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'name',
                         type: 'varchar',
                     },
                     {

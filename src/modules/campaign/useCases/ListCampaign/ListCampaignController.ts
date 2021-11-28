@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+
 import { ListCampaignService } from './ListCampaignService';
 import { generateStatus } from '@shared/helpers/status';
 
@@ -10,11 +11,13 @@ class ListCampaignController {
 
         const campaigns = await service.execute();
 
-        const status = generateStatus(false, 201, 'Succesfully listed campaigns!');
+        const statusCode = 200;
+
+        const status = generateStatus(false, statusCode, 'Succesfully listed campaigns!');
 
         const docs = classToClass(campaigns);
 
-        return res.status(201).json({ status, docs });
+        return res.status(statusCode).json({ status, docs });
     }
 }
 

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { ShowCampaignMiddleware } from '@modules/campaign/useCases/ShowCampaign/ShowCampaignMiddleware';
 import { CreateCampaignMiddleware } from '@modules/campaign/useCases/CreateCampaign/CreateCampaignMiddleware';
 import { UpdateCampaignMiddleware } from '@modules/campaign/useCases/UpdateCampaign/UpdateCampaignMiddleware';

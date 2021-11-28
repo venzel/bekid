@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { ICampaignEntity } from '@modules/campaign/models/entities/ICampaignEntity';
 import { ICampaignRepository } from '@modules/campaign/repositories/ICampaignRepository';
 

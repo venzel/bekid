@@ -4,6 +4,8 @@ import { ICreateCampaignDTO } from '@modules/campaign/dtos/ICreateCampaignDTO';
 interface ICampaignRepository {
     findOneById(campaignId: string): Promise<ICampaignEntity | undefined>;
 
+    findOneByName(campaignName: string): Promise<ICampaignEntity | undefined>;
+
     create(data: ICreateCampaignDTO): Promise<ICampaignEntity>;
 
     save(campaign: ICampaignEntity): Promise<ICampaignEntity>;

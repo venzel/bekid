@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { AuthenticateUserMiddleware } from '@modules/user/middlewares/AuthenticateUserMiddleware';
 import { ListCampaignController } from './ListCampaignController';
 import { RoleUserMiddleware } from '@modules/user/middlewares/RoleUserMiddleware';

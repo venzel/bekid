@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+
 import { ICampaignRepository } from '@modules/campaign/repositories/ICampaignRepository';
 import { ICampaignEntity } from '@modules/campaign/models/entities/ICampaignEntity';
 import { AppException } from '@shared/exceptions/AppException';
@@ -15,7 +16,7 @@ class DeleteCampaignService {
         /* Exception estrategy guard */
 
         if (!existsCampaign) {
-            throw new AppException('Campaign not exists!', 404);
+            throw new AppException(`Campaign id ${campaignId} not found!`, 404);
         }
 
         /* Data delete (update) in repository */

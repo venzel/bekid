@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { generate_id_provider } from '@configs/providers';
+type IStrateyId = 'hash' | 'uuid' | 'random';
 
 class GenerateId {
     private static _strategies: any = {
@@ -9,7 +9,9 @@ class GenerateId {
     };
 
     public static strategy(strategy?: IStrateyId): string {
-        return strategy ? this._strategies[strategy]() : this._strategies[generate_id_provider]();
+        const generateIdProvider = process.env.GENERATE_ID_PROVIDER || 'hash';
+
+        return strategy ? this._strategies[strategy]() : this._strategies[generateIdProvider]();
     }
 }
 

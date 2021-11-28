@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { CreateCampaignValidator } from './CreateCampaignValidator';
 import { CreateCampaignController } from './CreateCampaignController';
 import { AuthenticateUserMiddleware } from '@modules/user/middlewares/AuthenticateUserMiddleware';
