@@ -40,7 +40,7 @@ class UserRoutes {
         new ResetPasswordUserMiddleware().register(router, 'patch', 'ALL', '/reset_password');
 
         // Change avatar
-        new UpdateAvatarUserMiddleware().register(router, 'patch', ['ADMIN', 'USER'], '/change_avatar');
+        new UpdateAvatarUserMiddleware().register(router, 'patch', 'ALL', '/change_avatar');
 
         // Change profile
         new UpdateProfileUserMiddleware().register(router, 'put', ['ADMIN', 'USER'], '/change_profile');

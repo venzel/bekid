@@ -2,16 +2,16 @@ import { container } from 'tsyringe';
 import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
 
-import { CreateUserServiceProxy } from './CreateUserServiceProxy';
+import { CreateUserService } from './CreateUserService';
 import { generateStatus } from '@shared/helpers/status';
 
 class CreateUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { name, email, password } = req.body;
+        const { name, email, role, password } = req.body;
 
-        const serviceProxy = container.resolve(CreateUserServiceProxy);
+        const service = container.resolve(CreateUserService);
 
-        const user = await serviceProxy.execute({ name, email, password });
+        const user = await service.execute({ name, email, password, role });
 
         const codeStatus = 201;
 

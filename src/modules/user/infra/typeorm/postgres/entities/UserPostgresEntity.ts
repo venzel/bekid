@@ -28,7 +28,7 @@ class UserPostgresEntity implements IUserEntity {
     public avatar: string;
 
     @Expose({ name: 'avatar_url' })
-    public get getAvatarUrl(): string | null {
+    get getAvatarUrl(): string | null {
         return this.avatar !== '' ? `${api_url}/file/${this.avatar}` : null;
     }
 

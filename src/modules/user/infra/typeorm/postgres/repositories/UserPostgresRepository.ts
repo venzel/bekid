@@ -33,13 +33,9 @@ class UserPostgresRepository implements IUserRepository {
     }
 
     public async create(data: ICreateUserDTO): Promise<IUserEntity> {
-        const { name, email, password, role, activated } = data;
+        const { name, email, password, role, avatar, activated, allowed } = data;
 
-        const avatar = '';
-
-        const allowed = true;
-
-        const createdUser = this._repository.create({ name, email, password, role, avatar, allowed, activated });
+        const createdUser = this._repository.create({ name, email, password, role, avatar, activated, allowed });
 
         await this._repository.save(createdUser);
 

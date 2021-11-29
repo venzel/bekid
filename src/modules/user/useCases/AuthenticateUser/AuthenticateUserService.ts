@@ -6,6 +6,7 @@ import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IAuthenticateUserDTO } from '../../dtos/IAuthenticateUserDTO';
 import { AppException } from '@shared/exceptions/AppException';
+import { IRoleDTO } from '@modules/user/dtos/IRoleDTO';
 
 @injectable()
 class AuthenticateUserService {
@@ -30,7 +31,11 @@ class AuthenticateUserService {
 
         /* Destructuring object */
 
-        const { id: user_id, role, activated, allowed, password: data_password } = existsUser;
+        const { id: user_id, role: roleAlias, activated, allowed, password: data_password } = existsUser;
+
+        /* Convert to IsRoleDTO */
+
+        const role = roleAlias as IRoleDTO;
 
         /* Exception estrategy guard */
 
@@ -40,7 +45,7 @@ class AuthenticateUserService {
 
         /* Check if password is equals */
 
-        const isPasswordEquals: boolean = await this._hashProvider.compareHash(password, data_password);
+        const isPasswordEquals = await this._hashProvider.compareHash(password, data_password);
 
         /* Exception estrategy guard */
 
@@ -50,7 +55,7 @@ class AuthenticateUserService {
 
         /* Generate token by provider */
 
-        const generatedToken: string = await this._tokenProvider.generateToken({ user_id, role, activated });
+        const generatedToken = await this._tokenProvider.generateToken({ user_id, role, activated });
 
         /* End generate token by provider */
 

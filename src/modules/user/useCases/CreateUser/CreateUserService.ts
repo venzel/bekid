@@ -7,6 +7,7 @@ import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { ICreatePayloadDTO } from '@modules/user/dtos/ICreatePayloadDTO';
 import { AppException } from '@shared/exceptions/AppException';
+import { environment } from '@configs/geral';
 
 @injectable()
 class CreateUserService {
@@ -17,7 +18,7 @@ class CreateUserService {
     ) {}
 
     public async execute(data: ICreateUserDTO): Promise<IUserEntity> {
-        const { name, email, password, activated, role } = data;
+        const { name, email, password: passwordAlias, role } = data;
 
         /* Find user by email */
 
@@ -29,45 +30,65 @@ class CreateUserService {
             throw new AppException(`User email ${email} already exists!`, 400);
         }
 
+        /* Count users in repository */
+
+        const count = await this._userRepository.count();
+
         /* Generate hash password by provider */
 
-        const generatedHashPassword: string = await this._hashProvider.gererateHash(password);
+        const password = await this._hashProvider.gererateHash(passwordAlias);
 
-        /* Vars conditional */
+        /* Multables variables */
 
-        const dataActivated = activated || false;
+        let activated = false,
+            allowed = false,
+            avatar = '';
 
-        const dataRole = role || 'USER';
+        /* Object construct user */
+
+        const user = { name, email, password, role, avatar, activated, allowed };
+
+        /* If repository is empty */
+
+        if (!count) {
+            user.role = 'ADMIN';
+
+            activated = user.activated = true;
+
+            allowed = user.allowed = true;
+        }
+
+        /* If user repository is not empty and ambient is development */
+
+        if (count && environment === 'development') {
+            activated = user.activated = true;
+
+            allowed = user.allowed = true;
+        }
 
         /* User created */
 
-        const createdUser = await this._userRepository.create({
-            name,
-            email,
-            password: generatedHashPassword,
-            activated: dataActivated,
-            role: dataRole,
-        });
+        const userCreated = await this._userRepository.create(user);
 
         /* Payload generated */
 
-        const generatedPayload: ICreatePayloadDTO = {
-            user_id: createdUser.id,
-            activated: dataActivated,
-            role: dataRole,
+        const payload: ICreatePayloadDTO = {
+            user_id: userCreated.id,
+            role: user.role,
+            activated,
         };
 
         /* Token generated */
 
-        const generatedToken: string = await this._tokenProvider.generateToken(generatedPayload);
+        const token = await this._tokenProvider.generateToken(payload);
 
         /* User object assign */
 
-        Object.assign(createdUser, { token: generatedToken });
+        Object.assign(userCreated, { token });
 
-        /* Return created user */
+        /* Return user created */
 
-        return createdUser;
+        return userCreated;
     }
 }
 
