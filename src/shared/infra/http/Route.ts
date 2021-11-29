@@ -5,6 +5,7 @@ import { GroupRoutes } from '@modules/group/infra/http/routes/GroupRoutes';
 import { EmotionRoutes } from '@modules/emotion/infra/http/routes/EmotionRoutes';
 import { QuestionRoutes } from '@modules/question/infra/http/routes/QuestionRoutes';
 import { CampaignRoutes } from '@modules/campaign/infra/http/routes/CampaignRoutes';
+import { CampaignQueueRoutes } from '@modules/campaign_queue/infra/http/routes/CampaignQueueRoutes';
 import { VoteRoutes } from '@modules/vote/infra/http/routes/VoteRoutes';
 import { VoteQuestionRoutes } from '@modules/vote_question/infra/http/routes/VoteQuestionRoutes';
 import { VoteCommentRoutes } from '@modules/vote_comment/infra/http/routes/VoteCommentRoutes';
@@ -27,6 +28,9 @@ class Route {
 
         // CAMPAIGN
         new CampaignRoutes().registerAll(router);
+
+        // CAMPAIGN QUEUE
+        new CampaignQueueRoutes().registerAll(router);
 
         // VOTE
         new VoteRoutes().registerAll(router);

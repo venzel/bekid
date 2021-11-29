@@ -51,9 +51,7 @@ class VotePostgresRepository implements IVoteRepository {
     }
 
     public async list(): Promise<IVoteEntity[]> {
-        return await this._repository.find({
-            relations: ['campaign', 'emotion', 'user'],
-        });
+        return await this._repository.find(/*{ relations: ['campaign', 'emotion', 'user'] }*/);
     }
 }
 

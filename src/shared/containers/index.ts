@@ -4,6 +4,7 @@ import '@modules/group/containers';
 import '@modules/emotion/containers';
 import '@modules/question/containers';
 import '@modules/campaign/containers';
+import '@modules/campaign_queue/containers';
 import '@modules/vote/containers';
 import '@modules/vote_question/containers';
 import '@modules/vote_comment/containers';

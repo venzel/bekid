@@ -1,70 +1,99 @@
 {
-    "users": [
+    "USERS": [
         {
             "id": 1,
             "name": "Vanessa",
-            "role": "admin"
+            "role": "ADMIN"
         },
         {
             "id": 2,
             "name": "tiago",
-            "role": "user"
+            "role": "MANAGER"
         },
         {
             "id": 3,
             "name": "alex",
-            "role": "user"
+            "role": "USER"
         },
         {
             "id": 4,
             "name": "liz",
-            "role": "user"
+            "role": "USER"
         }
     ],
-    "groups": [
+    "GROUPS": [
         {
             "id": 1,
             "manager_id": 2,
-            "name": "4 serie fundamental - turma A"
+            "name": "4 serie fundamental - turma A",
+            "users": []
         },
         {
             "id": 2,
             "manager_id": 2,
-            "name": "5 serie fundamental - turma A"
+            "name": "5 serie fundamental - turma A",
+            "users": []
         }
     ],
-    "groups_users": [
+    "GROUP_QUEUE": [
         {
-            "id": 1,
-            "group_id": 1,
-            "user_id": 2
-        },
-        {
-            "id": 2,
-            "group_id": 1,
-            "user_id": 3
-        },
-        {
-            "id": 3,
-            "group_id": 1,
-            "user_id": 4
+            "group_id": 2,
+            "user_id": 1,
+            "manager_id": 1,
+            "created_at": "26-12-2021"
         }
     ],
-    "campaigns": [
+    "GROUPS_USERS": [
+        {
+            "group_id": 1,
+            "user_id": 2,
+            "created_at": "26-12-2021"
+        },
+        {
+            "group_id": 1,
+            "user_id": 3,
+            "created_at": "26-12-2021"
+        },
+        {
+            "group_id": 1,
+            "user_id": 4,
+            "created_at": "26-12-2021"
+        }
+    ],
+    "CAMPAIGNS": [
         {
             "id": 1,
             "group_id": 1,
             "manager_id": 1,
-            "name": "Primeira dinamica em grupo"
+            "name": "Primeira dinamica em grupo",
+            "limit_date": "28-12-2021"
         },
         {
             "id": 2,
             "group_id": 1,
             "manager_id": 1,
-            "name": "Segunda dinamica em grupo"
+            "name": "Segunda dinamica em grupo",
+            "limit_date": "28-12-2021"
         }
     ],
-    "emotions": [
+    "CAMPAIGN_QUEUE": [
+        {
+            "user_id": 2,
+            "campaign_id": 1,
+            "created_at": "26-12-2021"
+        },
+        {
+            "user_id": 3,
+            "campaign_id": 1,
+            "created_at": "26-12-2021"
+        },
+        {
+            "user_id": 4,
+            "campaign_id": 1,
+            "created_at": "26-12-2021"
+        }
+    ],
+    "EMOTIONS": [
         {
             "id": 1,
             "slug": "alegre",
@@ -86,7 +115,7 @@
             "name": "Medo"
         }
     ],
-    "questions": [
+    "QUESTIONS": [
         {
             "id": 1,
             "emotion_id": 2,
@@ -108,7 +137,7 @@
             "name": "Cai da biscicleta"
         }
     ],
-    "votes": [
+    "VOTES": [
         {
             "id": 1,
             "campaign_id": 1,
@@ -122,7 +151,7 @@
             "user_id": 3
         }
     ],
-    "votes_questions": [
+    "VOTES_QUESTIONS": [
         {
             "id": 1,
             "vote_id": 1,
@@ -142,12 +171,12 @@
             "user_id": 2
         }
     ],
-    "votes_comments": [
+    "VOTES_COMMENTS": [
         {
             "id": 1,
             "vote_id": 1,
             "user_id": 2,
-            "comment": "Estou com fome"
+            "message": "Estou com fome"
         }
     ]
 }

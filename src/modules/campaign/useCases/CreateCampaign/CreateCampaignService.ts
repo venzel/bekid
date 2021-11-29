@@ -1,16 +1,17 @@
-import { injectable, inject } from 'tsyringe';
+import { injectable, inject, container } from 'tsyringe';
 
 import { ICampaignEntity } from '@modules/campaign/models/entities/ICampaignEntity';
 import { ICampaignRepository } from '@modules/campaign/repositories/ICampaignRepository';
 import { ICreateCampaignDTO } from '@modules/campaign/dtos/ICreateCampaignDTO';
 import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
 import { AppException } from '@shared/exceptions/AppException';
+import { CreateCampaignQueueService } from '@modules/campaign_queue/useCases/CreateCampaignQueue/CreateCampaignQueueService';
 
 @injectable()
 class CreateCampaignService {
     constructor(
         @inject('CampaignRepository') private _campaignRepository: ICampaignRepository,
-        @inject('GroupRepository') private _grouRepository: IGroupRepository
+        @inject('GroupRepository') private _groupRepository: IGroupRepository
     ) {}
 
     public async execute(data: ICreateCampaignDTO): Promise<ICampaignEntity> {
@@ -18,7 +19,7 @@ class CreateCampaignService {
 
         /* Find group by id */
 
-        const existsGroup = await this._grouRepository.findOneById(group_id);
+        const existsGroup = await this._groupRepository.findOneById(group_id);
 
         /* Exception estrategy guard */
 
@@ -43,6 +44,14 @@ class CreateCampaignService {
         /* Create campaign */
 
         const campaignCreated = await this._campaignRepository.create({ group_id, user_id, name });
+
+        /* Use create campaign queue service */
+
+        const createCampaignQueueService = container.resolve(CreateCampaignQueueService);
+
+        /* Iterate in group users */
+
+        existsGroup.users.forEach((e) => createCampaignQueueService.execute(campaignCreated.id, e.id));
 
         /* Return the campaign created */
 
