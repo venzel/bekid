@@ -9,7 +9,7 @@ import { AppException } from '@shared/exceptions/AppException';
 class CreateGroupService {
     constructor(@inject('GroupRepository') private _groupRepository: IGroupRepository) {}
 
-    public async handle(data: ICreateGroupDTO): Promise<IGroupEntity> {
+    public async execute(data: ICreateGroupDTO): Promise<IGroupEntity> {
         const { user_id, name } = data;
 
         /* Find by name group */

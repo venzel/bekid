@@ -5,7 +5,7 @@ import { MonitoreCampaignQueueMiddleware } from '@modules/campaign_queue/useCase
 class CampaignQueueRoutes {
     public registerAll(router: Router): void {
         // Monitore
-        new MonitoreCampaignQueueMiddleware().register(router, 'get', 'USER', '/campaings_queues/:id');
+        new MonitoreCampaignQueueMiddleware().register(router, 'get', 'USER', '/monitore_campaign_queue');
     }
 }
 

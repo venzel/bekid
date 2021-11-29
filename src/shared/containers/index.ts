@@ -1,6 +1,7 @@
 import '@shared/providers';
 import '@modules/user/containers';
 import '@modules/group/containers';
+import '@modules/group_queue/containers';
 import '@modules/emotion/containers';
 import '@modules/question/containers';
 import '@modules/campaign/containers';

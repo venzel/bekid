@@ -7,17 +7,17 @@ import { generateStatus } from '@shared/helpers/status';
 
 class MonitoreCampaignQueueController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const campaignId = req.params.id?.toString();
+        const userTokenId = req.auth.user_id;
 
         const service = container.resolve(MonitoreCampaignQueueService);
 
-        const campaign = await service.execute(campaignId);
+        const campaignQueue = await service.execute(userTokenId);
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully listed campaigns!');
+        const status = generateStatus(false, statusCode, 'Succesfully listed campaign queue!');
 
-        const docs = classToClass(campaign);
+        const docs = classToClass(campaignQueue);
 
         return res.status(statusCode).json({ status, docs });
     }

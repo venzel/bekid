@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import { UserRoutes } from '@modules/user/infra/http/routes/UserRoutes';
 import { GroupRoutes } from '@modules/group/infra/http/routes/GroupRoutes';
+import { GroupQueueRoutes } from '@modules/group_queue/infra/http/routes/GroupQueueRoutes';
 import { EmotionRoutes } from '@modules/emotion/infra/http/routes/EmotionRoutes';
 import { QuestionRoutes } from '@modules/question/infra/http/routes/QuestionRoutes';
 import { CampaignRoutes } from '@modules/campaign/infra/http/routes/CampaignRoutes';
@@ -19,6 +20,9 @@ class Route {
 
         // GROUP
         new GroupRoutes().registerAll(router);
+
+        // GROUP QUEUE
+        new GroupQueueRoutes().registerAll(router);
 
         // EMOTION
         new EmotionRoutes().registerAll(router);

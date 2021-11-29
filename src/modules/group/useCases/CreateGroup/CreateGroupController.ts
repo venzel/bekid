@@ -13,7 +13,7 @@ class CreateGroupController {
 
         const service = container.resolve(CreateGroupService);
 
-        const group = await service.handle({ user_id, name });
+        const group = await service.execute({ user_id, name });
 
         const codeStatus = 201;
 

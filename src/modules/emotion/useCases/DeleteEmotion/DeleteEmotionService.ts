@@ -16,7 +16,7 @@ class DeleteEmotionService {
         /* Exception estrategy guard */
 
         if (!existsEmotion) {
-            throw new AppException(`Emotion id ${emotionId} not exists!`, 404);
+            throw new AppException(`Emotion id ${emotionId} not found!`, 404);
         }
 
         /* Data delete in repository */
