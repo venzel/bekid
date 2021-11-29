@@ -62,6 +62,10 @@ class VoteInMemoryRepository implements IVoteRepository {
         return vote;
     }
 
+    public async listAllByUserId(userId: string): Promise<IVoteEntity[]> {
+        return this._repository.filter((data) => data.user_id === userId);
+    }
+
     public async list(): Promise<IVoteEntity[]> {
         return this._repository;
     }

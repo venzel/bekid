@@ -6,10 +6,12 @@ import { ListVoteService } from './ListVoteService';
 import { generateStatus } from '@shared/helpers/status';
 
 class ListVoteController {
-    public async handle(_: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
+        const { user_id: userId, role } = req.auth;
+
         const service = container.resolve(ListVoteService);
 
-        const votes = await service.execute();
+        const votes = await service.execute(userId, role);
 
         const statusCode = 200;
 
