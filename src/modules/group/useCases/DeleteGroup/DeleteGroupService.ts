@@ -8,7 +8,7 @@ import { AppException } from '@shared/exceptions/AppException';
 class DeleteGroupService {
     constructor(@inject('GroupRepository') private _groupRepository: IGroupRepository) {}
 
-    public async execute(groupId: string): Promise<IGroupEntity> {
+    public async execute(groupId: string, managerId: string, role: String): Promise<IGroupEntity> {
         /* Find by group id */
 
         const existsGroup = await this._groupRepository.findOneById(groupId);
@@ -17,6 +17,12 @@ class DeleteGroupService {
 
         if (!existsGroup) {
             throw new AppException(`Group id ${groupId} not exists!`, 404);
+        }
+
+        /* The group manager arrives */
+
+        if (role !== 'ADMIN' && existsGroup.user_id !== managerId) {
+            throw new AppException('It is not possible to delete a group of another user!', 401);
         }
 
         /* Data delete (update) in repository */

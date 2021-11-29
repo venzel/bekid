@@ -1,15 +1,4 @@
-import {
-    Entity,
-    PrimaryColumn,
-    ManyToOne,
-    JoinColumn,
-    ManyToMany,
-    JoinTable,
-    Column,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn,
-} from 'typeorm';
+import { Entity, PrimaryColumn, ManyToOne, JoinColumn, ManyToMany, JoinTable, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { Expose } from 'class-transformer';
 
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
@@ -45,9 +34,6 @@ class GroupPostgresEntity implements IGroupEntity {
 
     @UpdateDateColumn()
     public updated_at: Date;
-
-    @DeleteDateColumn()
-    public deleted_at: Date | null;
 
     constructor() {
         if (!this.id) {

@@ -20,6 +20,14 @@ class GroupInMemoryRepository implements IGroupRepository {
         return this._repository.find((data) => data.name === name);
     }
 
+    public async findOneByUserIdAndGroupName(userId: string, groupName: string): Promise<IGroupEntity | undefined> {
+        return this._repository.find((data) => data.user_id === userId && data.name === groupName);
+    }
+
+    public async listAllByManagerId(managerId: string): Promise<IGroupEntity[]> {
+        return this._repository.filter((e) => e.user_id === managerId);
+    }
+
     public async create(data: ICreateGroupDTO): Promise<IGroupEntity> {
         const { user_id, name } = data;
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { CreateGroupMiddleware } from '@modules/group/useCases/CreateGroup/CreateGroupMiddleware';
-import { CreateGroupUserMiddleware } from '@modules/group/useCases/CreateGroupUser/CreateGroupUserMiddleware';
+import { SaveGroupUserMiddleware } from '@modules/group/useCases/SaveGroupUser/SaveGroupUserMiddleware';
 import { UpdateGroupMiddleware } from '@modules/group/useCases/UpdateGroup/UpdateGroupMiddleware';
 import { ListGroupMiddleware } from '@modules/group/useCases/ListGroup/ListGroupMiddleware';
 import { ShowGroupMiddleware } from '@modules/group/useCases/ShowGroup/ShowGroupMiddleware';
@@ -13,16 +13,16 @@ class GroupRoutes {
         new CreateGroupMiddleware().register(router, 'post', 'MANAGER', '/groups');
 
         // Create
-        new CreateGroupUserMiddleware().register(router, 'post', 'MANAGER', '/groups_users');
+        new SaveGroupUserMiddleware().register(router, 'post', 'MANAGER', '/save_group');
 
         // Update
         new UpdateGroupMiddleware().register(router, 'put', 'MANAGER', '/groups/:id');
 
         // List
-        new ListGroupMiddleware().register(router, 'get', 'MANAGER', '/groups');
+        new ListGroupMiddleware().register(router, 'get', ['MANAGER', 'ADMIN'], '/groups');
 
         // Show
-        new ShowGroupMiddleware().register(router, 'get', 'MANAGER', '/groups/:id');
+        new ShowGroupMiddleware().register(router, 'get', ['MANAGER', 'ADMIN'], '/groups/:id');
 
         // Delete
         new DeleteGroupMiddleware().register(router, 'delete', 'MANAGER', '/groups/:id');

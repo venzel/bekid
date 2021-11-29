@@ -55,11 +55,11 @@ class AuthenticateUserService {
 
         /* Generate token by provider */
 
-        const generatedToken = await this._tokenProvider.generateToken({ user_id, role, activated });
+        const token = await this._tokenProvider.generateToken({ user_id, role, activated });
 
         /* End generate token by provider */
 
-        Object.assign(existsUser, { token: generatedToken });
+        Object.assign(existsUser, { token });
 
         /* Return user */
 

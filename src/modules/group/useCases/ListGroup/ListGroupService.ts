@@ -7,8 +7,12 @@ import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
 class ListGroupService {
     constructor(@inject('GroupRepository') private _groupRepository: IGroupRepository) {}
 
-    public async execute(): Promise<IGroupEntity[]> {
-        return await this._groupRepository.list();
+    public async execute(managerId: string, role: string): Promise<IGroupEntity[]> {
+        if (role === 'ADMIN') {
+            return await this._groupRepository.list();
+        }
+
+        return await this._groupRepository.listAllByManagerId(managerId);
     }
 }
 

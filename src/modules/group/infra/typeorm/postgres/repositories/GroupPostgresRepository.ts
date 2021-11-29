@@ -16,8 +16,12 @@ class GroupPostgresRepository implements IGroupRepository {
         return await this._repository.findOne({ where: { id: groupId }, relations: ['users'] });
     }
 
-    public async findOneByUserIdAndGroupName(userId: string, name: string): Promise<IGroupEntity | undefined> {
-        return await this._repository.findOne({ where: { user_id: userId, name } });
+    public async findOneByUserIdAndGroupName(userId: string, groupName: string): Promise<IGroupEntity | undefined> {
+        return await this._repository.findOne({ where: { user_id: userId, name: groupName } });
+    }
+
+    public async listAllByManagerId(managerId: string): Promise<IGroupEntity[]> {
+        return await this._repository.find({ where: { user_id: managerId }, relations: ['users'] });
     }
 
     public async findOneByName(name: string): Promise<IGroupEntity | undefined> {

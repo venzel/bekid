@@ -32,12 +32,6 @@ export default class CreateGroups1637772239805 implements MigrationInterface {
                         isNullable: false,
                         default: 'now()',
                     },
-                    {
-                        name: 'deleted_at',
-                        type: 'timestamp',
-                        isNullable: true,
-                        default: null,
-                    },
                 ],
             })
         );

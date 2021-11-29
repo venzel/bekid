@@ -3,17 +3,17 @@ import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
 
 import { generateStatus } from '@shared/helpers/status';
-import { CreateGroupUserService } from './CreateGroupUserService';
+import { SaveGroupUserService } from './SaveGroupUserService';
 
-class CreateGroupUserController {
+class SaveGroupUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
+        const { user_id: managerId, role } = req.auth;
+
         const { group_id, users_ids } = req.body;
 
-        console.log(users_ids);
+        const service = container.resolve(SaveGroupUserService);
 
-        const service = container.resolve(CreateGroupUserService);
-
-        const groupUser = await service.execute({ group_id, users_ids });
+        const groupUser = await service.execute(managerId, role, { group_id, users_ids });
 
         const codeStatus = 201;
 
@@ -25,4 +25,4 @@ class CreateGroupUserController {
     }
 }
 
-export { CreateGroupUserController };
+export { SaveGroupUserController };

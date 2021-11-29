@@ -6,10 +6,12 @@ import { ListGroupService } from './ListGroupService';
 import { generateStatus } from '@shared/helpers/status';
 
 class ListGroupController {
-    public async handle(_: Request, res: Response): Promise<Response> {
+    public async handle(req: Request, res: Response): Promise<Response> {
+        const { user_id: managerId, role } = req.auth;
+
         const service = container.resolve(ListGroupService);
 
-        const groups = await service.execute();
+        const groups = await service.execute(managerId, role);
 
         const codeStatus = 200;
 
