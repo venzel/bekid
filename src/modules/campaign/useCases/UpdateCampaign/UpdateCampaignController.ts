@@ -9,12 +9,13 @@ class UpdateCampaignController {
     public async handle(req: Request, res: Response): Promise<Response> {
         const { user_token_id, user_token_role } = req.auth;
 
-        const { campaign_id, name } = req.body;
+        const { campaign_id, group_id, name } = req.body;
 
         const data = {
             user_token_id,
             user_token_role,
             campaign_id,
+            group_id,
             name,
         };
 

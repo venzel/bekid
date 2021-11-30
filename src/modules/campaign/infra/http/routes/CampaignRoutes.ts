@@ -12,7 +12,7 @@ class CampaignRoutes {
         new CreateCampaignMiddleware().register(router, 'post', 'MANAGER', '/campaigns');
 
         // Update
-        new UpdateCampaignMiddleware().register(router, 'put', 'MANAGER', '/campaigns/:id');
+        new UpdateCampaignMiddleware().register(router, 'put', 'MANAGER', '/campaigns');
 
         // List
         new ListCampaignMiddleware().register(router, 'get', 'MANAGER', '/campaigns');

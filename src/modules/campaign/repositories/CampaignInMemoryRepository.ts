@@ -21,13 +21,13 @@ class CampaignInMemoryRepository implements ICampaignRepository {
     }
 
     public async create(data: ICreateCampaignDTO): Promise<ICampaignEntity> {
-        const { group_id, user_id, name } = data;
+        const { group_id, user_token_id, name } = data;
 
         const campaignInMemoryEntity = new CampaignInMemoryEntity();
 
         const id = uuid();
 
-        Object.assign(campaignInMemoryEntity, { id, group_id, user_id, name });
+        Object.assign(campaignInMemoryEntity, { id, group_id, user_id: user_token_id, name });
 
         this._repository.push(campaignInMemoryEntity);
 

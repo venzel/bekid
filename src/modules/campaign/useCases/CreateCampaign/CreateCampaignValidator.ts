@@ -4,9 +4,9 @@ import { AppException } from '@shared/exceptions/AppException';
 
 class CreateCampaignValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const { grou_id, name } = req.body;
+        const { group_id, name } = req.body;
 
-        if (!grou_id) {
+        if (!group_id) {
             throw new AppException('Group id invalid!', 400);
         }
 
