@@ -7,7 +7,7 @@ import { generateStatus } from '@shared/helpers/status';
 
 class ShowUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const userId = req.params.id?.toString();
+        const userId = req.params.id;
 
         const service = container.resolve(ShowUserService);
 
@@ -15,7 +15,7 @@ class ShowUserController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully showed user!');
+        const status = generateStatus(false, statusCode, 'Succesfully, user showed!');
 
         const doc = classToClass(user);
 

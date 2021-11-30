@@ -1,4 +1,4 @@
-import { ICreateUserDTO } from '../dtos/ICreateUserDTO';
+import { IRegisterUserDTO } from '../dtos/IRegisterUserDTO';
 import { IUserEntity } from '../models/entities/IUserEntity';
 
 interface IUserRepository {
@@ -10,9 +10,11 @@ interface IUserRepository {
 
     findOneByName(userName: string): Promise<IUserEntity | undefined>;
 
+    findAllContainsName(userPartName: string): Promise<IUserEntity[]>;
+
     findOneByEmail(userEmail: string): Promise<IUserEntity | undefined>;
 
-    create(data: ICreateUserDTO): Promise<IUserEntity>;
+    create(data: IRegisterUserDTO): Promise<IUserEntity>;
 
     save(user: IUserEntity): Promise<IUserEntity>;
 

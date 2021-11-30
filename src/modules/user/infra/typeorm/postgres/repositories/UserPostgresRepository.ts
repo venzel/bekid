@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
+import { IRegisterUserDTO } from '@modules/user/dtos/IRegisterUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { UserPostgresEntity } from '../entities/UserPostgresEntity';
@@ -28,11 +28,15 @@ class UserPostgresRepository implements IUserRepository {
         return await this._repository.findOne({ where: { name: userName, deleted_at: null } });
     }
 
+    public async findAllContainsName(userName: string): Promise<IUserEntity[]> {
+        return await this._repository.find({ where: { name: userName, deleted_at: null } });
+    }
+
     public async findOneByEmail(userEmail: string): Promise<IUserEntity | undefined> {
         return await this._repository.findOne({ where: { email: userEmail, deleted_at: null } });
     }
 
-    public async create(data: ICreateUserDTO): Promise<IUserEntity> {
+    public async create(data: IRegisterUserDTO): Promise<IUserEntity> {
         const { name, email, password, role, avatar, activated, allowed } = data;
 
         const createdUser = this._repository.create({ name, email, password, role, avatar, activated, allowed });

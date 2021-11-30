@@ -13,17 +13,19 @@ class UpdateProfileUserService {
         @inject('HashProvider') private _hashProvider: IHashProvider
     ) {}
 
-    public async execute(userId: string, data: IProfileUpdateUserDTO): Promise<IUserEntity> {
-        const { name, email, current_password } = data;
+    public async execute(data: IProfileUpdateUserDTO): Promise<IUserEntity> {
+        /* Destructuring object */
+
+        const { user_token_id, name, email, current_password } = data;
 
         /* Find user by id */
 
-        const existsUserWithId = await this._userRepository.findOneById(userId);
+        const existsUser = await this._userRepository.findOneById(user_token_id);
 
         /* Strategy guard */
 
-        if (!existsUserWithId) {
-            throw new AppException(`User id ${userId} not exists!`, 404);
+        if (!existsUser) {
+            throw new AppException(`User not exists!`, 404);
         }
 
         /* Find user by email */
@@ -32,13 +34,13 @@ class UpdateProfileUserService {
 
         /* Strategy guard */
 
-        if (email !== existsUserWithId.email && existsUserWithEmail) {
+        if (email !== existsUser.email && existsUserWithEmail) {
             throw new AppException(`User email ${email} already exists!`, 400);
         }
 
         /* Extract password */
 
-        const { password } = existsUserWithId;
+        const { password } = existsUser;
 
         /* Check if password is equals */
 
@@ -52,17 +54,17 @@ class UpdateProfileUserService {
 
         /* Data update */
 
-        existsUserWithId.name = name;
+        existsUser.name = name;
 
-        existsUserWithId.email = email;
+        existsUser.email = email;
 
         /* Save user in repository */
 
-        const savedUser = await this._userRepository.save(existsUserWithId);
+        const userSaved = await this._userRepository.save(existsUser);
 
-        /* Return saved user */
+        /* Return user saved */
 
-        return savedUser;
+        return userSaved;
     }
 }
 

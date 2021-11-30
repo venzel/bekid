@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
+import { IRegisterUserDTO } from '@modules/user/dtos/IRegisterUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 import { UserInMemoryEntity } from '../models/entities/UserInMemoryEntity';
@@ -28,11 +28,15 @@ class UserInMemoryRepository implements IUserRepository {
         return this._repository.find((user) => user.name === userName);
     }
 
+    public async findAllContainsName(userPartName: string): Promise<IUserEntity[]> {
+        return this._repository.filter((user) => user.name === userPartName);
+    }
+
     public async findOneByEmail(userEmail: string): Promise<IUserEntity | undefined> {
         return this._repository.find((user) => user.email === userEmail);
     }
 
-    public async create(user: ICreateUserDTO): Promise<IUserEntity> {
+    public async create(user: IRegisterUserDTO): Promise<IUserEntity> {
         const { name, email, password, role, activated } = user;
 
         const userInMemoryEntity: IUserEntity = new UserInMemoryEntity();

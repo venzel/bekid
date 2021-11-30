@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { AuthenticateUserMiddleware } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserMiddleware';
-import { CreateUserMiddleware } from '@modules/user/useCases/CreateUser/CreateUserMiddleware';
+import { RegisterUserMiddleware } from '@modules/user/useCases/RegisterUser/RegisterUserMiddleware';
 import { UpdatePasswordUserMiddleware } from '@modules/user/useCases/UpdatePasswordUser/UpdatePasswordUserMiddleware';
 import { ForgotPasswordUserMiddleware } from '@modules/user/useCases/ForgotPasswordUser/ForgotPasswordUserMiddleware';
 import { ResetPasswordUserMiddleware } from '@modules/user/useCases/ResetPasswordUser/ResetPasswordUserMiddleware';
@@ -15,8 +15,8 @@ import { ToggleAllowUserMiddleware } from '@modules/user/useCases/ToogleAllowUse
 
 class UserRoutes {
     public registerAll(router: Router): void {
-        // Create
-        new CreateUserMiddleware().register(router, 'post', 'ALL', '/users');
+        // Register user
+        new RegisterUserMiddleware().register(router, 'post', 'ALL', '/users');
 
         // List
         new ListUserMiddleware().register(router, 'get', 'ADMIN', '/users');

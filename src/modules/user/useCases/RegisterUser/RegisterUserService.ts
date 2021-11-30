@@ -3,21 +3,20 @@ import { injectable, inject } from 'tsyringe';
 import { IHashProvider } from '@modules/user/providers/HashProvider/models/IHashProvider';
 import { ITokenProvider } from '@modules/user/providers/TokenProvider/models/ITokenProvider';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
-import { ICreateUserDTO } from '@modules/user/dtos/ICreateUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
-import { ICreatePayloadDTO } from '@modules/user/dtos/ICreatePayloadDTO';
+import { IRegisterUserDTO } from '@modules/user/dtos/IRegisterUserDTO';
 import { AppException } from '@shared/exceptions/AppException';
 import { environment } from '@configs/geral';
 
 @injectable()
-class CreateUserService {
+class RegisterUserService {
     constructor(
         @inject('UserRepository') private _userRepository: IUserRepository,
         @inject('HashProvider') private _hashProvider: IHashProvider,
         @inject('TokenProvider') private _tokenProvider: ITokenProvider
     ) {}
 
-    public async execute(data: ICreateUserDTO): Promise<IUserEntity> {
+    public async execute(data: IRegisterUserDTO): Promise<IUserEntity> {
         /* Destructuring object */
 
         const { name, email, password, role } = data;
@@ -78,14 +77,14 @@ class CreateUserService {
 
         /* User created in repository */
 
-        const userCreated = await this._userRepository.create(user);
+        const userRegisterd = await this._userRepository.create(user);
 
         /* Payload generated */
 
-        const payload: ICreatePayloadDTO = {
-            user_id: userCreated.id,
-            role: user.role,
-            activated,
+        const payload = {
+            user_token_id: userRegisterd.id,
+            user_token_role: user.role,
+            user_token_activated: activated,
         };
 
         /* Token generated */
@@ -94,12 +93,12 @@ class CreateUserService {
 
         /* User object assign */
 
-        Object.assign(userCreated, { token });
+        Object.assign(userRegisterd, { token });
 
         /* Return user created */
 
-        return userCreated;
+        return userRegisterd;
     }
 }
 
-export { CreateUserService };
+export { RegisterUserService };

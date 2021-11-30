@@ -7,7 +7,7 @@ import { generateStatus } from '@shared/helpers/status';
 
 class DeleteUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const userId = req.params.id?.toString();
+        const userId = req.params.id;
 
         const service = container.resolve(DeleteUserService);
 
@@ -15,7 +15,7 @@ class DeleteUserController {
 
         const statusCode = 202;
 
-        const status = generateStatus(false, statusCode, 'Succesfully deleted user!');
+        const status = generateStatus(false, statusCode, 'Succesfully, user deleted!');
 
         const doc = classToClass(user);
 

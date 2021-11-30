@@ -29,11 +29,11 @@ class ToggleRoleUserService {
 
         /* End data update */
 
-        const savedUser = await this._userRepository.save(existsUser);
+        const userSaved = await this._userRepository.save(existsUser);
 
-        /* Return saved user */
+        /* Return user saved */
 
-        return savedUser;
+        return userSaved;
     }
 }
 

@@ -4,9 +4,9 @@ import { AppException } from '@shared/exceptions/AppException';
 
 class ActivatedUserMiddleware {
     public activated(req: Request, _: Response, next: NextFunction): any {
-        const { activated } = req.auth;
+        const { user_token_activated } = req.auth;
 
-        if (!activated) {
+        if (!user_token_activated) {
             throw new AppException('User not activated!');
         }
 

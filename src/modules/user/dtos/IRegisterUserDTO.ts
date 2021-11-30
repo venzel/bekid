@@ -1,6 +1,6 @@
 import { IRoleDTO } from '@modules/user/dtos/IRoleDTO';
 
-interface ICreateUserDTO {
+interface IRegisterUserDTO {
     name: string;
     email: string;
     password: string;
@@ -10,4 +10,4 @@ interface ICreateUserDTO {
     allowed?: boolean;
 }
 
-export { ICreateUserDTO };
+export { IRegisterUserDTO };

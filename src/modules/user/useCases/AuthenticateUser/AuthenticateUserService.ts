@@ -55,9 +55,17 @@ class AuthenticateUserService {
             throw new AppException('Email or password invalid!', 403);
         }
 
+        /* Data */
+
+        const user = {
+            user_id,
+            role,
+            activated,
+        };
+
         /* Generate token by provider */
 
-        const token = await this._tokenProvider.generateToken({ user_id, role, activated });
+        const token = await this._tokenProvider.generateToken(user);
 
         /* End generate token by provider */
 

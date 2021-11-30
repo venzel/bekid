@@ -10,11 +10,11 @@ class ForgotPasswordUserController {
 
         const service = container.resolve(ForgotPasswordUserService);
 
-        const token: string = await service.execute(email);
+        const token = await service.execute(email);
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully forgot user password!');
+        const status = generateStatus(false, statusCode, 'Succesfully, the users password has been marked as forgotten!');
 
         const doc = { token };
 

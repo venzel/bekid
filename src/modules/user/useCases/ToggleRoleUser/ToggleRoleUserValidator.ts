@@ -5,15 +5,15 @@ import { AppException } from '@shared/exceptions/AppException';
 
 class ToggleRoleUserValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const { user_id } = req.auth;
+        const { user_token_id } = req.auth;
 
-        const userId = req.params.id?.toString();
+        const userId = req.params.id;
 
-        if (!isIdValid(userId, 'string')) {
+        if (!isIdValid(userId, 'hash')) {
             throw new AppException('User id invalid!', 400);
         }
 
-        if (user_id === userId) {
+        if (userId === user_token_id) {
             throw new AppException('It is not possible to update role yourself!');
         }
 

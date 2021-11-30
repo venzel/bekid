@@ -26,19 +26,19 @@ class ForgotPasswordUserService {
 
         /* Destructuring object */
 
-        const { id, password } = existsUser;
+        const { id: user_id, password } = existsUser;
 
         /* Generate token by provider */
 
-        const generatedToken: string = await this._hashProvider.gererateHash(password);
+        const token = await this._hashProvider.gererateHash(password);
 
         /* End generate token by provider */
 
-        const createdToken: string = await this._userTokenRepository.create({ token: generatedToken, user_id: id });
+        const tokenCreated = await this._userTokenRepository.create({ token, user_id });
 
-        /* Return created token */
+        /* Return token created */
 
-        return createdToken;
+        return tokenCreated;
     }
 }
 

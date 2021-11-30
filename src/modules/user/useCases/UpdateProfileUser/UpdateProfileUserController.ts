@@ -7,17 +7,24 @@ import { generateStatus } from '@shared/helpers/status';
 
 class UpdateProfileUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const userId = req.auth.user_id;
+        const { user_token_id } = req.auth;
 
         const { name, email, current_password } = req.body;
 
         const service = container.resolve(UpdateProfileUserService);
 
-        const user = await service.execute(userId, { name, email, current_password });
+        const data = {
+            user_token_id,
+            name,
+            email,
+            current_password,
+        };
+
+        const user = await service.execute(data);
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully profile user, updated!');
+        const status = generateStatus(false, statusCode, 'Succesfully, user profile updated!');
 
         const doc = classToClass(user);
 

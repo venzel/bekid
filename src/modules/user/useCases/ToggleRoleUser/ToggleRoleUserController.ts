@@ -7,7 +7,7 @@ import { generateStatus } from '@shared/helpers/status';
 
 class ToggleRoleUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const userId = req.params.id?.toString();
+        const userId = req.params.id;
 
         const service = container.resolve(ToggleRoleUserService);
 
@@ -15,7 +15,7 @@ class ToggleRoleUserController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully toggle role user!');
+        const status = generateStatus(false, statusCode, 'Succesfully, role user toggled!');
 
         const doc = classToClass(user);
 

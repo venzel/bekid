@@ -13,9 +13,9 @@ class JWTTokenProvider implements ITokenProvider {
         try {
             const payload: IPayloadDTO = {
                 user: {
-                    user_id,
-                    role,
-                    activated,
+                    user_token_id: user_id,
+                    user_token_role: role,
+                    user_token_activated: activated,
                 },
             };
 

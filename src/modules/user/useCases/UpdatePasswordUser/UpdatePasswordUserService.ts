@@ -18,16 +18,18 @@ class UpdatePasswordUserService {
     ) {}
 
     public async execute(data: IUpdatePasswordDTO): Promise<IUserEntity> {
-        const { current_password, new_password, user_id } = data;
+        /* Destructuring object*/
+
+        const { current_password, new_password, user_token_id } = data;
 
         /* Find user by id */
 
-        const existsUser = await this._userRepository.findOneById(user_id);
+        const existsUser = await this._userRepository.findOneById(user_token_id);
 
         /* Strategy guard */
 
         if (!existsUser) {
-            throw new AppException(`User ${user_id} not exists!`, 404);
+            throw new AppException(`User not exists!`, 404);
         }
 
         /* Destructuring object */
@@ -54,11 +56,11 @@ class UpdatePasswordUserService {
 
         /* End data updated */
 
-        const savedUser = await this._userRepository.save(existsUser);
+        const userSaved = await this._userRepository.save(existsUser);
 
         /* Delete all tokens */
 
-        await this._userTokenRepository.deleteTokensByOwnerId(user_id);
+        await this._userTokenRepository.deleteTokensByOwnerId(user_token_id);
 
         /* Get key in cache */
 
@@ -74,9 +76,9 @@ class UpdatePasswordUserService {
             this._cacheProvider.invalidate(authKeyCache);
         }
 
-        /* Return saved user */
+        /* Return user saved */
 
-        return savedUser;
+        return userSaved;
     }
 }
 

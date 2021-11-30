@@ -14,16 +14,18 @@ class UpdateAvatarUserService {
     ) {}
 
     public async execute(data: IUpdateAvatarUserDTO): Promise<IUserEntity> {
-        const { filename, user_id } = data;
+        /* Destructuring object */
+
+        const { filename, user_token_id } = data;
 
         /* Find user by id */
 
-        const existsUser = await this._userRepository.findOneById(user_id);
+        const existsUser = await this._userRepository.findOneById(user_token_id);
 
         /* Strategy guard */
 
         if (!existsUser) {
-            throw new AppException(`User id ${user_id} not exists!`, 404);
+            throw new AppException(`User not exists!`, 404);
         }
 
         /* Destructuring object */

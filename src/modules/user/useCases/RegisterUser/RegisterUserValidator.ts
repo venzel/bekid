@@ -3,26 +3,34 @@ import { Request, Response, NextFunction } from 'express';
 import { isNameValid } from '@modules/user/helpers/validator';
 import { isEmailValid, isPasswordValid } from '@shared/helpers/validator';
 import { AppException } from '@shared/exceptions/AppException';
+import { IRegisterUserDTO } from '@modules/user/dtos/IRegisterUserDTO';
 
-class CreateUserValidator {
+class RegisterUserValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
         const { name, email, password, role } = req.body;
 
-        if (!isNameValid(name)) {
+        const data = {
+            name,
+            email,
+            password,
+            role,
+        } as IRegisterUserDTO; // important, force typing!
+
+        if (!isNameValid(data.name)) {
             throw new AppException(`Name ${name} invalid!`, 400);
         }
 
-        if (!isEmailValid(email)) {
+        if (!isEmailValid(data.email)) {
             throw new AppException(`Email ${email} invalid!`, 400);
         }
 
-        if (!isPasswordValid(password)) {
+        if (!isPasswordValid(data.password)) {
             throw new AppException('Password invalid!', 400);
         }
 
         const roles = ['USER', 'ADMIN', 'MANAGER'];
 
-        if (!role || !roles.includes(role)) {
+        if (!data.role || !roles.includes(data.role)) {
             throw new AppException(`role ${role} invalid!`, 400);
         }
 
@@ -30,4 +38,4 @@ class CreateUserValidator {
     }
 }
 
-export { CreateUserValidator };
+export { RegisterUserValidator };

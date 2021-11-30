@@ -6,13 +6,19 @@ import { generateStatus } from '@shared/helpers/status';
 
 class UpdatePasswordUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { user_id } = req.auth;
+        const { user_token_id } = req.auth;
 
         const { current_password, new_password } = req.body;
 
+        const data = {
+            user_token_id,
+            current_password,
+            new_password,
+        };
+
         const service = container.resolve(UpdatePasswordUserService);
 
-        await service.execute({ current_password, new_password, user_id });
+        await service.execute(data);
 
         const statusCode = 200;
 

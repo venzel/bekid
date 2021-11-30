@@ -15,6 +15,8 @@ class ResetPasswordUserService {
     ) {}
 
     public async execute(data: IResetPasswordUserDTO): Promise<void> {
+        /* Destructuring object */
+
         const { new_password, token } = data;
 
         /* Find user token by toeken */
@@ -49,7 +51,7 @@ class ResetPasswordUserService {
 
         existsUserWithId.password = generatedHashPassword;
 
-        /* Delete all tokens */
+        /* Delete all tokens in repository */
 
         await this._userTokenRepository.deleteTokensByOwnerId(user_id);
     }

@@ -13,7 +13,7 @@ class ListUserController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully listed users!');
+        const status = generateStatus(false, statusCode, 'Succesfully, users listed!');
 
         const docs = classToClass(users);
 
