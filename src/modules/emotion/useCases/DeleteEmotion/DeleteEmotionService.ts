@@ -27,7 +27,7 @@ class DeleteEmotionService {
 
         existsEmotion.id = emotionId;
 
-        /* Return emotion deleted */
+        /* Return emotion found */
 
         return existsEmotion;
     }

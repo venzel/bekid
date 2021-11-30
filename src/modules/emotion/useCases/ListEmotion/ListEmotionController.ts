@@ -13,7 +13,7 @@ class ListEmotionController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully listed emotions!');
+        const status = generateStatus(false, statusCode, 'Succesfully, emotions listed!');
 
         const docs = classToClass(emotions);
 

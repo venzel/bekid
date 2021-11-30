@@ -7,13 +7,13 @@ import { generateStatus } from '@shared/helpers/status';
 
 class DeleteEmotionController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const emotionId = req.params.id?.toString();
+        const emotionId = req.params.id;
 
         const service = container.resolve(DeleteEmotionService);
 
         const emotion = await service.execute(emotionId);
 
-        const status = generateStatus(false, 202, 'Succesfully deleted emotion!');
+        const status = generateStatus(false, 202, 'Succesfully, emotion deleted!');
 
         const doc = classToClass(emotion);
 

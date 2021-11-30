@@ -1,10 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 
+import { isIdValid } from '@shared/helpers/validator';
 import { AppException } from '@shared/exceptions/AppException';
 
 class UpdateEmotionValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const { name, slug } = req.body;
+        const { emotion_id, name, slug } = req.body;
+
+        if (!isIdValid(emotion_id, 'hash')) {
+            throw new AppException('Emotion id invalid!');
+        }
 
         if (!name || name.length < 3 || name.length > 15) {
             throw new AppException('Emotion name invalid!', 400);

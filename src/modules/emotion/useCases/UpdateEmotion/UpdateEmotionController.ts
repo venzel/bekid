@@ -7,15 +7,19 @@ import { generateStatus } from '@shared/helpers/status';
 
 class UpdateEmotionController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { name, slug } = req.body;
-
-        const emotionId = req.params.id?.toString();
+        const { emotion_id, name, slug } = req.body;
 
         const service = container.resolve(UpdateEmotionService);
 
-        const emotion = await service.execute(emotionId, { name, slug });
+        const data = {
+            emotion_id,
+            name,
+            slug,
+        };
 
-        const statusCode = 201;
+        const emotion = await service.execute(data);
+
+        const statusCode = 200;
 
         const status = generateStatus(false, statusCode, 'Succesfully updated emotion!');
 

@@ -9,22 +9,24 @@ import { AppException } from '@shared/exceptions/AppException';
 class UpdateEmotionService {
     constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
 
-    public async execute(emotionId: string, data: IUpdateEmotionDTO): Promise<IEmotionEntity> {
-        const { name, slug } = data;
+    public async execute(data: IUpdateEmotionDTO): Promise<IEmotionEntity> {
+        /* Destructuring object */
+
+        const { emotion_id, name, slug } = data;
 
         /* Find emotion by id */
 
-        const existsEmotionWithId = await this._emotionRepository.findOneById(emotionId);
+        const existsEmotion = await this._emotionRepository.findOneById(emotion_id);
 
         /* Strategy guard */
 
-        if (!existsEmotionWithId) {
-            throw new AppException(`Emotion id ${emotionId} not exists!`, 404);
+        if (!existsEmotion) {
+            throw new AppException(`Emotion with id ${emotion_id} not found!`, 404);
         }
 
         /* Strategy guard */
 
-        if (existsEmotionWithId.name === name) {
+        if (existsEmotion.name === name) {
             throw new AppException('It is not allowed to change to the same name!', 400);
         }
 
@@ -44,17 +46,17 @@ class UpdateEmotionService {
 
         /* Data update */
 
-        existsEmotionWithId.name = name;
+        existsEmotion.name = name;
 
-        existsEmotionWithId.slug = slug;
+        existsEmotion.slug = slug;
 
-        /* Data saved in repository */
+        /* Save emotion in repository */
 
-        const updatedEmotion = await this._emotionRepository.save(existsEmotionWithId);
+        const emotionUpdated = await this._emotionRepository.save(existsEmotion);
 
-        /* Returns the emotion found */
+        /* Returns emotion found */
 
-        return updatedEmotion;
+        return emotionUpdated;
     }
 }
 

@@ -8,7 +8,9 @@ import { AppException } from '@shared/exceptions/AppException';
 class CreateEmotionService {
     constructor(@inject('EmotionRepository') private _emotionRepository: IEmotionRepository) {}
 
-    public async handle(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
+    public async execute(data: ICreateEmotionDTO): Promise<IEmotionEntity> {
+        /* Destructuring object */
+
         const { name, slug } = data;
 
         /* Find emotion by name */
@@ -29,7 +31,7 @@ class CreateEmotionService {
 
         const createdEmotion = await this._emotionRepository.create({ slug, name });
 
-        /* Return the emotion created */
+        /* Return emotion created */
 
         return createdEmotion;
     }

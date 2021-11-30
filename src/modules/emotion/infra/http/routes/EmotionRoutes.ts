@@ -12,7 +12,7 @@ class EmotionRoutes {
         new CreateEmotionMiddleware().register(router, 'post', 'ADMIN', '/emotions');
 
         // Update
-        new UpdateEmotionMiddleware().register(router, 'put', 'ADMIN', '/emotions/:id');
+        new UpdateEmotionMiddleware().register(router, 'put', 'ADMIN', '/emotions');
 
         // List
         new ListEmotionMiddleware().register(router, 'get', 'ADMIN', '/emotions');

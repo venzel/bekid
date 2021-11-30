@@ -11,11 +11,16 @@ class CreateEmotionController {
 
         const service = container.resolve(CreateEmotionService);
 
-        const emotion = await service.handle({ name, slug });
+        const data = {
+            name,
+            slug,
+        };
+
+        const emotion = await service.execute(data);
 
         const statusCode = 201;
 
-        const status = generateStatus(false, statusCode, 'Succesfully created emotion!');
+        const status = generateStatus(false, statusCode, 'Succesfully, emotion created!');
 
         const doc = classToClass(emotion);
 

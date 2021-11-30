@@ -5,7 +5,7 @@ import { AppException } from '@shared/exceptions/AppException';
 
 class ShowEmotionValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const emotionId = req.params.id?.toString();
+        const emotionId = req.params.id;
 
         if (!isIdValid(emotionId, 'hash')) {
             throw new AppException('Emotion id invalid!');

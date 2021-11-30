@@ -7,7 +7,7 @@ import { generateStatus } from '@shared/helpers/status';
 
 class ShowEmotionController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const emotionId = req.params.id?.toString();
+        const emotionId = req.params.id;
 
         const service = container.resolve(ShowEmotionService);
 
@@ -15,7 +15,7 @@ class ShowEmotionController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully showed emotion!');
+        const status = generateStatus(false, statusCode, 'Succesfully, emotion showed!');
 
         const doc = classToClass(emotion);
 
