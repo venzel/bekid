@@ -8,15 +8,15 @@ import { generateStatus } from '@shared/helpers/status';
 
 class AddOneUserInGroupQueueController {
     public async handle(req: Request, res: Response): Promise<Response> {
+        const { user_token_id } = req.auth;
+
         const { group_id, user_id } = req.query;
 
-        const user_token_id = req.auth.user_id;
-
         const data = {
+            user_token_id,
             group_id,
             user_id,
-            user_token_id,
-        } as IAddOneUserInGroupQueueDTO; // important, force typing!
+        } as IAddOneUserInGroupQueueDTO; // important, force typing in this case: QUERY STRING!
 
         const service = container.resolve(AddOneUserInGroupQueueService);
 

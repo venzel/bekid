@@ -8,16 +8,16 @@ import { generateStatus } from '@shared/helpers/status';
 
 class DeleteOneUserInGroupQueueController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { group_queue_id } = req.query;
+        const { user_token_id } = req.auth;
 
-        const user_token_id = req.auth.user_id;
+        const group_queue_id = req.query.id;
 
         const service = container.resolve(DeleteOneUserInGroupQueueService);
 
         const data = {
-            group_queue_id,
             user_token_id,
-        } as IDeleteOneUserInGroupQueueDTO; // important, force typing!
+            group_queue_id,
+        } as IDeleteOneUserInGroupQueueDTO; // important, force typing in this case: QUERY STRING!
 
         const groupQueue = await service.execute(data);
 

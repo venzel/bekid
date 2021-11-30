@@ -7,15 +7,15 @@ import { generateStatus } from '@shared/helpers/status';
 
 class MonitoreGroupQueueController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const userTokenId = req.auth.user_id;
+        const { user_token_id } = req.auth;
 
         const service = container.resolve(MonitoreGroupQueueService);
 
-        const groupQueue = await service.execute(userTokenId);
+        const groupQueue = await service.execute(user_token_id);
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully listed group queue!');
+        const status = generateStatus(false, statusCode, 'Succesfully, groups queue listed!');
 
         const docs = classToClass(groupQueue);
 

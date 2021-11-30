@@ -2,26 +2,29 @@ import { Request, Response, NextFunction } from 'express';
 
 import { isIdValid } from '@shared/helpers/validator';
 import { AppException } from '@shared/exceptions/AppException';
+import { IAddOneUserInGroupQueueDTO } from '@modules/group_queue/dtos/IAddOneUserInGroupQueueDTO';
 
 class AddOneUserInGroupQueueValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
         const { group_id, user_id } = req.query;
 
-        const groupId = group_id?.toString();
+        const { user_token_role } = req.auth;
 
-        const userId = user_id?.toString();
+        const data = {
+            user_token_role,
+            group_id,
+            user_id,
+        } as IAddOneUserInGroupQueueDTO; // important, force typing in this case: QUERY STRING!
 
-        const userTokenId = req.auth.user_id;
-
-        if (!isIdValid(groupId, 'hash')) {
-            throw new AppException(`Group id ${group_id} invalid!`);
+        if (!isIdValid(data.group_id, 'hash')) {
+            throw new AppException(`Group id ${data.group_id} invalid!`);
         }
 
-        if (!isIdValid(userId, 'hash')) {
-            throw new AppException(`User id ${user_id} invalid!`);
+        if (!isIdValid(data.user_id, 'hash')) {
+            throw new AppException(`User id ${data.user_id} invalid!`);
         }
 
-        if (user_id === userTokenId) {
+        if (data.user_id === user_token_role) {
             throw new AppException(`It is not possible to add to a group!`);
         }
 
