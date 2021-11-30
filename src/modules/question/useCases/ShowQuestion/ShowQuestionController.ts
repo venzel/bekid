@@ -7,7 +7,7 @@ import { generateStatus } from '@shared/helpers/status';
 
 class ShowQuestionController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const questionId = req.params.id?.toString();
+        const questionId = req.params.id;
 
         const service = container.resolve(ShowQuestionService);
 
@@ -15,7 +15,7 @@ class ShowQuestionController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully showed question!');
+        const status = generateStatus(false, statusCode, 'Succesfully, question showed!');
 
         const doc = classToClass(question);
 

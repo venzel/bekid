@@ -13,7 +13,9 @@ class CreateQuestionService {
         @inject('EmotionRepository') private _emotionRepository: IEmotionRepository
     ) {}
 
-    public async handle(data: ICreateQuestionDTO): Promise<IQuestionEntity> {
+    public async execute(data: ICreateQuestionDTO): Promise<IQuestionEntity> {
+        /* Destructuring object */
+
         const { emotion_id, description } = data;
 
         /* Find emotion by id */
@@ -23,16 +25,16 @@ class CreateQuestionService {
         /* Strategy guard */
 
         if (!existsEmotion) {
-            throw new AppException(`Emotion id ${emotion_id} not found!`, 404);
+            throw new AppException(`Emotion with id ${emotion_id} not found!`, 404);
         }
 
         /* Create question */
 
-        const createdQuestion = await this._questionRepository.create({ emotion_id, description });
+        const questionCreated = await this._questionRepository.create({ emotion_id, description });
 
         /* Return the question created */
 
-        return createdQuestion;
+        return questionCreated;
     }
 }
 

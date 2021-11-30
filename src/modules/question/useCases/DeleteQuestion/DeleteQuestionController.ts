@@ -7,7 +7,7 @@ import { generateStatus } from '@shared/helpers/status';
 
 class DeleteQuestionController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const questionId = req.params.id?.toString();
+        const questionId = req.params.id;
 
         const service = container.resolve(DeleteQuestionService);
 
@@ -15,7 +15,7 @@ class DeleteQuestionController {
 
         const statusCode = 202;
 
-        const status = generateStatus(false, statusCode, 'Succesfully deleted question!');
+        const status = generateStatus(false, statusCode, 'Succesfully, question deleted!');
 
         const doc = classToClass(question);
 

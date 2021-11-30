@@ -9,28 +9,30 @@ import { AppException } from '@shared/exceptions/AppException';
 class UpdateQuestionService {
     constructor(@inject('QuestionRepository') private _questionRepository: IQuestionRepository) {}
 
-    public async execute(questionId: string, data: IUpdateQuestionDTO): Promise<IQuestionEntity> {
-        const { description } = data;
+    public async execute(data: IUpdateQuestionDTO): Promise<IQuestionEntity> {
+        /* Destructuring object */
+
+        const { question_id, description } = data;
 
         /* Find question by id */
 
-        const existsQuestionWithId = await this._questionRepository.findOneById(questionId);
+        const existsQuestion = await this._questionRepository.findOneById(question_id);
 
         /* Strategy guard */
 
-        if (!existsQuestionWithId) {
-            throw new AppException(`Question id ${questionId} not found!`, 404);
+        if (!existsQuestion) {
+            throw new AppException(`Question with id ${question_id} not found!`, 404);
         }
 
         /* Data update */
 
-        existsQuestionWithId.description = description;
+        existsQuestion.description = description;
 
         /* Data saved in repository */
 
-        const updatedQuestion = await this._questionRepository.save(existsQuestionWithId);
+        const updatedQuestion = await this._questionRepository.save(existsQuestion);
 
-        /* Returns the question found */
+        /* Returns question found */
 
         return updatedQuestion;
     }

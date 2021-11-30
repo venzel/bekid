@@ -11,11 +11,16 @@ class CreateQuestionController {
 
         const service = container.resolve(CreateQuestionService);
 
-        const question = await service.handle({ emotion_id, description });
+        const data = {
+            emotion_id,
+            description,
+        };
+
+        const question = await service.execute(data);
 
         const statusCode = 201;
 
-        const status = generateStatus(false, statusCode, 'Succesfully created question!');
+        const status = generateStatus(false, statusCode, 'Succesfully, question created!');
 
         const doc = classToClass(question);
 

@@ -13,7 +13,7 @@ class ListQuestionController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully listed questions!');
+        const status = generateStatus(false, statusCode, 'Succesfully, questions listed!');
 
         const docs = classToClass(questions);
 

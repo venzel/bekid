@@ -7,17 +7,20 @@ import { generateStatus } from '@shared/helpers/status';
 
 class UpdateQuestionController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { description } = req.body;
-
-        const questionId = req.params.id?.toString();
+        const { question_id, description } = req.body;
 
         const service = container.resolve(UpdateQuestionService);
 
-        const question = await service.execute(questionId, { description });
+        const data = {
+            question_id,
+            description,
+        };
+
+        const question = await service.execute(data);
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully updated question!');
+        const status = generateStatus(false, statusCode, 'Succesfully, question updated!');
 
         const doc = classToClass(question);
 

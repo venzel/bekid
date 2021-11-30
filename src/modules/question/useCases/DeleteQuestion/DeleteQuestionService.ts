@@ -16,10 +16,10 @@ class DeleteQuestionService {
         /* Strategy guard */
 
         if (!existsQuestion) {
-            throw new AppException(`Question id ${questionId} not exists`, 404);
+            throw new AppException(`Question with id ${questionId} not found`, 404);
         }
 
-        /* Data delete (update) in repository */
+        /* Data delete in repository */
 
         await this._questionRepository.delete(existsQuestion);
 
@@ -27,7 +27,7 @@ class DeleteQuestionService {
 
         existsQuestion.id = questionId;
 
-        /* Returns the question found */
+        /* Returns question found */
 
         return existsQuestion;
     }

@@ -12,7 +12,7 @@ class QuestionRoutes {
         new CreateQuestionMiddleware().register(router, 'post', 'ADMIN', '/questions');
 
         // Update
-        new UpdateQuestionMiddleware().register(router, 'put', 'ADMIN', '/questions/:id');
+        new UpdateQuestionMiddleware().register(router, 'put', 'ADMIN', '/questions');
 
         // List
         new ListQuestionMiddleware().register(router, 'get', 'ADMIN', '/questions');
