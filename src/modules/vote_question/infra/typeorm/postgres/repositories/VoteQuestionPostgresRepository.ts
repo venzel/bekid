@@ -29,9 +29,9 @@ class VoteQuestionPostgresRepository implements IVoteQuestionRepository {
     }
 
     public async create(data: ICreateVoteQuestionDTO): Promise<IVoteQuestionEntity> {
-        const { vote_id, question_id, user_id } = data;
+        const { vote_id, question_id, user_token_id } = data;
 
-        const voteQuestionCreated = this._repository.create({ vote_id, question_id, user_id });
+        const voteQuestionCreated = this._repository.create({ vote_id, question_id, user_id: user_token_id });
 
         await this._repository.save(voteQuestionCreated);
 

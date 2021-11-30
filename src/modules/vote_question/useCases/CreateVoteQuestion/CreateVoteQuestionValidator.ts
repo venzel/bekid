@@ -1,20 +1,24 @@
 import { Request, Response, NextFunction } from 'express';
 
+import { ICreateVoteQuestionDTO } from '@modules/vote_question/dtos/ICreateVoteQuestionDTO';
 import { isIdValid } from '@shared/helpers/validator';
 import { AppException } from '@shared/exceptions/AppException';
 
 class CreateVoteQuestionValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const voteId = req.query.vote_id?.toString();
+        const { vote_id, question_id } = req.query;
 
-        const questionId = req.query.question_id?.toString();
+        const data = {
+            vote_id,
+            question_id,
+        } as ICreateVoteQuestionDTO; // important, force typing in this case: QUERY STRING!
 
-        if (!isIdValid(voteId, 'hash')) {
-            throw new AppException('Vote id invalid!');
+        if (!isIdValid(data.vote_id, 'hash')) {
+            throw new AppException(`Vote id ${data.vote_id} invalid!`);
         }
 
-        if (!isIdValid(questionId, 'hash')) {
-            throw new AppException('Question id invalid!');
+        if (!isIdValid(data.question_id, 'hash')) {
+            throw new AppException(`Question id ${data.question_id} invalid!`);
         }
 
         return next();

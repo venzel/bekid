@@ -2,23 +2,53 @@ import { injectable, inject } from 'tsyringe';
 
 import { IVoteQuestionEntity } from '@modules/vote_question/models/entities/IVoteQuestionEntity';
 import { IVoteQuestionRepository } from '@modules/vote_question/repositories/IVoteQuestionRepository';
+import { IVoteRepository } from '@modules/vote/repositories/IVoteRepository';
 import { ICreateVoteQuestionDTO } from '@modules/vote_question/dtos/ICreateVoteQuestionDTO';
 import { AppException } from '@shared/exceptions/AppException';
 
 @injectable()
 class CreateVoteQuestionService {
-    constructor(@inject('VoteQuestionRepository') private _voteQuestionRepository: IVoteQuestionRepository) {}
+    constructor(
+        @inject('VoteQuestionRepository') private _voteQuestionRepository: IVoteQuestionRepository,
+        @inject('VoteRepository') private _voteRepository: IVoteRepository
+    ) {}
 
-    public async handle(data: ICreateVoteQuestionDTO): Promise<IVoteQuestionEntity> {
-        const { vote_id, question_id, user_id } = data;
+    public async execute(data: ICreateVoteQuestionDTO): Promise<IVoteQuestionEntity> {
+        /* Destructuring object */
 
-        /* Create vote question */
+        const { user_token_id, vote_id, question_id } = data;
 
-        const createdVoteQuestion = await this._voteQuestionRepository.create({ vote_id, question_id, user_id });
+        /* Find vote by id */
 
-        /* Return the vote_question created */
+        const existsVote = await this._voteRepository.findOneById(vote_id);
 
-        return createdVoteQuestion;
+        /* Strategy guard */
+
+        if (!existsVote) {
+            throw new AppException(`Vote with id ${vote_id} not found!`, 404);
+        }
+
+        /* Check authority */
+
+        if (existsVote.user_id !== user_token_id) {
+            throw new AppException(`It is not possible to use a vote of another user!`, 401);
+        }
+
+        /* Vote question */
+
+        const voteQuestion = {
+            user_token_id,
+            vote_id,
+            question_id,
+        };
+
+        /* Create vote question in repository */
+
+        const voteQuestionCreated = await this._voteQuestionRepository.create(voteQuestion);
+
+        /* Return vote question created */
+
+        return voteQuestionCreated;
     }
 }
 
