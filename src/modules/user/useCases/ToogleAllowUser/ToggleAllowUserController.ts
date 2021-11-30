@@ -13,7 +13,7 @@ class ToggleAllowUserController {
 
         const user = await service.execute(userId);
 
-        const status = generateStatus(false, 200, 'Succesfully, user allow, toggled!');
+        const status = generateStatus(false, 200, 'Succesfully, user allow toggled!');
 
         const doc = classToClass(user);
 

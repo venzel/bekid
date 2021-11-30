@@ -22,7 +22,7 @@ class UpdatePasswordUserController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully password user updated!');
+        const status = generateStatus(false, statusCode, 'Succesfully, user password updated!');
 
         return res.status(statusCode).json({ status });
     }
