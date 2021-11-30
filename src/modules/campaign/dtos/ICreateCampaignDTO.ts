@@ -1,6 +1,6 @@
 interface ICreateCampaignDTO {
+    user_token_id: string;
     group_id: string;
-    user_id: string;
     name: string;
 }
 

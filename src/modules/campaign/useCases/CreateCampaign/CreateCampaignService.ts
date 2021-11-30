@@ -15,7 +15,9 @@ class CreateCampaignService {
     ) {}
 
     public async execute(data: ICreateCampaignDTO): Promise<ICampaignEntity> {
-        const { group_id, user_id, name } = data;
+        /* Destructuring object */
+
+        const { user_token_id, group_id, name } = data;
 
         /* Find group by id */
 
@@ -41,9 +43,17 @@ class CreateCampaignService {
             throw new AppException(`Campaign name already exists!`, 400, payload);
         }
 
+        /* Data */
+
+        const campaign = {
+            user_token_id,
+            group_id,
+            name,
+        };
+
         /* Create campaign */
 
-        const campaignCreated = await this._campaignRepository.create({ group_id, user_id, name });
+        const campaignCreated = await this._campaignRepository.create(campaign);
 
         /* Use create campaign queue service */
 
@@ -51,7 +61,7 @@ class CreateCampaignService {
 
         /* Iterate in group users */
 
-        existsGroup.users.forEach((e) => createCampaignQueueService.execute(campaignCreated.id, e.id));
+        existsGroup.users.forEach((user) => createCampaignQueueService.execute(campaignCreated.id, user.id));
 
         /* Return the campaign created */
 

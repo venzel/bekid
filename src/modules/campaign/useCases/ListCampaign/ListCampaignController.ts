@@ -13,7 +13,7 @@ class ListCampaignController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully listed campaigns!');
+        const status = generateStatus(false, statusCode, 'Succesfully, campaigns listed!');
 
         const docs = classToClass(campaigns);
 

@@ -7,17 +7,24 @@ import { generateStatus } from '@shared/helpers/status';
 
 class UpdateCampaignController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { name } = req.body;
+        const { user_token_id, user_token_role } = req.auth;
 
-        const campaignId = req.params.id?.toString();
+        const { campaign_id, name } = req.body;
+
+        const data = {
+            user_token_id,
+            user_token_role,
+            campaign_id,
+            name,
+        };
 
         const service = container.resolve(UpdateCampaignService);
 
-        const campaign = await service.execute(campaignId, { name });
+        const campaign = await service.execute(data);
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully updated campaign!');
+        const status = generateStatus(false, statusCode, 'Succesfully, campaign updated!');
 
         const doc = classToClass(campaign);
 
