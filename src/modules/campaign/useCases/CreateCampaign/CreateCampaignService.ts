@@ -21,7 +21,7 @@ class CreateCampaignService {
 
         const existsGroup = await this._groupRepository.findOneById(group_id);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsGroup) {
             throw new AppException(`Group id ${group_id} not found!`, 404);
@@ -31,7 +31,7 @@ class CreateCampaignService {
 
         const existsCampaign = await this._campaignRepository.findOneByName(name);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (existsCampaign) {
             const { id, name } = existsCampaign;

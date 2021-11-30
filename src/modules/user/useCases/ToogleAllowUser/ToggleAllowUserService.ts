@@ -13,7 +13,7 @@ class ToggleAllowUserService {
 
         const existsUser = await this._userRepository.findOneById(userId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsUser) {
             throw new AppException(`User id ${userId} not exists!`, 404);

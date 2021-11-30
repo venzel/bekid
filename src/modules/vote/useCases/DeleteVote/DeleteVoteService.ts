@@ -14,7 +14,7 @@ class DeleteVoteService {
 
         const existsVote = await this._voteRepository.findOneById(voteId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsVote) {
             throw new AppException('Vote not exists!', 404);

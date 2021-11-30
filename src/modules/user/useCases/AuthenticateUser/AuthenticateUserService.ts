@@ -17,13 +17,15 @@ class AuthenticateUserService {
     ) {}
 
     public async execute(data: IAuthenticateUserDTO): Promise<IUserEntity> {
+        /* Destructuring object */
+
         const { email, password } = data;
 
         /* Find user by email */
 
         const existsUser = await this._userRepository.findOneByEmail(email);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsUser) {
             throw new AppException('Email or password invalid!', 403);
@@ -31,13 +33,13 @@ class AuthenticateUserService {
 
         /* Destructuring object */
 
-        const { id: user_id, role: roleAlias, activated, allowed, password: data_password } = existsUser;
+        const { id: user_id, activated, allowed } = existsUser;
 
-        /* Convert to IsRoleDTO */
+        /* Force typing to IsRoleDTO */
 
-        const role = roleAlias as IRoleDTO;
+        const role = existsUser.role as IRoleDTO;
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!allowed) {
             throw new AppException('User not allowed!', 403);
@@ -45,9 +47,9 @@ class AuthenticateUserService {
 
         /* Check if password is equals */
 
-        const isPasswordEquals = await this._hashProvider.compareHash(password, data_password);
+        const isPasswordEquals = await this._hashProvider.compareHash(password, existsUser.password);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!isPasswordEquals) {
             throw new AppException('Email or password invalid!', 403);

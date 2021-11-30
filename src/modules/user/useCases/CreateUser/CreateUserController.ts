@@ -13,13 +13,13 @@ class CreateUserController {
 
         const user = await service.execute({ name, email, password, role });
 
-        const codeStatus = 201;
+        const statusCode = 201;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully created user!');
+        const status = generateStatus(false, statusCode, 'Succesfully, user created!');
 
         const doc = classToClass(user);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

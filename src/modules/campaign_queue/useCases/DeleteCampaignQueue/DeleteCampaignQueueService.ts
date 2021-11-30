@@ -13,7 +13,7 @@ class DeleteCampaignQueueService {
 
         const existsCampaignQueue = await this._campaignQueueRepository.findOneByCampaignIdAndUserId(campaignId, userId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsCampaignQueue) {
             throw new AppException(`Campaign queue not found!`, 404);

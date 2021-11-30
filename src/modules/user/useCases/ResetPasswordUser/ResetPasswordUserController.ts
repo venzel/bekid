@@ -12,11 +12,11 @@ class ResetPasswordUserController {
 
         await service.execute({ new_password, token });
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully password user reseted!');
+        const status = generateStatus(false, statusCode, 'Succesfully password user reseted!');
 
-        return res.status(codeStatus).json({ status });
+        return res.status(statusCode).json({ status });
     }
 }
 

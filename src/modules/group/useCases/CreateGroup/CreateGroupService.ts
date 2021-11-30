@@ -16,7 +16,7 @@ class CreateGroupService {
 
         const existsGroup = await this._groupRepository.findOneByUserIdAndGroupName(user_id, name);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (existsGroup) {
             const { id, name } = existsGroup;

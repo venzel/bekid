@@ -13,13 +13,13 @@ class DeleteUserController {
 
         const user = await service.execute(userId);
 
-        const codeStatus = 202;
+        const statusCode = 202;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully deleted user!');
+        const status = generateStatus(false, statusCode, 'Succesfully deleted user!');
 
         const doc = classToClass(user);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

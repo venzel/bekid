@@ -16,7 +16,7 @@ class UpdateQuestionService {
 
         const existsQuestionWithId = await this._questionRepository.findOneById(questionId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsQuestionWithId) {
             throw new AppException(`Question id ${questionId} not found!`, 404);

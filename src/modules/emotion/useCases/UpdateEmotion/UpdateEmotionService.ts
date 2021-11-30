@@ -16,13 +16,13 @@ class UpdateEmotionService {
 
         const existsEmotionWithId = await this._emotionRepository.findOneById(emotionId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsEmotionWithId) {
             throw new AppException(`Emotion id ${emotionId} not exists!`, 404);
         }
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (existsEmotionWithId.name === name) {
             throw new AppException('It is not allowed to change to the same name!', 400);
@@ -32,7 +32,7 @@ class UpdateEmotionService {
 
         const existsEmotionWithName = await this._emotionRepository.findOneByName(name);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (existsEmotionWithName) {
             const { id, name } = existsEmotionWithName;

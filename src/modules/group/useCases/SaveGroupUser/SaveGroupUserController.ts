@@ -15,13 +15,13 @@ class SaveGroupUserController {
 
         const groupUser = await service.execute(managerId, role, { group_id, users_ids });
 
-        const codeStatus = 201;
+        const statusCode = 201;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully created group user!');
+        const status = generateStatus(false, statusCode, 'Succesfully created group user!');
 
         const doc = classToClass(groupUser);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

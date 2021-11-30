@@ -11,13 +11,13 @@ class ListEmotionController {
 
         const emotions = await service.execute();
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully listed emotions!');
+        const status = generateStatus(false, statusCode, 'Succesfully listed emotions!');
 
         const docs = classToClass(emotions);
 
-        return res.status(codeStatus).json({ status, docs });
+        return res.status(statusCode).json({ status, docs });
     }
 }
 

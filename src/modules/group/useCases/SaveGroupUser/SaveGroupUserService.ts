@@ -21,7 +21,7 @@ class SaveGroupUserService {
 
         const existsGroup = await this._groupRepository.findOneById(group_id);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsGroup) {
             throw new AppException(`Grpup id ${group_id} not exists!`, 404);
@@ -37,7 +37,7 @@ class SaveGroupUserService {
 
         const users: IUserEntity[] = await this._userRepository.findAllByIds(users_ids);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!users.length) {
             const payload = { ids: users_ids };

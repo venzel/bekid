@@ -13,13 +13,13 @@ class ListGroupController {
 
         const groups = await service.execute(managerId, role);
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully listed groups!');
+        const status = generateStatus(false, statusCode, 'Succesfully listed groups!');
 
         const docs = classToClass(groups);
 
-        return res.status(codeStatus).json({ status, docs });
+        return res.status(statusCode).json({ status, docs });
     }
 }
 

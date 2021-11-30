@@ -16,7 +16,7 @@ class UpdateCampaignService {
 
         const existsCampaignWithId = await this._campaignRepository.findOneById(campaignId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsCampaignWithId) {
             throw new AppException(`Campaign id ${campaignId} not found!`, 404);

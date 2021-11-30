@@ -21,7 +21,7 @@ class ResetPasswordUserService {
 
         const existsUserWithToken = await this._userTokenRepository.findOneByToken(token);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsUserWithToken) {
             throw new AppException('User token does not exists!', 404);
@@ -35,7 +35,7 @@ class ResetPasswordUserService {
 
         const existsUserWithId = await this._userRepository.findOneById(user_id);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsUserWithId) {
             throw new AppException('User does not exists!', 404);

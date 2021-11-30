@@ -12,13 +12,13 @@ class ForgotPasswordUserController {
 
         const token: string = await service.execute(email);
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully forgot user password!');
+        const status = generateStatus(false, statusCode, 'Succesfully forgot user password!');
 
         const doc = { token };
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

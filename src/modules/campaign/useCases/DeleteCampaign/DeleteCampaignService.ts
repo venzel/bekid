@@ -13,7 +13,7 @@ class DeleteCampaignService {
 
         const existsCampaign = await this._campaignRepository.findOneById(campaignId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsCampaign) {
             throw new AppException(`Campaign id ${campaignId} not found!`, 404);

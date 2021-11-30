@@ -13,13 +13,13 @@ class ShowUserController {
 
         const user = await service.execute(userId);
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully showed user!');
+        const status = generateStatus(false, statusCode, 'Succesfully showed user!');
 
         const doc = classToClass(user);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

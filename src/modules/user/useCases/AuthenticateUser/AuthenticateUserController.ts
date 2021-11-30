@@ -4,6 +4,7 @@ import { classToClass } from 'class-transformer';
 
 import { AuthenticateUserServiceProxy } from './AuthenticateUserServiceProxy';
 import { generateStatus } from '@shared/helpers/status';
+import { IAuthenticateUserDTO } from '@modules/user/dtos/IAuthenticateUserDTO';
 
 class AuthenticateUserController {
     public async handle(req: Request, res: Response): Promise<Response> {
@@ -11,15 +12,20 @@ class AuthenticateUserController {
 
         const serviceProxy = container.resolve(AuthenticateUserServiceProxy);
 
-        const user = await serviceProxy.execute({ email, password });
+        const data = {
+            email,
+            password,
+        } as IAuthenticateUserDTO; // important, force typing!
 
-        const codeStatus = 200;
+        const user = await serviceProxy.execute(data);
 
-        const status = generateStatus(false, codeStatus, 'Succesfully authenticated user!');
+        const statusCode = 200;
+
+        const status = generateStatus(false, statusCode, 'Succesfully, user authenticated!');
 
         const doc = classToClass(user);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

@@ -15,13 +15,13 @@ class UpdateAvatarUserController {
 
         const user = await service.execute({ filename, user_id });
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully updated avatar user!');
+        const status = generateStatus(false, statusCode, 'Succesfully updated avatar user!');
 
         const doc = classToClass(user);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

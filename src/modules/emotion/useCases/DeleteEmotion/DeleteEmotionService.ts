@@ -13,7 +13,7 @@ class DeleteEmotionService {
 
         const existsEmotion = await this._emotionRepository.findOneById(emotionId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsEmotion) {
             throw new AppException(`Emotion id ${emotionId} not found!`, 404);

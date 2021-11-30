@@ -15,7 +15,7 @@ class CreateEmotionService {
 
         const existsEmotion = await this._emotionRepository.findOneByName(name);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (existsEmotion) {
             const { id, name } = existsEmotion;

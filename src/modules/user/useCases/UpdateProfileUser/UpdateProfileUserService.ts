@@ -20,7 +20,7 @@ class UpdateProfileUserService {
 
         const existsUserWithId = await this._userRepository.findOneById(userId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsUserWithId) {
             throw new AppException(`User id ${userId} not exists!`, 404);
@@ -30,7 +30,7 @@ class UpdateProfileUserService {
 
         const existsUserWithEmail = await this._userRepository.findOneByEmail(email);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (email !== existsUserWithId.email && existsUserWithEmail) {
             throw new AppException(`User email ${email} already exists!`, 400);
@@ -44,7 +44,7 @@ class UpdateProfileUserService {
 
         const isPasswordEquals: boolean = await this._hashProvider.compareHash(current_password, password);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!isPasswordEquals) {
             throw new AppException('Password not equals!', 400);

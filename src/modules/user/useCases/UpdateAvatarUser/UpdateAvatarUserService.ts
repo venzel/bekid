@@ -20,7 +20,7 @@ class UpdateAvatarUserService {
 
         const existsUser = await this._userRepository.findOneById(user_id);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsUser) {
             throw new AppException(`User id ${user_id} not exists!`, 404);

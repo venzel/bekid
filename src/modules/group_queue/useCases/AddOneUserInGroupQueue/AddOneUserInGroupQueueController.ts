@@ -22,13 +22,13 @@ class AddOneUserInGroupQueueController {
 
         const groupQueue = await service.execute(data);
 
-        const codeStatus = 201;
+        const statusCode = 201;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully, group queue created!');
+        const status = generateStatus(false, statusCode, 'Succesfully, group queue created!');
 
         const doc = classToClass(groupQueue);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

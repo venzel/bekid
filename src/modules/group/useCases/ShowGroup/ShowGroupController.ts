@@ -15,13 +15,13 @@ class ShowGroupController {
 
         const group = await service.execute(groupId, managerId, role);
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully showed group!');
+        const status = generateStatus(false, statusCode, 'Succesfully showed group!');
 
         const doc = classToClass(group);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

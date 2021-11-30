@@ -11,13 +11,13 @@ class ListUserController {
 
         const users = await service.execute();
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully listed users!');
+        const status = generateStatus(false, statusCode, 'Succesfully listed users!');
 
         const docs = classToClass(users);
 
-        return res.status(codeStatus).json({ status, docs });
+        return res.status(statusCode).json({ status, docs });
     }
 }
 

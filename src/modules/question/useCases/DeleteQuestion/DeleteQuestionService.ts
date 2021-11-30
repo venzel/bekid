@@ -13,7 +13,7 @@ class DeleteQuestionService {
 
         const existsQuestion = await this._questionRepository.findOneById(questionId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsQuestion) {
             throw new AppException(`Question id ${questionId} not exists`, 404);

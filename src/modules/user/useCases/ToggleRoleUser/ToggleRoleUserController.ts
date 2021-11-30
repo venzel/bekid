@@ -13,13 +13,13 @@ class ToggleRoleUserController {
 
         const user = await service.execute(userId);
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully toggle role user!');
+        const status = generateStatus(false, statusCode, 'Succesfully toggle role user!');
 
         const doc = classToClass(user);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

@@ -14,11 +14,11 @@ class UpdatePasswordUserController {
 
         await service.execute({ current_password, new_password, user_id });
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully password user updated!');
+        const status = generateStatus(false, statusCode, 'Succesfully password user updated!');
 
-        return res.status(codeStatus).json({ status });
+        return res.status(statusCode).json({ status });
     }
 }
 

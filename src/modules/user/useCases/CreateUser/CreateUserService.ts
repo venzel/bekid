@@ -18,13 +18,15 @@ class CreateUserService {
     ) {}
 
     public async execute(data: ICreateUserDTO): Promise<IUserEntity> {
-        const { name, email, password: passwordAlias, role } = data;
+        /* Destructuring object */
+
+        const { name, email, password, role } = data;
 
         /* Find user by email */
 
         const existsUser = await this._userRepository.findOneByEmail(email);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (existsUser) {
             throw new AppException(`User email ${email} already exists!`, 400);
@@ -36,7 +38,7 @@ class CreateUserService {
 
         /* Generate hash password by provider */
 
-        const password = await this._hashProvider.gererateHash(passwordAlias);
+        const hashPassword = await this._hashProvider.gererateHash(password);
 
         /* Multables variables */
 
@@ -46,7 +48,15 @@ class CreateUserService {
 
         /* Object construct user */
 
-        const user = { name, email, password, role, avatar, activated, allowed };
+        const user = {
+            name,
+            email,
+            password: hashPassword,
+            role,
+            avatar,
+            activated,
+            allowed,
+        };
 
         /* If repository is empty */
 
@@ -66,7 +76,7 @@ class CreateUserService {
             allowed = user.allowed = true;
         }
 
-        /* User created */
+        /* User created in repository */
 
         const userCreated = await this._userRepository.create(user);
 

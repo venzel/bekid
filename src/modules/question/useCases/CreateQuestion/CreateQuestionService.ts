@@ -20,7 +20,7 @@ class CreateQuestionService {
 
         const existsEmotion = await this._emotionRepository.findOneById(emotion_id);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsEmotion) {
             throw new AppException(`Emotion id ${emotion_id} not found!`, 404);

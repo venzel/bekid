@@ -18,7 +18,7 @@ class ForgotPasswordUserService {
 
         const existsUser = await this._userRepository.findOneByEmail(email);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsUser) {
             throw new AppException(`User ${email} does not exists!`, 404);

@@ -15,13 +15,13 @@ class CreateGroupController {
 
         const group = await service.execute({ user_id, name });
 
-        const codeStatus = 201;
+        const statusCode = 201;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully created group!');
+        const status = generateStatus(false, statusCode, 'Succesfully created group!');
 
         const doc = classToClass(group);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

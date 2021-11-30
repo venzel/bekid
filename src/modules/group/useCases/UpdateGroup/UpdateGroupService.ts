@@ -16,7 +16,7 @@ class UpdateGroupService {
 
         const existsGroup = await this._groupRepository.findOneById(groupId);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsGroup) {
             throw new AppException(`Group id ${groupId} not found!`, 404);

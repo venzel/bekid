@@ -17,13 +17,13 @@ class UpdateGroupController {
 
         const group = await service.execute(groupId, managerId, role, { name });
 
-        const codeStatus = 200;
+        const statusCode = 200;
 
-        const status = generateStatus(false, codeStatus, 'Succesfully updated group!');
+        const status = generateStatus(false, statusCode, 'Succesfully updated group!');
 
         const doc = classToClass(group);
 
-        return res.status(codeStatus).json({ status, doc });
+        return res.status(statusCode).json({ status, doc });
     }
 }
 

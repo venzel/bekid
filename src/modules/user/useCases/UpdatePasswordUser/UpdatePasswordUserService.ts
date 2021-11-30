@@ -24,7 +24,7 @@ class UpdatePasswordUserService {
 
         const existsUser = await this._userRepository.findOneById(user_id);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!existsUser) {
             throw new AppException(`User ${user_id} not exists!`, 404);
@@ -38,7 +38,7 @@ class UpdatePasswordUserService {
 
         const isPasswordEquals: boolean = await this._hashProvider.compareHash(current_password, password);
 
-        /* Exception estrategy guard */
+        /* Strategy guard */
 
         if (!isPasswordEquals) {
             throw new AppException('Password different from registered user!', 400);
