@@ -12,12 +12,12 @@ class GroupQueuePostgresRepository implements IGroupQueueRepository {
         this._repository = getRepository(GroupQueuePostgresEntity, 'default');
     }
 
-    public async findOneByGroupIdAndUserId(groupId: string, userId: string): Promise<IGroupQueueEntity | undefined> {
-        return await this._repository.findOne({ where: { group_id: groupId, user_id: userId } });
+    public async findOneById(groupQueueId: string): Promise<IGroupQueueEntity | undefined> {
+        return await this._repository.findOne({ where: { id: groupQueueId } });
     }
 
-    public async findAllByUserId(userId: string): Promise<IGroupQueueEntity[]> {
-        return await this._repository.find({ where: { user_id: userId } });
+    public async findOneByGroupIdAndUserId(groupId: string, userId: string): Promise<IGroupQueueEntity | undefined> {
+        return await this._repository.findOne({ where: { group_id: groupId, user_id: userId } });
     }
 
     public async create(data: ICreateGroupQueueDTO): Promise<IGroupQueueEntity> {
@@ -40,6 +40,10 @@ class GroupQueuePostgresRepository implements IGroupQueueRepository {
         await this._repository.remove(groupQueue);
 
         return groupQueue;
+    }
+
+    public async listAllByUserId(userId: string): Promise<IGroupQueueEntity[]> {
+        return await this._repository.find({ where: { user_id: userId } });
     }
 
     public async list(): Promise<IGroupQueueEntity[]> {

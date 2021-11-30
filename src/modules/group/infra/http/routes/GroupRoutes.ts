@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { CreateGroupMiddleware } from '@modules/group/useCases/CreateGroup/CreateGroupMiddleware';
-import { SaveGroupUserMiddleware } from '@modules/group/useCases/SaveGroupUser/SaveGroupUserMiddleware';
+import { AddOneUserInGroupMiddleware } from '@modules/group/useCases/AddOneUserInGroup/AddOneUserInGrouprMiddleware';
 import { UpdateGroupMiddleware } from '@modules/group/useCases/UpdateGroup/UpdateGroupMiddleware';
 import { ListGroupMiddleware } from '@modules/group/useCases/ListGroup/ListGroupMiddleware';
 import { ShowGroupMiddleware } from '@modules/group/useCases/ShowGroup/ShowGroupMiddleware';
@@ -12,8 +12,8 @@ class GroupRoutes {
         // Create
         new CreateGroupMiddleware().register(router, 'post', 'MANAGER', '/groups');
 
-        // Create
-        new SaveGroupUserMiddleware().register(router, 'post', 'MANAGER', '/save_group');
+        // Add
+        new AddOneUserInGroupMiddleware().register(router, 'get', 'USER', '/add_user_in_group');
 
         // Update
         new UpdateGroupMiddleware().register(router, 'put', 'MANAGER', '/groups/:id');

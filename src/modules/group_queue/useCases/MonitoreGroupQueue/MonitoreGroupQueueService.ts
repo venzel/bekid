@@ -8,7 +8,7 @@ class MonitoreGroupQueueService {
     constructor(@inject('GroupQueueRepository') private _groupQueueRepository: IGroupQueueRepository) {}
 
     public async execute(userId: string): Promise<IGroupQueueEntity[]> {
-        return await this._groupQueueRepository.findAllByUserId(userId);
+        return await this._groupQueueRepository.listAllByUserId(userId);
     }
 }
 

@@ -29,7 +29,7 @@ class SaveGroupUserService {
 
         /* The group manager arrives */
 
-        if (role !== 'ADMIN' && existsGroup.user_id !== managerId) {
+        if (existsGroup.user_id !== managerId) {
             throw new AppException('It is not possible to add users to another users group!', 401);
         }
 

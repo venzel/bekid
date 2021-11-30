@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-import { ICreateGroupQueueDTO } from '@modules/group_queue/dtos/ICreateGroupQueueDTO';
+import { ICreateGroupQueueDTO } from '../dtos/ICreateGroupQueueDTO';
 import { IGroupQueueEntity } from '@modules/group_queue/models/entities/IGroupQueueEntity';
 import { GroupQueueInMemoryEntity } from '../models/entities/GroupQueueInMemoryEntity';
 import { IGroupQueueRepository } from '@modules/group_queue/repositories/IGroupQueueRepository';
@@ -12,12 +12,12 @@ class GroupQueueInMemoryRepository implements IGroupQueueRepository {
         this._repository = [];
     }
 
-    public async findOneByGroupIdAndUserId(groupId: string, userId: string): Promise<IGroupQueueEntity | undefined> {
-        return this._repository.find((data) => data.group_id === groupId && data.user_id === userId);
+    public async findOneById(groupQueueId: string): Promise<IGroupQueueEntity | undefined> {
+        return this._repository.find((data) => data.id === groupQueueId);
     }
 
-    public async findAllByUserId(userId: string): Promise<IGroupQueueEntity[]> {
-        return this._repository.filter((e) => e.user_id === userId);
+    public async findOneByGroupIdAndUserId(groupId: string, userId: string): Promise<IGroupQueueEntity | undefined> {
+        return this._repository.find((data) => data.group_id === groupId && data.user_id === userId);
     }
 
     public async create(data: ICreateGroupQueueDTO): Promise<IGroupQueueEntity> {
@@ -52,6 +52,10 @@ class GroupQueueInMemoryRepository implements IGroupQueueRepository {
         }
 
         return groupQueue;
+    }
+
+    public async listAllByUserId(userId: string): Promise<IGroupQueueEntity[]> {
+        return this._repository.filter((e) => e.user_id === userId);
     }
 
     public async list(): Promise<IGroupQueueEntity[]> {
