@@ -5,7 +5,7 @@ import { AppException } from '@shared/exceptions/AppException';
 
 class DeleteVoteValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const voteId = req.params.id?.toString();
+        const voteId = req.params.id;
 
         if (!isIdValid(voteId, 'hash')) {
             throw new AppException('Vote id invalid!');

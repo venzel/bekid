@@ -29,13 +29,13 @@ class VoteInMemoryRepository implements IVoteRepository {
     }
 
     public async create(data: ICreateVoteDTO): Promise<IVoteEntity> {
-        const { campaign_id, emotion_id, user_id } = data;
+        const { campaign_id, emotion_id, user_token_id } = data;
 
         const voteInMemoryEntity = new VoteInMemoryEntity();
 
         const id = uuid();
 
-        Object.assign(voteInMemoryEntity, { id, campaign_id, emotion_id, user_id });
+        Object.assign(voteInMemoryEntity, { id, campaign_id, emotion_id, user_id: user_token_id });
 
         this._repository.push(voteInMemoryEntity);
 

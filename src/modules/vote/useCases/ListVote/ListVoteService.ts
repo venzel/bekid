@@ -7,11 +7,7 @@ import { IVoteRepository } from '@modules/vote/repositories/IVoteRepository';
 class ListVoteService {
     constructor(@inject('VoteRepository') private _voteRepository: IVoteRepository) {}
 
-    public async execute(userId: string, role: string): Promise<IVoteEntity[]> {
-        if (role === 'ADMIN') {
-            return await this._voteRepository.list();
-        }
-
+    public async execute(userId: string): Promise<IVoteEntity[]> {
         return await this._voteRepository.listAllByUserId(userId);
     }
 }

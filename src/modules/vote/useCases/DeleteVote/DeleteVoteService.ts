@@ -1,6 +1,7 @@
 import { injectable, inject, container } from 'tsyringe';
 
 import { IVoteRepository } from '@modules/vote/repositories/IVoteRepository';
+import { IDeleteVoteDTO } from '@modules/vote/dtos/IDeleteVoteDTO';
 import { IVoteEntity } from '@modules/vote/models/entities/IVoteEntity';
 import { AppException } from '@shared/exceptions/AppException';
 import { CreateCampaignQueueService } from '@modules/campaign_queue/useCases/CreateCampaignQueue/CreateCampaignQueueService';
@@ -9,10 +10,14 @@ import { CreateCampaignQueueService } from '@modules/campaign_queue/useCases/Cre
 class DeleteVoteService {
     constructor(@inject('VoteRepository') private _voteRepository: IVoteRepository) {}
 
-    public async execute(voteId: string, userId: string, role: string): Promise<IVoteEntity> {
-        /* Find by vote id */
+    public async execute(data: IDeleteVoteDTO): Promise<IVoteEntity> {
+        /* Destructuring object */
 
-        const existsVote = await this._voteRepository.findOneById(voteId);
+        const { user_token_id, user_token_role, vote_id } = data;
+
+        /* Find vote by id */
+
+        const existsVote = await this._voteRepository.findOneById(vote_id);
 
         /* Strategy guard */
 
@@ -26,15 +31,15 @@ class DeleteVoteService {
 
         /* The group manager arrives */
 
-        if (role !== 'ADMIN' && user_id !== userId) {
+        if (user_token_role !== 'ADMIN' && user_id !== user_token_id) {
             throw new AppException('It is not possible to delete a vote from another user!', 401);
         }
 
-        /* Data delete (update) in repository */
+        /* Data delete in repository */
 
         await this._voteRepository.delete(existsVote);
 
-        /* */
+        /* Use service */
 
         const createCampaignQueueService = container.resolve(CreateCampaignQueueService);
 
@@ -42,7 +47,7 @@ class DeleteVoteService {
 
         await createCampaignQueueService.execute(campaign_id, user_id);
 
-        /* Returns the vote found */
+        /* Returns vote found */
 
         return existsVote;
     }

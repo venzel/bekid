@@ -9,12 +9,22 @@ import { DeleteCampaignQueueService } from '@modules/campaign_queue/useCases/Del
 class CreateVoteService {
     constructor(@inject('VoteRepository') private _voteRepository: IVoteRepository) {}
 
-    public async handle(data: ICreateVoteDTO): Promise<IVoteEntity> {
-        const { campaign_id, emotion_id, user_id } = data;
+    public async execute(data: ICreateVoteDTO): Promise<IVoteEntity> {
+        /* Destructuring object */
 
-        /* Create vote */
+        const { user_token_id, campaign_id, emotion_id } = data;
 
-        const createdVote = await this._voteRepository.create({ campaign_id, emotion_id, user_id });
+        /* Vote */
+
+        const vote = {
+            campaign_id,
+            emotion_id,
+            user_token_id,
+        };
+
+        /* Create vote in repository */
+
+        const voteCreated = await this._voteRepository.create(vote);
 
         /* Execute logic, delete in queue */
 
@@ -22,11 +32,11 @@ class CreateVoteService {
 
         /* Delete campaign queue in service */
 
-        await deleteCampaignQueueService.execute(campaign_id, user_id);
+        await deleteCampaignQueueService.execute(campaign_id, user_token_id);
 
-        /* Return the vote created */
+        /* Return vote created */
 
-        return createdVote;
+        return voteCreated;
     }
 }
 
