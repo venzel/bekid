@@ -29,6 +29,12 @@ class CreateCampaignService {
             throw new AppException(`Group id ${group_id} not found!`, 404);
         }
 
+        /* Check authority */
+
+        if (existsGroup.user_id !== user_token_id) {
+            throw new AppException(`It is not possible to use a group of another user!`, 401);
+        }
+
         /* Find campaign by name */
 
         const existsCampaign = await this._campaignRepository.findOneByName(name);
