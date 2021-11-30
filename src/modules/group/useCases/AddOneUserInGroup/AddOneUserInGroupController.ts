@@ -8,18 +8,18 @@ import { IAddOneUserInGroupDTO } from '@modules/group/dtos/IAddOneUserInGroupDTO
 
 class AddOneUserInGroupController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const user_token_id = req.auth.user_id;
+        const { user_token_id } = req.auth;
 
         const { group_queue_id, group_id, user_id } = req.query;
 
         const service = container.resolve(AddOneUserInGroupService);
 
         const data = {
+            user_token_id,
             group_queue_id,
             group_id,
             user_id,
-            user_token_id,
-        } as IAddOneUserInGroupDTO; // important, force typing!
+        } as IAddOneUserInGroupDTO; // important, force typing in this case: QUERY STRING!
 
         const groupUser = await service.execute(data);
 

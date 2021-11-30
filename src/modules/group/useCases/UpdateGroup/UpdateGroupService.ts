@@ -9,22 +9,24 @@ import { AppException } from '@shared/exceptions/AppException';
 class UpdateGroupService {
     constructor(@inject('GroupRepository') private _groupRepository: IGroupRepository) {}
 
-    public async execute(groupId: string, managerId: string, role: string, data: IUpdateGroupDTO): Promise<IGroupEntity> {
-        const { name } = data;
+    public async execute(data: IUpdateGroupDTO): Promise<IGroupEntity> {
+        /* Destructuring object */
+
+        const { user_token_id, user_token_role, group_id, name } = data;
 
         /* Find group by id */
 
-        const existsGroup = await this._groupRepository.findOneById(groupId);
+        const existsGroup = await this._groupRepository.findOneById(group_id);
 
         /* Strategy guard */
 
         if (!existsGroup) {
-            throw new AppException(`Group id ${groupId} not found!`, 404);
+            throw new AppException(`Group with id ${group_id} not found!`, 404);
         }
 
-        /* The group manager arrives */
+        /* Check authority */
 
-        if (role !== 'ADMIN' && existsGroup.user_id !== managerId) {
+        if (user_token_role !== 'ADMIN' && existsGroup.user_id !== user_token_id) {
             throw new AppException('It is not possible to update a group of another user!', 401);
         }
 
@@ -36,7 +38,7 @@ class UpdateGroupService {
 
         const groupUpdated = await this._groupRepository.save(existsGroup);
 
-        /* Returns the group updated */
+        /* Returns group updated */
 
         return groupUpdated;
     }

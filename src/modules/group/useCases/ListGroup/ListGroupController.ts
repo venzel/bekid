@@ -7,15 +7,20 @@ import { generateStatus } from '@shared/helpers/status';
 
 class ListGroupController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { user_id: managerId, role } = req.auth;
+        const { user_token_id, user_token_role } = req.auth;
 
         const service = container.resolve(ListGroupService);
 
-        const groups = await service.execute(managerId, role);
+        const data = {
+            user_token_id,
+            user_token_role,
+        };
+
+        const groups = await service.execute(data);
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully listed groups!');
+        const status = generateStatus(false, statusCode, 'Succesfully, groups listed!');
 
         const docs = classToClass(groups);
 

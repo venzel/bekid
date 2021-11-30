@@ -1,5 +1,5 @@
 interface ICreateGroupDTO {
-    user_id: string;
+    user_token_id: string;
     name: string;
 }
 

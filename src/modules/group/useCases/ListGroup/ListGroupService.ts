@@ -1,5 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
+import { IListGroupDTO } from '@modules/group/dtos/IListGroupDTO';
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
 import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
 
@@ -7,12 +8,20 @@ import { IGroupRepository } from '@modules/group/repositories/IGroupRepository';
 class ListGroupService {
     constructor(@inject('GroupRepository') private _groupRepository: IGroupRepository) {}
 
-    public async execute(managerId: string, role: string): Promise<IGroupEntity[]> {
-        if (role === 'ADMIN') {
+    public async execute(data: IListGroupDTO): Promise<IGroupEntity[]> {
+        /* Destructuring object */
+
+        const { user_token_id, user_token_role } = data;
+
+        /* Check authority */
+
+        if (user_token_role === 'ADMIN') {
             return await this._groupRepository.list();
         }
 
-        return await this._groupRepository.listAllByManagerId(managerId);
+        /* Return */
+
+        return await this._groupRepository.listAllByUserId(user_token_id);
     }
 }
 

@@ -16,7 +16,7 @@ class GroupRoutes {
         new AddOneUserInGroupMiddleware().register(router, 'get', 'USER', '/add_user_in_group');
 
         // Update
-        new UpdateGroupMiddleware().register(router, 'put', 'MANAGER', '/groups/:id');
+        new UpdateGroupMiddleware().register(router, 'put', 'MANAGER', '/groups');
 
         // List
         new ListGroupMiddleware().register(router, 'get', ['MANAGER', 'ADMIN'], '/groups');

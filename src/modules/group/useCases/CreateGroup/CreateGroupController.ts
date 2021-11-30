@@ -7,17 +7,22 @@ import { generateStatus } from '@shared/helpers/status';
 
 class CreateGroupController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { name } = req.body;
+        const { user_token_id } = req.auth;
 
-        const { user_id } = req.auth;
+        const { name } = req.body;
 
         const service = container.resolve(CreateGroupService);
 
-        const group = await service.execute({ user_id, name });
+        const data = {
+            user_token_id,
+            name,
+        };
+
+        const group = await service.execute(data);
 
         const statusCode = 201;
 
-        const status = generateStatus(false, statusCode, 'Succesfully created group!');
+        const status = generateStatus(false, statusCode, 'Succesfully, group created!');
 
         const doc = classToClass(group);
 

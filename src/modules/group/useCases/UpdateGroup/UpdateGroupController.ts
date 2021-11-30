@@ -7,15 +7,20 @@ import { generateStatus } from '@shared/helpers/status';
 
 class UpdateGroupController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { user_id: managerId, role } = req.auth;
+        const { user_token_id, user_token_role } = req.auth;
 
-        const { name } = req.body;
+        const { group_id, name } = req.body;
 
-        const groupId = req.params.id?.toString();
+        const data = {
+            user_token_id,
+            user_token_role,
+            group_id,
+            name,
+        };
 
         const service = container.resolve(UpdateGroupService);
 
-        const group = await service.execute(groupId, managerId, role, { name });
+        const group = await service.execute(data);
 
         const statusCode = 200;
 

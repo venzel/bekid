@@ -7,17 +7,23 @@ import { generateStatus } from '@shared/helpers/status';
 
 class DeleteGroupController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { user_id: managerId, role } = req.auth;
+        const { user_token_id, user_token_role } = req.auth;
 
-        const groupId = req.params.id?.toString();
+        const group_id = req.params.id;
 
         const service = container.resolve(DeleteGroupService);
 
-        const group = await service.execute(groupId, managerId, role);
+        const data = {
+            user_token_id,
+            user_token_role,
+            group_id,
+        };
+
+        const group = await service.execute(data);
 
         const statusCode = 202;
 
-        const status = generateStatus(false, statusCode, 'Succesfully deleted group!');
+        const status = generateStatus(false, statusCode, 'Succesfully, group deleted!');
 
         const doc = classToClass(group);
 

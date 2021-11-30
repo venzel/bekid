@@ -10,11 +10,13 @@ class CreateGroupService {
     constructor(@inject('GroupRepository') private _groupRepository: IGroupRepository) {}
 
     public async execute(data: ICreateGroupDTO): Promise<IGroupEntity> {
-        const { user_id, name } = data;
+        /* Destructuring object */
 
-        /* Find by name group */
+        const { user_token_id, name } = data;
 
-        const existsGroup = await this._groupRepository.findOneByUserIdAndGroupName(user_id, name);
+        /* Find group by name */
+
+        const existsGroup = await this._groupRepository.findOneByUserIdAndGroupName(user_token_id, name);
 
         /* Strategy guard */
 
@@ -26,9 +28,9 @@ class CreateGroupService {
             throw new AppException(`Group name already exists!`, 400, payload);
         }
 
-        /* Group created */
+        /* Group created in repository */
 
-        const groupCreated = await this._groupRepository.create({ user_id, name });
+        const groupCreated = await this._groupRepository.create({ user_token_id, name });
 
         /* Return group created */
 

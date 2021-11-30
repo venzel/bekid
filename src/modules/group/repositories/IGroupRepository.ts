@@ -8,7 +8,7 @@ interface IGroupRepository {
 
     findOneByUserIdAndGroupName(userId: string, groupName: string): Promise<IGroupEntity | undefined>;
 
-    listAllByManagerId(managerId: string): Promise<IGroupEntity[]>;
+    listAllByUserId(managerId: string): Promise<IGroupEntity[]>;
 
     create(data: ICreateGroupDTO): Promise<IGroupEntity>;
 

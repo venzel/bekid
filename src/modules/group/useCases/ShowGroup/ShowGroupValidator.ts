@@ -5,7 +5,7 @@ import { AppException } from '@shared/exceptions/AppException';
 
 class ShowGroupValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const groupId = req.params.id?.toString();
+        const groupId = req.params.id;
 
         if (!isIdValid(groupId, 'hash')) {
             throw new AppException('Group id invalid!');

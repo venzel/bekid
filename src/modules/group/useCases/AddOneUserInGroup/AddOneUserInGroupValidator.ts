@@ -12,7 +12,7 @@ class AddOneUserInGroupValidator {
             group_queue_id,
             group_id,
             user_id,
-        } as IAddOneUserInGroupDTO;
+        } as IAddOneUserInGroupDTO; // important, force typing in this case: QUERY STRING!
 
         if (!isIdValid(data.group_queue_id, 'hash')) {
             throw new AppException(`Group queue id ${group_id} invalid!`);

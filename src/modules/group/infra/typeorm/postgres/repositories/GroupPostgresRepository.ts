@@ -20,7 +20,7 @@ class GroupPostgresRepository implements IGroupRepository {
         return await this._repository.findOne({ where: { user_id: userId, name: groupName } });
     }
 
-    public async listAllByManagerId(managerId: string): Promise<IGroupEntity[]> {
+    public async listAllByUserId(managerId: string): Promise<IGroupEntity[]> {
         return await this._repository.find({ where: { user_id: managerId }, relations: ['users'] });
     }
 
@@ -29,9 +29,9 @@ class GroupPostgresRepository implements IGroupRepository {
     }
 
     public async create(data: ICreateGroupDTO): Promise<IGroupEntity> {
-        const { user_id, name } = data;
+        const { user_token_id, name } = data;
 
-        const groupCreated = this._repository.create({ user_id, name });
+        const groupCreated = this._repository.create({ user_id: user_token_id, name });
 
         await this._repository.save(groupCreated);
 
