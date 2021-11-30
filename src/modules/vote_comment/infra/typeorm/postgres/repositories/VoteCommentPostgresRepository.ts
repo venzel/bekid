@@ -29,9 +29,9 @@ class VoteCommentPostgresRepository implements IVoteCommentRepository {
     }
 
     public async create(data: ICreateVoteCommentDTO): Promise<IVoteCommentEntity> {
-        const { vote_id, message, user_id } = data;
+        const { vote_id, message, user_token_id } = data;
 
-        const voteCommentCreated = this._repository.create({ vote_id, user_id, message });
+        const voteCommentCreated = this._repository.create({ vote_id, user_id: user_token_id, message });
 
         await this._repository.save(voteCommentCreated);
 

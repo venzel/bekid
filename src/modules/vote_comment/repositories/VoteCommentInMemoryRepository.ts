@@ -16,13 +16,13 @@ class VoteCommentInMemoryRepository implements IVoteCommentRepository {
     }
 
     public async create(data: ICreateVoteCommentDTO): Promise<IVoteCommentEntity> {
-        const { vote_id, user_id, message } = data;
+        const { vote_id, user_token_id, message } = data;
 
         const voteCommentInMemoryEntity = new VoteCommentInMemoryEntity();
 
         const id = uuid();
 
-        Object.assign(voteCommentInMemoryEntity, { id, vote_id, user_id, message });
+        Object.assign(voteCommentInMemoryEntity, { id, vote_id, user_id: user_token_id, message });
 
         this._repository.push(voteCommentInMemoryEntity);
 

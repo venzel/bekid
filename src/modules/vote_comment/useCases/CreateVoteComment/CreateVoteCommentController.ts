@@ -7,21 +7,23 @@ import { generateStatus } from '@shared/helpers/status';
 
 class CreateVoteCommentController {
     public async handle(req: Request, res: Response): Promise<Response> {
-        const { vote_id, message: mesage_ } = req.body;
+        const { user_token_id } = req.auth;
 
-        const voteId = String(vote_id);
-
-        const message = String(mesage_);
-
-        const userId = req.auth.user_id;
+        const { vote_id, message } = req.body;
 
         const service = container.resolve(CreateVoteCommentService);
 
-        const voteComment = await service.handle({ vote_id: voteId, user_id: userId, message: message });
+        const data = {
+            user_token_id,
+            vote_id,
+            message,
+        };
+
+        const voteComment = await service.execute(data);
 
         const statusCode = 201;
 
-        const status = generateStatus(false, statusCode, 'Succesfully created vote question!');
+        const status = generateStatus(false, statusCode, 'Succesfully, vote comment created!');
 
         const doc = classToClass(voteComment);
 

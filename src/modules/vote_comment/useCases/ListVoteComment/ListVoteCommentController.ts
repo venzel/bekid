@@ -13,7 +13,7 @@ class ListVoteCommentController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully listed votes comments!');
+        const status = generateStatus(false, statusCode, 'Succesfully, votes comments listed!');
 
         const docs = classToClass(votesComments);
 

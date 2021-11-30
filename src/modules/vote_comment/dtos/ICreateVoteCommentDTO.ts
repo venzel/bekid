@@ -1,6 +1,6 @@
 interface ICreateVoteCommentDTO {
+    user_token_id: string;
     vote_id: string;
-    user_id: string;
     message: string;
 }
 
