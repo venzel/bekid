@@ -4,7 +4,7 @@ import { IQuestionEntity } from '@modules/question/models/entities/IQuestionEnti
 import { EmotionPostgresEntity } from '@modules/emotion/infra/typeorm/postgres/entities/EmotionPostgresEntity';
 import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
-@Entity('QUESTIONS')
+@Entity('questions')
 class QuestionPostgresEntity implements IQuestionEntity {
     @PrimaryColumn()
     public id: string;

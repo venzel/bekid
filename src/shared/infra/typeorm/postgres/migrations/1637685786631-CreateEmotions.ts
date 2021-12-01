@@ -4,7 +4,7 @@ export default class CreateEmotions1637685786631 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'EMOTIONS',
+                name: 'emotions',
                 columns: [
                     {
                         name: 'id',
@@ -32,6 +32,6 @@ export default class CreateEmotions1637685786631 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('EMOTIONS');
+        await queryRunner.dropTable('emotions');
     }
 }

@@ -2,10 +2,10 @@ import { Entity, PrimaryColumn, ManyToOne, JoinColumn, ManyToMany, JoinTable, Co
 import { Expose } from 'class-transformer';
 
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
-@Entity('GROUPS')
+@Entity('groups')
 class GroupPostgresEntity implements IGroupEntity {
     @PrimaryColumn()
     public id: string;
@@ -20,7 +20,7 @@ class GroupPostgresEntity implements IGroupEntity {
 
     @ManyToMany(() => UserPostgresEntity)
     @JoinTable({
-        name: 'GROUPS_USERS',
+        name: 'groups_users',
         joinColumns: [{ name: 'group_id' }],
         inverseJoinColumns: [{ name: 'user_id' }],
     })

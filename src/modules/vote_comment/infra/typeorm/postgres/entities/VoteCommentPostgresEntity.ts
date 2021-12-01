@@ -5,7 +5,7 @@ import { VotePostgresEntity } from '@modules/vote/infra/typeorm/postgres/entitie
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
-@Entity('VOTES_COMMENTS')
+@Entity('votes_comments')
 class VoteCommentPostgresEntity implements IVoteCommentEntity {
     @PrimaryColumn()
     public id: string;

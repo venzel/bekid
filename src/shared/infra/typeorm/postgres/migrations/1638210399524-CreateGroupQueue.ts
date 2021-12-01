@@ -4,7 +4,7 @@ export default class CreateGroupQueue1638210399524 implements MigrationInterface
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'GROUP_QUEUE',
+                name: 'group_queue',
                 columns: [
                     {
                         name: 'id',
@@ -31,10 +31,10 @@ export default class CreateGroupQueue1638210399524 implements MigrationInterface
         );
 
         await queryRunner.createForeignKey(
-            'GROUP_QUEUE',
+            'group_queue',
             new TableForeignKey({
                 name: 'FKGroupQueueGroup',
-                referencedTableName: 'GROUPS',
+                referencedTableName: 'groups',
                 referencedColumnNames: ['id'],
                 columnNames: ['group_id'],
                 onDelete: 'CASCADE',
@@ -43,10 +43,10 @@ export default class CreateGroupQueue1638210399524 implements MigrationInterface
         );
 
         await queryRunner.createForeignKey(
-            'GROUP_QUEUE',
+            'group_queue',
             new TableForeignKey({
                 name: 'FKGroupQueueUser',
-                referencedTableName: 'USERS',
+                referencedTableName: 'users',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
                 onDelete: 'CASCADE',
@@ -56,10 +56,10 @@ export default class CreateGroupQueue1638210399524 implements MigrationInterface
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('GROUP_QUEUE', 'FKGroupQueueUser');
+        await queryRunner.dropForeignKey('group_queue', 'FKGroupQueueUser');
 
-        await queryRunner.dropForeignKey('GROUP_QUEUE', 'FKGroupQueueGroup');
+        await queryRunner.dropForeignKey('group_queue', 'FKGroupQueueGroup');
 
-        await queryRunner.dropTable('GROUP_QUEUE');
+        await queryRunner.dropTable('group_queue');
     }
 }

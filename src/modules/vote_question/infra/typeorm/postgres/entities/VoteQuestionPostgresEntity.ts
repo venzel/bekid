@@ -6,7 +6,7 @@ import { QuestionPostgresEntity } from '@modules/question/infra/typeorm/postgres
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
-@Entity('VOTES_QUESTIONS')
+@Entity('votes_questions')
 class VoteQuestionPostgresEntity implements IVoteQuestionEntity {
     @PrimaryColumn()
     public id: string;

@@ -1,11 +1,11 @@
 import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from 'typeorm';
 
 import { ICampaignQueueEntity } from '@modules/campaign_queue/models/entities/ICampaignQueueEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 import { CampaignPostgresEntity } from '@modules/campaign/infra/typeorm/postgres/entities/CampaignPostgresEntity';
+import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
-@Entity('CAMPAIGN_QUEUE')
+@Entity('campaing_queue')
 class CampaignQueuePostgresEntity implements ICampaignQueueEntity {
     @PrimaryColumn()
     public id: string;

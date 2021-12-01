@@ -6,7 +6,7 @@ import { EmotionPostgresEntity } from '@modules/emotion/infra/typeorm/postgres/e
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
-@Entity('VOTES')
+@Entity('votes')
 class VotePostgresEntity implements IVoteEntity {
     @PrimaryColumn()
     public id: string;

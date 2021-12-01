@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import { createConnections } from 'typeorm';
+import { Connection, getConnectionOptions, createConnection, createConnections } from 'typeorm';
 
 const typeormConnect = async (app: Express): Promise<void> => {
     await createConnections()
@@ -12,4 +12,10 @@ const typeormConnect = async (app: Express): Promise<void> => {
         });
 };
 
-export { typeormConnect };
+const connectService = async (serviceName: string = 'default'): Promise<Connection> => {
+    const defaultOptions = await getConnectionOptions(serviceName);
+
+    return createConnection(Object.assign(defaultOptions));
+};
+
+export { connectService, typeormConnect };

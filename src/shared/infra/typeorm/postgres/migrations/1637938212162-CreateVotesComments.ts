@@ -4,7 +4,7 @@ export class CreateVotesComments1637938212162 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'VOTES_COMMENTS',
+                name: 'votes_comments',
                 columns: [
                     {
                         name: 'id',
@@ -35,10 +35,10 @@ export class CreateVotesComments1637938212162 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'VOTES_COMMENTS',
+            'votes_comments',
             new TableForeignKey({
                 name: 'FKVoteCommentVote',
-                referencedTableName: 'VOTES',
+                referencedTableName: 'votes',
                 referencedColumnNames: ['id'],
                 columnNames: ['vote_id'],
                 onDelete: 'CASCADE',
@@ -47,10 +47,10 @@ export class CreateVotesComments1637938212162 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'VOTES_COMMENTS',
+            'votes_comments',
             new TableForeignKey({
                 name: 'FKVoteUser',
-                referencedTableName: 'USERS',
+                referencedTableName: 'users',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
                 onDelete: 'CASCADE',
@@ -60,10 +60,10 @@ export class CreateVotesComments1637938212162 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('VOTES_COMMENTS', 'FKVoteUser');
+        await queryRunner.dropForeignKey('votes_comments', 'FKVoteUser');
 
-        await queryRunner.dropForeignKey('VOTES_COMMENTS', 'FKVoteCommentVote');
+        await queryRunner.dropForeignKey('votes_comments', 'FKVoteCommentVote');
 
-        await queryRunner.dropTable('VOTES_COMMENTS');
+        await queryRunner.dropTable('votes_comments');
     }
 }

@@ -4,7 +4,7 @@ export default class CreateGroups1637772239805 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'GROUPS',
+                name: 'groups',
                 columns: [
                     {
                         name: 'id',
@@ -37,10 +37,10 @@ export default class CreateGroups1637772239805 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'GROUPS',
+            'groups',
             new TableForeignKey({
                 name: 'FKGroupUserOwner',
-                referencedTableName: 'USERS',
+                referencedTableName: 'users',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
                 onDelete: 'CASCADE',
@@ -50,8 +50,8 @@ export default class CreateGroups1637772239805 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('GROUPS', 'FKGroupUserOwner');
+        await queryRunner.dropForeignKey('groups', 'FKGroupUserOwner');
 
-        await queryRunner.dropTable('GROUPS');
+        await queryRunner.dropTable('groups');
     }
 }

@@ -4,7 +4,7 @@ export default class CreateCampaignQueue1638194195075 implements MigrationInterf
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'CAMPAIGN_QUEUE',
+                name: 'campaign_queue',
                 columns: [
                     {
                         name: 'id',
@@ -31,10 +31,10 @@ export default class CreateCampaignQueue1638194195075 implements MigrationInterf
         );
 
         await queryRunner.createForeignKey(
-            'CAMPAIGN_QUEUE',
+            'campaign_queue',
             new TableForeignKey({
                 name: 'FKCampaignQueueCampaign',
-                referencedTableName: 'CAMPAIGNS',
+                referencedTableName: 'campaigns',
                 referencedColumnNames: ['id'],
                 columnNames: ['campaign_id'],
                 onDelete: 'CASCADE',
@@ -43,10 +43,10 @@ export default class CreateCampaignQueue1638194195075 implements MigrationInterf
         );
 
         await queryRunner.createForeignKey(
-            'CAMPAIGN_QUEUE',
+            'campaign_queue',
             new TableForeignKey({
                 name: 'FKCampaignQueueUser',
-                referencedTableName: 'USERS',
+                referencedTableName: 'users',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
                 onDelete: 'CASCADE',
@@ -56,10 +56,10 @@ export default class CreateCampaignQueue1638194195075 implements MigrationInterf
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('CAMPAIGN_QUEUE', 'FKCampaignQueueUser');
+        await queryRunner.dropForeignKey('campaign_queue', 'FKCampaignQueueUser');
 
-        await queryRunner.dropForeignKey('CAMPAIGN_QUEUE', 'FKCampaignQueueCampaign');
+        await queryRunner.dropForeignKey('campaign_queue', 'FKCampaignQueueCampaign');
 
-        await queryRunner.dropTable('CAMPAIGN_QUEUE');
+        await queryRunner.dropTable('campaign_queue');
     }
 }

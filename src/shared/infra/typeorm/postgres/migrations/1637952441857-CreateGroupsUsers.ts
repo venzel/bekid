@@ -4,7 +4,7 @@ export default class CreateGroupsUsers1637952441857 implements MigrationInterfac
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'GROUPS_USERS',
+                name: 'groups_users',
                 columns: [
                     {
                         name: 'group_id',
@@ -25,10 +25,10 @@ export default class CreateGroupsUsers1637952441857 implements MigrationInterfac
         );
 
         await queryRunner.createForeignKey(
-            'GROUPS_USERS',
+            'groups_users',
             new TableForeignKey({
                 name: 'FKGroupUser',
-                referencedTableName: 'GROUPS',
+                referencedTableName: 'groups',
                 referencedColumnNames: ['id'],
                 columnNames: ['group_id'],
                 onDelete: 'CASCADE',
@@ -37,10 +37,10 @@ export default class CreateGroupsUsers1637952441857 implements MigrationInterfac
         );
 
         await queryRunner.createForeignKey(
-            'GROUPS_USERS',
+            'groups_users',
             new TableForeignKey({
                 name: 'FKUserGroup',
-                referencedTableName: 'USERS',
+                referencedTableName: 'users',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
                 onDelete: 'CASCADE',
@@ -50,10 +50,10 @@ export default class CreateGroupsUsers1637952441857 implements MigrationInterfac
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('GROUPS_USERS', 'FKUserGroup');
+        await queryRunner.dropForeignKey('groups_users', 'FKUserGroup');
 
-        await queryRunner.dropForeignKey('GROUPS_USERS', 'FKGroupUser');
+        await queryRunner.dropForeignKey('groups_users', 'FKGroupUser');
 
-        await queryRunner.dropTable('GROUPS_USERS');
+        await queryRunner.dropTable('groups_users');
     }
 }

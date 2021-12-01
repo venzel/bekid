@@ -4,7 +4,7 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'CAMPAIGNS',
+                name: 'campaigns',
                 columns: [
                     {
                         name: 'id',
@@ -47,10 +47,10 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
         );
 
         await queryRunner.createForeignKey(
-            'CAMPAIGNS',
+            'campaigns',
             new TableForeignKey({
                 name: 'FKCampaignGroup',
-                referencedTableName: 'GROUPS',
+                referencedTableName: 'groups',
                 referencedColumnNames: ['id'],
                 columnNames: ['group_id'],
                 onDelete: 'CASCADE',
@@ -59,10 +59,10 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
         );
 
         await queryRunner.createForeignKey(
-            'CAMPAIGNS',
+            'campaigns',
             new TableForeignKey({
                 name: 'FKCampaignUserOwner',
-                referencedTableName: 'USERS',
+                referencedTableName: 'users',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
                 onDelete: 'SET NULL',
@@ -72,10 +72,10 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('CAMPAIGNS', 'FKCampaignUser');
+        await queryRunner.dropForeignKey('campaigns', 'FKCampaignUser');
 
-        await queryRunner.dropForeignKey('CAMPAIGNS', 'FKCampaignGroup');
+        await queryRunner.dropForeignKey('campaigns', 'FKCampaignGroup');
 
-        await queryRunner.dropTable('CAMPAIGNS');
+        await queryRunner.dropTable('campaigns');
     }
 }

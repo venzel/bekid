@@ -4,7 +4,7 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'VOTES',
+                name: 'votes',
                 columns: [
                     {
                         name: 'id',
@@ -35,10 +35,10 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'VOTES',
+            'votes',
             new TableForeignKey({
                 name: 'FKVoteCampaign',
-                referencedTableName: 'CAMPAIGNS',
+                referencedTableName: 'campaigns',
                 referencedColumnNames: ['id'],
                 columnNames: ['campaign_id'],
                 onDelete: 'CASCADE',
@@ -47,10 +47,10 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'VOTES',
+            'votes',
             new TableForeignKey({
                 name: 'FKVoteEmotion',
-                referencedTableName: 'EMOTIONS',
+                referencedTableName: 'emotions',
                 referencedColumnNames: ['id'],
                 columnNames: ['emotion_id'],
                 onDelete: 'SET NULL',
@@ -59,10 +59,10 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'VOTES',
+            'votes',
             new TableForeignKey({
                 name: 'FKVoteUser',
-                referencedTableName: 'USERS',
+                referencedTableName: 'users',
                 referencedColumnNames: ['id'],
                 columnNames: ['user_id'],
                 onDelete: 'CASCADE',
@@ -72,12 +72,12 @@ export default class CreateVotes1637857081430 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey('VOTES', 'FKVoteUser');
+        await queryRunner.dropForeignKey('votes', 'FKVoteUser');
 
-        await queryRunner.dropForeignKey('VOTES', 'FKVoteEmotion');
+        await queryRunner.dropForeignKey('votes', 'FKVoteEmotion');
 
-        await queryRunner.dropForeignKey('VOTES', 'FKVoteCampaign');
+        await queryRunner.dropForeignKey('votes', 'FKVoteCampaign');
 
-        await queryRunner.dropTable('VOTES');
+        await queryRunner.dropTable('votes');
     }
 }

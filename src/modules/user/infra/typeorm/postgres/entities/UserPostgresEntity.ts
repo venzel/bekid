@@ -5,7 +5,7 @@ import { api_url } from '@configs/geral';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
-@Entity('USERS')
+@Entity('users')
 class UserPostgresEntity implements IUserEntity {
     @PrimaryColumn()
     public id: string;
