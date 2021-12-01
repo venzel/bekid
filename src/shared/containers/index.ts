@@ -8,5 +8,6 @@ import '@modules/reason/containers';
 import '@modules/campaign/containers';
 import '@modules/campaign_queue/containers';
 import '@modules/vote/containers';
+import '@modules/vote_actor/containers';
 import '@modules/vote_reason/containers';
 import '@modules/vote_comment/containers';

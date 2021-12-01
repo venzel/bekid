@@ -30,24 +30,24 @@ class VoteReasonInMemoryRepository implements IVoteReasonRepository {
         return voteReasonInMemoryEntity;
     }
 
-    public async save(vote_reason: IVoteReasonEntity): Promise<IVoteReasonEntity> {
-        const voteReasonIndex: number = this._repository.indexOf(vote_reason);
+    public async save(voteReason: IVoteReasonEntity): Promise<IVoteReasonEntity> {
+        const voteReasonIndex: number = this._repository.indexOf(voteReason);
 
         if (voteReasonIndex !== -1) {
-            this._repository[voteReasonIndex] = vote_reason;
+            this._repository[voteReasonIndex] = voteReason;
         }
 
-        return vote_reason;
+        return voteReason;
     }
 
-    public async delete(vote_reason: IVoteReasonEntity): Promise<IVoteReasonEntity> {
-        const voteReasonIndex: number = this._repository.indexOf(vote_reason);
+    public async delete(voteReason: IVoteReasonEntity): Promise<IVoteReasonEntity> {
+        const voteReasonIndex: number = this._repository.indexOf(voteReason);
 
         if (voteReasonIndex !== -1) {
             this._repository.splice(voteReasonIndex, 1);
         }
 
-        return vote_reason;
+        return voteReason;
     }
 
     public async list(): Promise<IVoteReasonEntity[]> {

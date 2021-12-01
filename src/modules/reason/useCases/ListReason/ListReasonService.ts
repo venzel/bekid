@@ -5,10 +5,10 @@ import { IReasonRepository } from '@modules/reason/repositories/IReasonRepositor
 
 @injectable()
 class ListReasonService {
-    constructor(@inject('ReasonRepository') private _questionRepository: IReasonRepository) {}
+    constructor(@inject('ReasonRepository') private _reasonRepository: IReasonRepository) {}
 
     public async execute(): Promise<IReasonEntity[]> {
-        return await this._questionRepository.list();
+        return await this._reasonRepository.list();
     }
 }
 

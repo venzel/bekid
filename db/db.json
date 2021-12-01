@@ -209,19 +209,19 @@
         {
             "id": 1,
             "vote_id": 1,
-            "question_id": 1,
+            "reason_id": 1,
             "user_id": 2
         },
         {
             "id": 1,
             "vote_id": 1,
-            "question_id": 2,
+            "reason_id": 2,
             "user_id": 2
         },
         {
             "id": 1,
             "vote_id": 1,
-            "question_id": 3,
+            "reason_id": 3,
             "user_id": 2
         }
     ],

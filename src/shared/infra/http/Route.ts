@@ -5,11 +5,12 @@ import { GroupRoutes } from '@modules/group/infra/http/routes/GroupRoutes';
 import { GroupQueueRoutes } from '@modules/group_queue/infra/http/routes/GroupQueueRoutes';
 import { EmotionRoutes } from '@modules/emotion/infra/http/routes/EmotionRoutes';
 import { ActorRoutes } from '@modules/actor/infra/http/routes/ActorRoutes';
-import { QuestionRoutes } from '@modules/reason/infra/http/routes/QuestionRoutes';
+import { ReasonRoutes } from '@modules/reason/infra/http/routes/ReasonRoutes';
 import { CampaignRoutes } from '@modules/campaign/infra/http/routes/CampaignRoutes';
 import { CampaignQueueRoutes } from '@modules/campaign_queue/infra/http/routes/CampaignQueueRoutes';
 import { VoteRoutes } from '@modules/vote/infra/http/routes/VoteRoutes';
-import { VoteQuestionRoutes } from '@modules/vote_reason/infra/http/routes/VoteQuestionRoutes';
+import { VoteActorRoutes } from '@modules/vote_actor/infra/http/routes/VoteActorRoutes';
+import { VoteReasonRoutes } from '@modules/vote_reason/infra/http/routes/VoteReasonRoutes';
 import { VoteCommentRoutes } from '@modules/vote_comment/infra/http/routes/VoteCommentRoutes';
 
 class Route {
@@ -28,11 +29,11 @@ class Route {
         // EMOTION
         new EmotionRoutes().registerAll(router);
 
-        // Actor
+        // ACTOR
         new ActorRoutes().registerAll(router);
 
-        // QUESTION
-        new QuestionRoutes().registerAll(router);
+        // REASON
+        new ReasonRoutes().registerAll(router);
 
         // CAMPAIGN
         new CampaignRoutes().registerAll(router);
@@ -43,8 +44,11 @@ class Route {
         // VOTE
         new VoteRoutes().registerAll(router);
 
-        // VOTE QUESTION
-        new VoteQuestionRoutes().registerAll(router);
+        // VOTE ACTOR
+        new VoteActorRoutes().registerAll(router);
+
+        // VOTE REASON
+        new VoteReasonRoutes().registerAll(router);
 
         // VOTE COMMENT
         new VoteCommentRoutes().registerAll(router);

@@ -472,7 +472,7 @@ const create = async () => {
                         ('${id}', '${emotion_id}', '${description}', 'now()')`
             )
             .then((_) => {
-                console.log(`Question ${description} created!`);
+                console.log(`Reason ${description} created!`);
             })
             .catch((err) => {
                 console.log(`Erro in create reason ${description}!`);

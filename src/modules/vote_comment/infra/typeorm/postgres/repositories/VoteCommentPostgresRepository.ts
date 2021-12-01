@@ -12,8 +12,8 @@ class VoteCommentPostgresRepository implements IVoteCommentRepository {
         this._repository = getRepository(VoteCommentPostgresEntity, 'default');
     }
 
-    public async findOneById(voteQuestionId: string): Promise<IVoteCommentEntity | undefined> {
-        return await this._repository.findOne({ where: { id: voteQuestionId } });
+    public async findOneById(voteCommentId: string): Promise<IVoteCommentEntity | undefined> {
+        return await this._repository.findOne({ where: { id: voteCommentId } });
     }
 
     public async findOneByCampaignId(campaignId: string): Promise<IVoteCommentEntity | undefined> {
