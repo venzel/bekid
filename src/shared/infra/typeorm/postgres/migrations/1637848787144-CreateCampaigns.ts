@@ -25,10 +25,16 @@ export default class CreateCampaigns1637848787144 implements MigrationInterface 
                         type: 'varchar',
                     },
                     {
+                        name: 'expiration',
+                        type: 'timestamp',
+                        isNullable: true,
+                        default: 'now()',
+                    },
+                    {
                         name: 'created_at',
                         type: 'timestamp',
                         isNullable: false,
-                        default: 'now()',
+                        default: null,
                     },
                     {
                         name: 'updated_at',

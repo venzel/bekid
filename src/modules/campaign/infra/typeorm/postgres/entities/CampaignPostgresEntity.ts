@@ -29,6 +29,9 @@ class CampaignPostgresEntity implements ICampaignEntity {
     @Column()
     public name: string;
 
+    @Column('timestamp')
+    public expiration: Date | null;
+
     @CreateDateColumn()
     public created_at: Date;
 

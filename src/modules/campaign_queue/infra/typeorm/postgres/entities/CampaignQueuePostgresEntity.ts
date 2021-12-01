@@ -5,7 +5,7 @@ import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entitie
 import { CampaignPostgresEntity } from '@modules/campaign/infra/typeorm/postgres/entities/CampaignPostgresEntity';
 import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
 
-@Entity('campaing_queue')
+@Entity('campaign_queue')
 class CampaignQueuePostgresEntity implements ICampaignQueueEntity {
     @PrimaryColumn()
     public id: string;

@@ -14,12 +14,6 @@ export default class CreateGroupsUsers1637952441857 implements MigrationInterfac
                         name: 'user_id',
                         type: 'varchar',
                     },
-                    {
-                        name: 'created_at',
-                        type: 'timestamp',
-                        isNullable: false,
-                        default: 'now()',
-                    },
                 ],
             })
         );

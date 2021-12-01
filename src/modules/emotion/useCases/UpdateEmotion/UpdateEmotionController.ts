@@ -21,7 +21,7 @@ class UpdateEmotionController {
 
         const statusCode = 200;
 
-        const status = generateStatus(false, statusCode, 'Succesfully updated emotion!');
+        const status = generateStatus(false, statusCode, 'Succesfully, emotion updated!');
 
         const doc = classToClass(emotion);
 

@@ -1,5 +1,10 @@
 include .env
 
+.PHONY: mig
+
+mig:
+	yarn mig
+
 .PHONY: migration
 
 migration:
