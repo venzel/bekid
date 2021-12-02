@@ -325,159 +325,325 @@ const create = async () => {
                 description: 'De uma pessoa',
             },
         ],
+        votes: [
+            {
+                id: 'vote_alex',
+                campaign_id: 'campaign_a_cintia',
+                emotion_id: 'emotion_triste',
+                user_id: 'alex',
+            },
+            {
+                id: 'vote_marcos',
+                campaign_id: 'campaign_a_cintia',
+                emotion_id: 'emotion_triste',
+                user_id: 'marcos',
+            },
+            {
+                id: 'vote_simas',
+                campaign_id: 'campaign_a_cintia',
+                emotion_id: 'emotion_triste',
+                user_id: 'simas',
+            },
+        ],
+        votes_actors: [
+            {
+                id: 'vote_actor_alex',
+                vote_id: 'vote_alex',
+                actor_id: 'actor_colega',
+                user_id: 'alex',
+            },
+            {
+                id: 'vote_actor_marcos',
+                vote_id: 'vote_marcos',
+                actor_id: 'actor_escola',
+                user_id: 'marcos',
+            },
+            {
+                id: 'vote_actor_simas',
+                vote_id: 'vote_simas',
+                actor_id: 'actor_pai',
+                user_id: 'simas',
+            },
+        ],
+        votes_reasons: [
+            {
+                id: 'vote_reason_alex',
+                vote_id: 'vote_alex',
+                user_id: 'alex',
+                reason_id: 'reason_a_triste',
+            },
+            {
+                id: 'vote_reason_marcos',
+                vote_id: 'vote_marcos',
+                user_id: 'marcos',
+                reason_id: 'reason_b_triste',
+            },
+            {
+                id: 'vote_reason_simas',
+                vote_id: 'vote_simas',
+                user_id: 'simas',
+                reason_id: 'reason_c_triste',
+            },
+        ],
+        votes_comments: [
+            {
+                id: 'vote_comment_alex',
+                vote_id: 'vote_alex',
+                user_id: 'alex',
+                message: 'Meu cachorro morreu!',
+            },
+            {
+                id: 'vote_comment_marcos',
+                vote_id: 'vote_marcos',
+                user_id: 'marcos',
+                message: 'Estou com muita fome!',
+            },
+        ],
     };
 
-    // USERS
+    // DROP
 
-    for (const { id, name, email, password, role } of data.users) {
-        await connection
-            .query(
-                `INSERT INTO users (id, name, email, password, role, avatar, allowed, activated, created_at, updated_at, deleted_at) VALUES 
+    const drop = false;
+
+    if (drop) {
+        for (const k of Object.keys(data).reverse()) {
+            await connection
+                .query(`DROP TABLE ${k}`)
+                .then((_) => {
+                    console.log(`Table ${k} droped!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in droped table ${k}!`);
+                    console.log(err);
+                });
+        }
+    }
+
+    // POPULATE
+
+    const populate = false;
+
+    if (populate) {
+        // USERS
+
+        for (const { id, name, email, password, role } of data.users) {
+            await connection
+                .query(
+                    `INSERT INTO users (id, name, email, password, role, avatar, allowed, activated, created_at, updated_at, deleted_at) VALUES 
                 ('${id}', '${name}', '${email}', '${await gererateHash(password)}', '${role}', '', true, true, 'now()', 'now()', null)`
-            )
-            .then((_) => {
-                console.log(`${role} ${name} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create ${name} ${role}!`);
-                console.log(err);
-            });
-    }
+                )
+                .then((_) => {
+                    console.log(`${role} ${name} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create ${name} ${role}!`);
+                    console.log(err);
+                });
+        }
 
-    // GROUPS
+        // GROUPS
 
-    for (const { id, user_id, name } of data.groups) {
-        await connection
-            .query(
-                `INSERT INTO groups (id, user_id, name, created_at, updated_at) VALUES 
+        for (const { id, user_id, name } of data.groups) {
+            await connection
+                .query(
+                    `INSERT INTO groups (id, user_id, name, created_at, updated_at) VALUES 
                 ('${id}', '${user_id}', '${name}', 'now()', 'now()')`
-            )
-            .then((_) => {
-                console.log(`Group ${name} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create group ${name}!`);
-                console.log(err);
-            });
-    }
+                )
+                .then((_) => {
+                    console.log(`Group ${name} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create group ${name}!`);
+                    console.log(err);
+                });
+        }
 
-    // GROUP_QUEUE
+        // GROUP_QUEUE
 
-    for (const { id, group_id, user_id } of data.group_queue) {
-        await connection
-            .query(
-                `INSERT INTO group_queue (id, group_id, user_id, created_at) VALUES 
+        for (const { id, group_id, user_id } of data.group_queue) {
+            await connection
+                .query(
+                    `INSERT INTO group_queue (id, group_id, user_id, created_at) VALUES 
                 ('${id}', '${group_id}', '${user_id}', 'now()')`
-            )
-            .then((_) => {
-                console.log(`Group queue ${group_id} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create group ${group_id}!`);
-                console.log(err);
-            });
-    }
+                )
+                .then((_) => {
+                    console.log(`Group queue ${group_id} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create group ${group_id}!`);
+                    console.log(err);
+                });
+        }
 
-    // GROUPS_USERS
+        // GROUPS_USERS
 
-    for (const { group_id, user_id } of data.groups_users) {
-        await connection
-            .query(
-                `INSERT INTO groups_users (group_id, user_id) VALUES 
+        for (const { group_id, user_id } of data.groups_users) {
+            await connection
+                .query(
+                    `INSERT INTO groups_users (group_id, user_id) VALUES 
                 ('${group_id}', '${user_id}')`
-            )
-            .then((_) => {
-                console.log(`Groups users ${group_id} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create groups users ${group_id}!`);
-                console.log(err);
-            });
-    }
+                )
+                .then((_) => {
+                    console.log(`Groups users ${group_id} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create groups users ${group_id}!`);
+                    console.log(err);
+                });
+        }
 
-    // CAMPAIGNS
+        // CAMPAIGNS
 
-    for (const { id, group_id, user_id, name, expiration } of data.campaigns) {
-        await connection
-            .query(
-                `INSERT INTO campaigns (id, group_id, user_id, name, expiration, created_at, updated_at, deleted_at) VALUES 
+        for (const { id, group_id, user_id, name, expiration } of data.campaigns) {
+            await connection
+                .query(
+                    `INSERT INTO campaigns (id, group_id, user_id, name, expiration, created_at, updated_at, deleted_at) VALUES 
                 ('${id}', '${group_id}', '${user_id}', '${name}', '${expiration}', 'now()', 'now()', null)`
-            )
-            .then((_) => {
-                console.log(`Campaign ${name} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create campaign ${name}!`);
-                console.log(err);
-            });
-    }
+                )
+                .then((_) => {
+                    console.log(`Campaign ${name} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create campaign ${name}!`);
+                    console.log(err);
+                });
+        }
 
-    // CAMPAIGN QUEUE
+        // CAMPAIGN_QUEUE
 
-    for (const { id, campaign_id, user_id } of data.campaign_queue) {
-        await connection
-            .query(
-                `INSERT INTO campaign_queue (id, campaign_id, user_id, created_at) VALUES 
+        for (const { id, campaign_id, user_id } of data.campaign_queue) {
+            await connection
+                .query(
+                    `INSERT INTO campaign_queue (id, campaign_id, user_id, created_at) VALUES 
                     ('${id}', '${campaign_id}', '${user_id}', 'now()')`
-            )
-            .then((_) => {
-                console.log(`Campaign queue ${id} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create campaign queue ${id}!`);
-                console.log(err);
-            });
-    }
+                )
+                .then((_) => {
+                    console.log(`Campaign queue ${id} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create campaign queue ${id}!`);
+                    console.log(err);
+                });
+        }
 
-    // EMOTION
+        // EMOTIONS
 
-    for (const { id, name, slug } of data.emotions) {
-        await connection
-            .query(
-                `INSERT INTO emotions (id, name, slug, created_at) VALUES 
+        for (const { id, name, slug } of data.emotions) {
+            await connection
+                .query(
+                    `INSERT INTO emotions (id, name, slug, created_at) VALUES 
                     ('${id}', '${name}', '${slug}', 'now()')`
-            )
-            .then((_) => {
-                console.log(`Emotion ${name} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create emotion ${name}!`);
-                console.log(err);
-            });
-    }
+                )
+                .then((_) => {
+                    console.log(`Emotion ${name} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create emotion ${name}!`);
+                    console.log(err);
+                });
+        }
 
-    // ACTOS
+        // ACTORS
 
-    for (const { id, name, slug } of data.actors) {
-        await connection
-            .query(
-                `INSERT INTO actors (id, name, slug, created_at) VALUES 
+        for (const { id, name, slug } of data.actors) {
+            await connection
+                .query(
+                    `INSERT INTO actors (id, name, slug, created_at) VALUES 
                             ('${id}', '${name}', '${slug}', 'now()')`
-            )
-            .then((_) => {
-                console.log(`Actor ${name} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create actor ${name}!`);
-                console.log(err);
-            });
-    }
+                )
+                .then((_) => {
+                    console.log(`Actor ${name} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create actor ${name}!`);
+                    console.log(err);
+                });
+        }
 
-    // REASONS
+        // REASONS
 
-    for (const { id, emotion_id, description } of data.reasons) {
-        await connection
-            .query(
-                `INSERT INTO reasons (id, emotion_id, description, created_at) VALUES 
+        for (const { id, emotion_id, description } of data.reasons) {
+            await connection
+                .query(
+                    `INSERT INTO reasons (id, emotion_id, description, created_at) VALUES 
                         ('${id}', '${emotion_id}', '${description}', 'now()')`
-            )
-            .then((_) => {
-                console.log(`Reason ${description} created!`);
-            })
-            .catch((err) => {
-                console.log(`Erro in create reason ${description}!`);
-                console.log(err);
-            });
+                )
+                .then((_) => {
+                    console.log(`Reason ${description} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create reason ${description}!`);
+                    console.log(err);
+                });
+        }
+
+        // VOTES
+
+        for (const { id, campaign_id, user_id, emotion_id } of data.votes) {
+            await connection
+                .query(
+                    `INSERT INTO votes (id, campaign_id, emotion_id, user_id, created_at) VALUES 
+                            ('${id}', '${campaign_id}', '${emotion_id}', '${user_id}', 'now()')`
+                )
+                .then((_) => {
+                    console.log(`Vote ${id} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create vote ${id}!`);
+                    console.log(err);
+                });
+        }
+
+        // VOTES ACTORS
+
+        for (const { id, vote_id, user_id, actor_id } of data.votes_actors) {
+            await connection
+                .query(
+                    `INSERT INTO votes_actors (id, vote_id, actor_id, user_id, created_at) VALUES 
+                            ('${id}', '${vote_id}', '${actor_id}', '${user_id}', 'now()')`
+                )
+                .then((_) => {
+                    console.log(`Vote actor ${id} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create vote actor ${id}!`);
+                    console.log(err);
+                });
+        }
+
+        // VOTES REASON
+
+        for (const { id, vote_id, user_id, reason_id } of data.votes_reasons) {
+            await connection
+                .query(
+                    `INSERT INTO votes_reasons (id, vote_id, reason_id, user_id, created_at) VALUES 
+                                ('${id}', '${vote_id}', '${reason_id}', '${user_id}', 'now()')`
+                )
+                .then((_) => {
+                    console.log(`Vote reason ${id} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create vote reason ${id}!`);
+                    console.log(err);
+                });
+        }
+
+        // VOTES COMMENTS
+
+        for (const { id, vote_id, user_id, message } of data.votes_comments) {
+            await connection
+                .query(
+                    `INSERT INTO votes_comments (id, vote_id, user_id, message, created_at) VALUES 
+                                    ('${id}', '${vote_id}', '${user_id}', '${message}', 'now()')`
+                )
+                .then((_) => {
+                    console.log(`Vote comment ${id} created!`);
+                })
+                .catch((err) => {
+                    console.log(`Erro in create vote comment ${id}!`);
+                    console.log(err);
+                });
+        }
     }
 
     await connection.close();

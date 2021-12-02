@@ -41,8 +41,8 @@ export class CreateVotesReasons1637872646280 implements MigrationInterface {
                 referencedTableName: 'votes',
                 referencedColumnNames: ['id'],
                 columnNames: ['vote_id'],
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE',
+                onDelete: 'SET NULL',
+                onUpdate: 'SET NULL',
             })
         );
 
@@ -53,8 +53,8 @@ export class CreateVotesReasons1637872646280 implements MigrationInterface {
                 referencedTableName: 'reasons',
                 referencedColumnNames: ['id'],
                 columnNames: ['reason_id'],
-                onDelete: 'SET NULL',
-                onUpdate: 'SET NULL',
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             })
         );
 

@@ -41,8 +41,8 @@ export class CreateVotesComments1637938212162 implements MigrationInterface {
                 referencedTableName: 'votes',
                 referencedColumnNames: ['id'],
                 columnNames: ['vote_id'],
-                onDelete: 'CASCADE',
-                onUpdate: 'CASCADE',
+                onDelete: 'SET NULL',
+                onUpdate: 'SET NULL',
             })
         );
 
