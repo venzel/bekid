@@ -1,53 +1,53 @@
-interface IProvidersConfigDTO {
-    cache_provider: string;
-    mail_provider: string;
-    queue_provider: string;
-    storage_provider: string;
-    generate_id_provider: string;
+interface IStrategysConfigDTO {
+    cache_strategyr: string;
+    mail_strategy: string;
+    queue_strategy: string;
+    storage_strategy: string;
+    generate_id_strategy: string;
 }
 
-const _generateIdProvider = (): string => {
-    const env = process.env.GENERATE_ID_PROVIDER;
-    if (!env) throw new Error('Error in var ambient: GENERATE_ID_PROVIDER!');
+const _generateIdStrategy = (): string => {
+    const env = process.env.GENERATE_ID_STRATEGY;
+    if (!env) throw new Error('Error in var ambient: GENERATE_ID_STRATEGY!');
     return env;
 };
 
-const _cacheProvider = (): string => {
-    const env = process.env.CACHE_PROVIDER;
-    if (!env) throw new Error('Error in var ambient: CACHE_PROVIDER!');
+const _cacheStrategy = (): string => {
+    const env = process.env.CACHE_STRATEGY;
+    if (!env) throw new Error('Error in var ambient: CACHE_STRATEGY!');
     return env;
 };
 
-const _mailProvider = (): string => {
-    const env = process.env.MAIL_PROVIDER;
-    if (!env) throw new Error('Error in var ambient: MAIL_PROVIDER!');
+const _mailStrategy = (): string => {
+    const env = process.env.MAIL_STRATEGY;
+    if (!env) throw new Error('Error in var ambient: MAIL_STRATEGY!');
     return env;
 };
 
-const _queueProvider = (): string => {
-    const env = process.env.QUEUE_PROVIDER;
-    if (!env) throw new Error('Error in var ambient: QUEUE_PROVIDER!');
+const _queueStrategy = (): string => {
+    const env = process.env.QUEUE_STRATEGY;
+    if (!env) throw new Error('Error in var ambient: QUEUE_STRATEGY!');
     return env;
 };
 
-const _storageProvider = (): string => {
-    const env = process.env.STORAGE_PROVIDER;
-    if (!env) throw new Error('Error in var ambient: STORAGE_PROVIDER!');
+const _storageStrategy = (): string => {
+    const env = process.env.STORAGE_STRATEGY;
+    if (!env) throw new Error('Error in var ambient: STORAGE_STRATEGY!');
     return env;
 };
 
-const configs: IProvidersConfigDTO = {
-    generate_id_provider: _generateIdProvider(),
-    cache_provider: _cacheProvider(),
-    mail_provider: _mailProvider(),
-    queue_provider: _queueProvider(),
-    storage_provider: _storageProvider(),
+const configs: IStrategysConfigDTO = {
+    generate_id_strategy: _generateIdStrategy(),
+    cache_strategyr: _cacheStrategy(),
+    mail_strategy: _mailStrategy(),
+    queue_strategy: _queueStrategy(),
+    storage_strategy: _storageStrategy(),
 };
 
-const { generate_id_provider, cache_provider, mail_provider, queue_provider, storage_provider } = configs;
+const { generate_id_strategy, cache_strategyr, mail_strategy, queue_strategy, storage_strategy } = configs;
 
-export { generate_id_provider };
-export { cache_provider };
-export { mail_provider };
-export { queue_provider };
-export { storage_provider };
+export { generate_id_strategy };
+export { cache_strategyr };
+export { mail_strategy };
+export { queue_strategy };
+export { storage_strategy };

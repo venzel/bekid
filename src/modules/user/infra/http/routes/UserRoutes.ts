@@ -4,7 +4,6 @@ import { AuthenticateUserMiddleware } from '@modules/user/useCases/AuthenticateU
 import { RegisterUserMiddleware } from '@modules/user/useCases/RegisterUser/RegisterUserMiddleware';
 import { UpdatePasswordUserMiddleware } from '@modules/user/useCases/UpdatePasswordUser/UpdatePasswordUserMiddleware';
 import { ForgotPasswordUserMiddleware } from '@modules/user/useCases/ForgotPasswordUser/ForgotPasswordUserMiddleware';
-import { ResetPasswordUserMiddleware } from '@modules/user/useCases/ResetPasswordUser/ResetPasswordUserMiddleware';
 import { UpdateAvatarUserMiddleware } from '@modules/user/useCases/UpdateAvatarUser/UpdateAvatarUserMiddleware';
 import { UpdateProfileUserMiddleware } from '@modules/user/useCases/UpdateProfileUser/UpdateProfileUserMiddleware';
 import { ToggleRoleUserMiddleware } from '@modules/user/useCases/ToggleRoleUser/ToggleRoleUserMiddleware';
@@ -12,11 +11,16 @@ import { ShowUserMiddleware } from '@modules/user/useCases/ShowUser/ShowUserMidd
 import { DeleteUserMiddleware } from '@modules/user/useCases/DeleteUser/DeleteUserMiddleware';
 import { ListUserMiddleware } from '@modules/user/useCases/ListUser/ListUserMiddleware';
 import { ToggleAllowUserMiddleware } from '@modules/user/useCases/ToogleAllowUser/ToggleAllowUserMiddleware';
+import { FindAllUsersContainNameMiddleware } from '@modules/user/useCases/FindAllUsersContainName/FindAllUsersContainNameMiddleware';
+import { ResetPasswordUserMiddleware } from '@modules/user/useCases/ResetPasswordUser/ResetPasswordUserMiddleware';
 
 class UserRoutes {
     public registerAll(router: Router): void {
         // Register user
         new RegisterUserMiddleware().register(router, 'post', 'ALL', '/users');
+
+        // Find user
+        new FindAllUsersContainNameMiddleware().register(router, 'get', ['ADMIN', 'MANAGER', 'USER'], '/find_user');
 
         // List
         new ListUserMiddleware().register(router, 'get', 'ADMIN', '/users');

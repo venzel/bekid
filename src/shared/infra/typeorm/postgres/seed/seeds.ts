@@ -14,13 +14,15 @@ const create = async () => {
                 email: 'venzel@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'ADMIN',
+                slug: 'venzel junior Venzel Junior',
             },
             {
                 id: 'cintia',
-                name: 'Cintia Almeida',
+                name: 'Cíntia Almeida',
                 email: 'cintia@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'MANAGER',
+                slug: 'cintia almeida Cintia Almeida',
             },
             {
                 id: 'camila',
@@ -28,6 +30,7 @@ const create = async () => {
                 email: 'camila@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'MANAGER',
+                slug: 'camila porto Camila Porto',
             },
             {
                 id: 'bruna',
@@ -35,6 +38,7 @@ const create = async () => {
                 email: 'bruna@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'MANAGER',
+                slug: 'bruna cartilho Bruna Cartilho',
             },
             {
                 id: 'alex',
@@ -42,6 +46,7 @@ const create = async () => {
                 email: 'alex@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'USER',
+                slug: 'alex sandro Alex Sandro',
             },
             {
                 id: 'marcos',
@@ -49,6 +54,7 @@ const create = async () => {
                 email: 'marcos@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'USER',
+                slug: 'marcos santos Marcos Santos',
             },
             {
                 id: 'simas',
@@ -56,6 +62,7 @@ const create = async () => {
                 email: 'simas@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'USER',
+                slug: 'simas almeida Simas Almeida',
             },
             {
                 id: 'marilia',
@@ -63,6 +70,7 @@ const create = async () => {
                 email: 'marilia@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'USER',
+                slug: 'marilia nicacio Marilia Nicacio',
             },
             {
                 id: 'franco',
@@ -70,6 +78,7 @@ const create = async () => {
                 email: 'franco@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'USER',
+                slug: 'franco nelio Franco Nelio',
             },
             {
                 id: 'denis',
@@ -77,6 +86,7 @@ const create = async () => {
                 email: 'denis@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'USER',
+                slug: 'denis simplicio Denis Simplicio',
             },
             {
                 id: 'vanessa',
@@ -84,6 +94,7 @@ const create = async () => {
                 email: 'vanessa@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'USER',
+                slug: 'vanessa matos Vanessa Matos',
             },
             {
                 id: 'sergio',
@@ -91,6 +102,7 @@ const create = async () => {
                 email: 'sergio@gmail.com',
                 password: 'Kakodev1dro#',
                 role: 'USER',
+                slug: 'sergio neiva Sergio Neiva',
             },
         ],
         groups: [
@@ -421,16 +433,17 @@ const create = async () => {
 
     // POPULATE
 
-    const populate = false;
+    const populate = true;
 
     if (populate) {
         // USERS
 
-        for (const { id, name, email, password, role } of data.users) {
+        for (const { id, name, email, password, role, slug } of data.users) {
             await connection
                 .query(
-                    `INSERT INTO users (id, name, email, password, role, avatar, allowed, activated, created_at, updated_at, deleted_at) VALUES 
-                ('${id}', '${name}', '${email}', '${await gererateHash(password)}', '${role}', '', true, true, 'now()', 'now()', null)`
+                    `INSERT INTO users (id, name, email, password, role, avatar, slug, allowed, activated,
+                     created_at, updated_at, deleted_at) VALUES ('${id}', '${name}', '${email}',
+                     '${await gererateHash(password)}', '${role}', '', '${slug}', true, true, 'now()', 'now()', null)`
                 )
                 .then((_) => {
                     console.log(`${role} ${name} created!`);

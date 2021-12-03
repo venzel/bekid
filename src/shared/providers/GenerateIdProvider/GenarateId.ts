@@ -9,7 +9,7 @@ class GenerateId {
     };
 
     public static strategy(strategy?: IStrateyId): string {
-        const generateIdProvider = process.env.GENERATE_ID_PROVIDER || 'hash';
+        const generateIdProvider = process.env.GENERATE_ID_STRATEGY || 'hash';
 
         return strategy ? this._strategies[strategy]() : this._strategies[generateIdProvider]();
     }

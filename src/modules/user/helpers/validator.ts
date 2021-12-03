@@ -7,15 +7,17 @@ const isNameValid = (name: string): boolean => {
         return false;
     }
 
-    if (name.length > 16) {
+    if (name.length > 35) {
         return false;
     }
 
+    /*
     const tester = /^[a-zA-Z\u00C0-\u017F´]+\s+[a-zA-Z\u00C0-\u017F´]{0,}$/;
 
     if (!tester.test(name)) {
         return false;
     }
+    */
 
     return true;
 };

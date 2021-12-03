@@ -3,7 +3,7 @@ import { Exclude, Expose } from 'class-transformer';
 
 import { api_url } from '@configs/geral';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('users')
 class UserPostgresEntity implements IUserEntity {
@@ -32,6 +32,10 @@ class UserPostgresEntity implements IUserEntity {
         return this.avatar !== '' ? `${api_url}/file/${this.avatar}` : null;
     }
 
+    @Exclude()
+    @Column()
+    public slug: string;
+
     @Column()
     public allowed: boolean;
 
@@ -50,7 +54,7 @@ class UserPostgresEntity implements IUserEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

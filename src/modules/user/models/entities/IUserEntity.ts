@@ -5,6 +5,7 @@ interface IUserEntity {
     password: string;
     role: string;
     avatar: string;
+    slug: string;
     allowed: boolean;
     activated: boolean;
     created_at: Date;

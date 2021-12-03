@@ -7,6 +7,7 @@ import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IRegisterUserDTO } from '@modules/user/dtos/IRegisterUserDTO';
 import { AppException } from '@shared/exceptions/AppException';
 import { environment } from '@configs/geral';
+import { generateSlugs as generateSlug } from '@modules/user/helpers/generateNameSlug';
 
 @injectable()
 class RegisterUserService {
@@ -45,6 +46,10 @@ class RegisterUserService {
             allowed = false,
             avatar = '';
 
+        /* Generate slug */
+
+        const slug = generateSlug(name);
+
         /* Object construct user */
 
         const user = {
@@ -53,6 +58,7 @@ class RegisterUserService {
             password: hashPassword,
             role,
             avatar,
+            slug,
             activated,
             allowed,
         };
@@ -82,9 +88,9 @@ class RegisterUserService {
         /* Payload generated */
 
         const payload = {
-            user_token_id: userRegisterd.id,
-            user_token_role: user.role,
-            user_token_activated: activated,
+            user_id: userRegisterd.id,
+            role: user.role,
+            activated,
         };
 
         /* Token generated */

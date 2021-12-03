@@ -33,6 +33,10 @@ export default class CreateUsers1607975202667 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
+                        name: 'slug',
+                        type: 'varchar',
+                    },
+                    {
                         name: 'allowed',
                         type: 'boolean',
                         default: true,

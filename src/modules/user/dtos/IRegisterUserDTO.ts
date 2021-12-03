@@ -6,6 +6,7 @@ interface IRegisterUserDTO {
     password: string;
     role: IRoleDTO;
     avatar?: string;
+    slug?: string;
     activated?: boolean;
     allowed?: boolean;
 }
