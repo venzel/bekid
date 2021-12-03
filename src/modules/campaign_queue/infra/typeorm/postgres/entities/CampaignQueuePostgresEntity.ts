@@ -3,7 +3,7 @@ import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, CreateDateColumn 
 import { ICampaignQueueEntity } from '@modules/campaign_queue/models/entities/ICampaignQueueEntity';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 import { CampaignPostgresEntity } from '@modules/campaign/infra/typeorm/postgres/entities/CampaignPostgresEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('campaign_queue')
 class CampaignQueuePostgresEntity implements ICampaignQueueEntity {
@@ -29,7 +29,7 @@ class CampaignQueuePostgresEntity implements ICampaignQueueEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

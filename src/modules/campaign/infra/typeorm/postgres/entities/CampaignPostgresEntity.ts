@@ -4,7 +4,7 @@ import { Expose } from 'class-transformer';
 import { ICampaignEntity } from '@modules/campaign/models/entities/ICampaignEntity';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 import { GroupPostgresEntity } from '@modules/group/infra/typeorm/postgres/entities/GroupPostgresEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('campaigns')
 class CampaignPostgresEntity implements ICampaignEntity {
@@ -43,7 +43,7 @@ class CampaignPostgresEntity implements ICampaignEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
+import { idValidator } from '@shared/helpers/helperIdService';
 import { ICreateVoteReasonDTO } from '@modules/vote_reason/dtos/ICreateVoteReasonDTO';
-import { isIdValid } from '@shared/helpers/validator';
 import { AppException } from '@shared/exceptions/AppException';
 
 class CreateVoteReasonValidator {
@@ -13,11 +13,11 @@ class CreateVoteReasonValidator {
             reason_id,
         } as ICreateVoteReasonDTO; // important, force typing in this case: QUERY STRING!
 
-        if (!isIdValid(data.vote_id, 'hash')) {
+        if (!idValidator(data.vote_id)) {
             throw new AppException(`Vote id ${data.vote_id} invalid!`);
         }
 
-        if (!isIdValid(data.reason_id, 'hash')) {
+        if (!idValidator(data.reason_id)) {
             throw new AppException(`Reason id ${data.reason_id} invalid!`);
         }
 

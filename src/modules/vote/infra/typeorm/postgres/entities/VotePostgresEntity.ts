@@ -4,7 +4,7 @@ import { IVoteEntity } from '@modules/vote/models/entities/IVoteEntity';
 import { CampaignPostgresEntity } from '@modules/campaign/infra/typeorm/postgres/entities/CampaignPostgresEntity';
 import { EmotionPostgresEntity } from '@modules/emotion/infra/typeorm/postgres/entities/EmotionPostgresEntity';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('votes')
 class VotePostgresEntity implements IVoteEntity {
@@ -38,7 +38,7 @@ class VotePostgresEntity implements IVoteEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

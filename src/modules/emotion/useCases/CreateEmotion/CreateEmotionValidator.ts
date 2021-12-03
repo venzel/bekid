@@ -7,11 +7,11 @@ class CreateEmotionValidator {
         const { name, slug } = req.body;
 
         if (!name || name.length < 3 || name.length > 15) {
-            throw new AppException('Emotion name invalid!', 400);
+            throw new AppException(`Emotion name ${name} invalid!`, 400);
         }
 
         if (!slug || slug.length < 3 || slug.length > 15) {
-            throw new AppException('Emotion slug invalid!', 400);
+            throw new AppException(`Emotion slug ${slug} invalid!`, 400);
         }
 
         return next();

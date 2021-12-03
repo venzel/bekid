@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { isIdValid } from '@shared/helpers/validator';
-import { AppException } from '@shared/exceptions/AppException';
+import { idValidator } from '@shared/helpers/helperIdService';
 import { IAddOneUserInGroupDTO } from '@modules/group/dtos/IAddOneUserInGroupDTO';
+import { AppException } from '@shared/exceptions/AppException';
 
 class AddOneUserInGroupValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
@@ -14,15 +14,15 @@ class AddOneUserInGroupValidator {
             user_id,
         } as IAddOneUserInGroupDTO; // important, force typing in this case: QUERY STRING!
 
-        if (!isIdValid(data.group_queue_id, 'hash')) {
+        if (!idValidator(data.group_queue_id)) {
             throw new AppException(`Group queue id ${group_id} invalid!`);
         }
 
-        if (!isIdValid(data.group_id, 'hash')) {
+        if (!idValidator(data.group_id)) {
             throw new AppException(`Group id ${group_id} invalid!`);
         }
 
-        if (!isIdValid(data.user_id, 'hash')) {
+        if (!idValidator(data.user_id)) {
             throw new AppException(`User id ${user_id} invalid!`);
         }
 

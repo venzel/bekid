@@ -8,7 +8,7 @@ class ForgotPasswordUserValidator {
         const { email } = req.body;
 
         if (!isEmailValid(email)) {
-            throw new AppException('Email invalid!', 400);
+            throw new AppException(`Email ${email} invalid!`, 400);
         }
 
         return next();

@@ -10,7 +10,7 @@ class ShowUserValidator {
         const { user_token_id, user_token_role } = req.auth;
 
         if (!idValidator(userId)) {
-            throw new AppException('User id invalid!');
+            throw new AppException(`User id ${userId} invalid!`);
         }
 
         if (user_token_role !== 'ADMIN' && userId !== user_token_id) {

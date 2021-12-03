@@ -7,7 +7,7 @@ class CreateReasonValidator {
         const { description } = req.body;
 
         if (!description || description.length < 3 || description.length > 15) {
-            throw new AppException('Reason name invalid!', 400);
+            throw new AppException(`Reason description ${description} invalid!`, 400);
         }
 
         return next();

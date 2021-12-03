@@ -1,5 +1,5 @@
 interface IStrategysConfigDTO {
-    cache_strategyr: string;
+    cache_strategy: string;
     mail_strategy: string;
     queue_strategy: string;
     storage_strategy: string;
@@ -38,16 +38,16 @@ const _storageStrategy = (): string => {
 
 const configs: IStrategysConfigDTO = {
     generate_id_strategy: _generateIdStrategy(),
-    cache_strategyr: _cacheStrategy(),
+    cache_strategy: _cacheStrategy(),
     mail_strategy: _mailStrategy(),
     queue_strategy: _queueStrategy(),
     storage_strategy: _storageStrategy(),
 };
 
-const { generate_id_strategy, cache_strategyr, mail_strategy, queue_strategy, storage_strategy } = configs;
+const { generate_id_strategy, cache_strategy, mail_strategy, queue_strategy, storage_strategy } = configs;
 
 export { generate_id_strategy };
-export { cache_strategyr };
+export { cache_strategy };
 export { mail_strategy };
 export { queue_strategy };
 export { storage_strategy };

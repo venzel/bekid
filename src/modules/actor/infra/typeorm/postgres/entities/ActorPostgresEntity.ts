@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
 
 import { IActorEntity } from '@modules/actor/models/entities/IActorEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('actors')
 class ActorPostgresEntity implements IActorEntity {
@@ -19,7 +19,7 @@ class ActorPostgresEntity implements IActorEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

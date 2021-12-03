@@ -3,7 +3,7 @@ import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, CreateDateColumn 
 import { IGroupQueueEntity } from '@modules/group_queue/models/entities/IGroupQueueEntity';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
 import { GroupPostgresEntity } from '@modules/group/infra/typeorm/postgres/entities/GroupPostgresEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('group_queue')
 class GroupQueuePostgresEntity implements IGroupQueueEntity {
@@ -29,7 +29,7 @@ class GroupQueuePostgresEntity implements IGroupQueueEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { isIdValid } from '@shared/helpers/validator';
+import { idValidator } from '@shared/helpers/helperIdService';
 import { AppException } from '@shared/exceptions/AppException';
 
 class DeleteUserValidator {
@@ -9,8 +9,8 @@ class DeleteUserValidator {
 
         const { user_token_id, user_token_role } = req.auth;
 
-        if (!isIdValid(userId, 'hash')) {
-            throw new AppException('User id invalid!');
+        if (!idValidator(userId)) {
+            throw new AppException(`User id ${userId} invalid!`);
         }
 
         if (user_token_role === 'ADMIN' && userId === user_token_id) {

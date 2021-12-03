@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
+import { idValidator } from '@shared/helpers/helperIdService';
 import { IDeleteOneUserInGroupQueueDTO } from '@modules/group_queue/dtos/IDeleteOneUserInGroupQueueDTO';
-import { isIdValid } from '@shared/helpers/validator';
 import { AppException } from '@shared/exceptions/AppException';
 
 class DeleteOneUserInGroupQueueValidator {
@@ -12,7 +12,7 @@ class DeleteOneUserInGroupQueueValidator {
             group_queue_id,
         } as IDeleteOneUserInGroupQueueDTO; // important, force typing in this case: QUERY STRING!
 
-        if (!isIdValid(data.group_queue_id, 'hash')) {
+        if (!idValidator(data.group_queue_id)) {
             throw new AppException(`Group queue id ${data.group_queue_id} invalid!`);
         }
 

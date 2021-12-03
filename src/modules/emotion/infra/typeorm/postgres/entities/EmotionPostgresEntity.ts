@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
 
 import { IEmotionEntity } from '@modules/emotion/models/entities/IEmotionEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('emotions')
 class EmotionPostgresEntity implements IEmotionEntity {
@@ -19,7 +19,7 @@ class EmotionPostgresEntity implements IEmotionEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

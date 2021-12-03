@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { isIdValid } from '@shared/helpers/validator';
+import { idValidator } from '@shared/helpers/helperIdService';
 import { AppException } from '@shared/exceptions/AppException';
 
 class ToggleRoleUserValidator {
@@ -9,8 +9,8 @@ class ToggleRoleUserValidator {
 
         const userId = req.params.id;
 
-        if (!isIdValid(userId, 'hash')) {
-            throw new AppException('User id invalid!', 400);
+        if (!idValidator(userId)) {
+            throw new AppException(`User id ${userId} invalid!`, 400);
         }
 
         if (userId === user_token_id) {

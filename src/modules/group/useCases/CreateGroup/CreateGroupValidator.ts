@@ -7,7 +7,7 @@ class CreateGroupValidator {
         const { name } = req.body;
 
         if (!name || name.length < 5 || name.length > 50) {
-            throw new AppException('Group name invalid!', 400);
+            throw new AppException(`Group name ${name} invalid!`, 400);
         }
 
         return next();

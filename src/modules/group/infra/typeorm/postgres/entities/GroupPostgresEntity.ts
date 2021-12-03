@@ -3,7 +3,7 @@ import { Expose } from 'class-transformer';
 
 import { IGroupEntity } from '@modules/group/models/entities/IGroupEntity';
 import { UserPostgresEntity } from '@modules/user/infra/typeorm/postgres/entities/UserPostgresEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('groups')
 class GroupPostgresEntity implements IGroupEntity {
@@ -37,7 +37,7 @@ class GroupPostgresEntity implements IGroupEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

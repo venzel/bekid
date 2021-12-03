@@ -9,4 +9,5 @@
     //     return terms.join(' ');
     // };
     // console.log(generateTerm('Tiagô da costa Rizzo'));
+    console.log(`ok`);
 })();

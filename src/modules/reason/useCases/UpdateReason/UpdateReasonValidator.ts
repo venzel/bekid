@@ -1,14 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { isIdValid } from '@shared/helpers/validator';
+import { idValidator } from '@shared/helpers/helperIdService';
 import { AppException } from '@shared/exceptions/AppException';
 
 class UpdateReasonValidator {
     public validate(req: Request, _: Response, next: NextFunction): any {
-        const { emotion_id, description } = req.body;
+        const { reason_id, description } = req.body;
 
-        if (!isIdValid(emotion_id, 'hash')) {
-            throw new AppException('Emotion id invalid!');
+        if (!idValidator(reason_id)) {
+            throw new AppException(`Reason id ${reason_id} invalid!`);
         }
 
         if (!description || description.length < 3 || description.length > 15) {

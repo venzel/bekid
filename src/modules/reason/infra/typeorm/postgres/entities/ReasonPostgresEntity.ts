@@ -2,7 +2,7 @@ import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, CreateDateColumn 
 
 import { IReasonEntity } from '@modules/reason/models/entities/IReasonEntity';
 import { EmotionPostgresEntity } from '@modules/emotion/infra/typeorm/postgres/entities/EmotionPostgresEntity';
-import { GenerateId } from '@shared/providers/GenerateIdProvider/GenarateId';
+import { idGenerator } from '@shared/helpers/helperIdService';
 
 @Entity('reasons')
 class ReasonPostgresEntity implements IReasonEntity {
@@ -24,7 +24,7 @@ class ReasonPostgresEntity implements IReasonEntity {
 
     constructor() {
         if (!this.id) {
-            this.id = GenerateId.strategy();
+            this.id = idGenerator();
         }
     }
 }

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
+import { idValidator } from '@shared/helpers/helperIdService';
 import { ICreateVoteActorDTO } from '@modules/vote_actor/dtos/ICreateVoteActorDTO';
-import { isIdValid } from '@shared/helpers/validator';
 import { AppException } from '@shared/exceptions/AppException';
 
 class CreateVoteActorValidator {
@@ -13,11 +13,11 @@ class CreateVoteActorValidator {
             actor_id,
         } as ICreateVoteActorDTO; // important, force typing in this case: QUERY STRING!
 
-        if (!isIdValid(data.vote_id, 'hash')) {
+        if (!idValidator(data.vote_id)) {
             throw new AppException(`Vote id ${data.vote_id} invalid!`);
         }
 
-        if (!isIdValid(data.actor_id, 'hash')) {
+        if (!idValidator(data.actor_id)) {
             throw new AppException(`Actor id ${data.actor_id} invalid!`);
         }
 
