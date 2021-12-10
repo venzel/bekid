@@ -1,13 +1,13 @@
 (() => {
-    // const wordToLowerCase = (value: string) => value.toLowerCase();
-    // const wordReplaceAccents = (value: string) => {
-    //     return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    // };
-    // const generateTerm = (term: string) => {
-    //     const terms = [];
-    //     terms.push(wordToLowerCase(wordReplaceAccents(term)));
-    //     return terms.join(' ');
-    // };
-    // console.log(generateTerm('Tiagô da costa Rizzo'));
-    console.log(`ok`);
+    var x = 'White Dog';
+    var arr = x.split(''); // ["W", "h", "i", "t", "e", " ", "D", "o", "g"]
+    arr.splice(6, 1, 'F');
+
+    /* 
+      Here 6 is starting index and 1 is no. of array elements to remove and 
+      final argument 'F' is the new character to be inserted. 
+    */
+    var result = arr.join(''); // "White Fog"
+
+    console.log(result);
 })();
