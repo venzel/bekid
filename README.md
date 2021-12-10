@@ -39,7 +39,7 @@ O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como auto
 
 \* importante observar nesse primeiro momento, apenas os relacionamentos.
 
-<p align="center"><img src="./media/diagrams/diagram-v1.png" width="600" /></p>
+<p align="center"><img src="./media/diagrams/diagram-v4.png" width="600" /></p>
 
 ## Links
 
