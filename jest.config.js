@@ -5,7 +5,7 @@ module.exports = {
     clearMocks: true,
     coverageProvider: 'v8',
     collectCoverage: true,
-    collectCoverageFrom: ['<rootDir>/src/modules/**/useCases/**/*Test.ts'],
+    collectCoverageFrom: ['<rootDir>/src/modules/**/useCases/**/*Service.ts'],
     coverageDirectory: 'coverage',
     coverageReporters: ['text-summary', 'lcov'],
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/src/' }),

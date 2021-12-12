@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import 'dotenv/config';
 import express, { Express } from 'express';
+
 import { connection } from '../../../database/Connection';
 import { middleware } from './Middleware';
 

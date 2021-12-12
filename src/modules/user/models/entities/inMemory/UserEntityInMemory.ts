@@ -1,6 +1,6 @@
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 
-class UserInMemoryEntity implements IUserEntity {
+class UserEntityInMemory implements IUserEntity {
     id: string;
     name: string;
     email: string;
@@ -15,4 +15,4 @@ class UserInMemoryEntity implements IUserEntity {
     deleted_at: Date | null;
 }
 
-export { UserInMemoryEntity };
+export { UserEntityInMemory };

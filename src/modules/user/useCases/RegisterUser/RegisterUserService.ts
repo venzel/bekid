@@ -7,7 +7,7 @@ import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IRegisterUserDTO } from '@modules/user/dtos/IRegisterUserDTO';
 import { AppException } from '@shared/exceptions/AppException';
 import { environment } from '@configs/geral';
-import { generateSlugs as generateSlug } from '@modules/user/helpers/generateNameSlug';
+import { generateSlugs } from '@modules/user/helpers/generateNameSlug';
 
 @injectable()
 class RegisterUserService {
@@ -48,7 +48,7 @@ class RegisterUserService {
 
         /* Generate slug */
 
-        const slug = generateSlug(name);
+        const slug = generateSlugs(name);
 
         /* Object construct user */
 

@@ -3,9 +3,9 @@ import { v4 as uuid } from 'uuid';
 import { IRegisterUserDTO } from '@modules/user/dtos/IRegisterUserDTO';
 import { IUserEntity } from '@modules/user/models/entities/IUserEntity';
 import { IUserRepository } from '@modules/user/repositories/IUserRepository';
-import { UserInMemoryEntity } from '../models/entities/UserInMemoryEntity';
+import { UserEntityInMemory } from '@modules/user/models/entities/inMemory/UserEntityInMemory';
 
-class UserInMemoryRepository implements IUserRepository {
+class UserRepositoryInMemory implements IUserRepository {
     private _repository: IUserEntity[];
 
     constructor() {
@@ -39,9 +39,9 @@ class UserInMemoryRepository implements IUserRepository {
     public async create(user: IRegisterUserDTO): Promise<IUserEntity> {
         const { name, email, password, role, activated } = user;
 
-        const userInMemoryEntity: IUserEntity = new UserInMemoryEntity();
+        const userInMemoryEntity: IUserEntity = new UserEntityInMemory();
 
-        const id: string = uuid();
+        const id = uuid();
 
         Object.assign(userInMemoryEntity, { id, name, email, password, role, activated });
 
@@ -84,4 +84,4 @@ class UserInMemoryRepository implements IUserRepository {
     }
 }
 
-export { UserInMemoryRepository };
+export { UserRepositoryInMemory };

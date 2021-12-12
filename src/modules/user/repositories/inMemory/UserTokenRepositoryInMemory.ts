@@ -3,9 +3,9 @@ import { v4 as uuid } from 'uuid';
 import { IUserTokenSchema } from '@modules/user/models/schemas/IUserTokenSchema';
 import { IUserTokenRepository } from '@modules/user/repositories/IUserTokenRepository';
 import { ICreateTokenDTO } from '@modules/user/dtos/ICreateTokenDTO';
-import { UserTokenInMemorySchema } from '../models/schemas/UserTokenInMemorySchema';
+import { UserTokenInMemorySchema } from '../../models/schemas/UserTokenInMemorySchema';
 
-class UserTokenInMemoryRepository implements IUserTokenRepository {
+class UserTokenRepositoryInMemory implements IUserTokenRepository {
     private _repository: IUserTokenSchema[];
 
     constructor() {
@@ -37,4 +37,4 @@ class UserTokenInMemoryRepository implements IUserTokenRepository {
     }
 }
 
-export { UserTokenInMemoryRepository };
+export { UserTokenRepositoryInMemory };

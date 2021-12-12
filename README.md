@@ -11,17 +11,58 @@
 👉 <a href="https://www.linkedin.com/in/venzel">Edivam Enéas de Almeida Júnior</a><br />
 👉 <a href="https://www.linkedin.com/in/joab-maia-383097202">Joab da Silva Maia</a>
 
-## Backend
+## Stack de tecnologias
 
--   NodeJs / Express / Jest
+<p align="left">
+  <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="NodeJs" title="NodeJs" width="30" height="30" />
+  <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="Typescript" title="Typescript" width="30" height="30" />
+  <img src="https://cdn.worldvectorlogo.com/logos/logo-javascript.svg" alt="Javascript" title="Javascript" width="30" height="30" />
+  <img src="./media/images/jest.svg" alt="Jest" title="Jest" width="30" height="30" />
+</p>
+
+-   NodeJs / Express
 -   Typescript
 -   TypeORM / Postgres / MongoDB / Redis
+-   TDD com Jest
 
-## Arquitetura
+## Técnicas
+
+-   Princípios do SOLID
+-   Clean code
+-   Dependency inversion com tsyringe
+-   Testes com coverages
+
+## Tests & coverages
+
+O programa é orientado a testes com métricas de coverages.
+
+<img src="./media/images/testes.png" alt="Testes" title="Testes" width="600" />
+
+## Arquitetura & Padrões de projeto
+
+### Organização do projeto
+
+O projeto está organizado da seguine forma:
+
+-   Modules
+-   Domain
+-   Controllers
+-   Services
+-   Repositories
+
+<img src="./media/images/folders.png" alt="Folders" title="Folders" width="400" />
+
+### Padrões de projeto
+
+-   Nos use cases é explorado o padrão de projeto **Chain of Responsability**.
+
+👉 <a href="https://github.com/venzel/bekid-backend/blob/master/src/modules/user/useCases/ShowUser/ShowUserMiddleware.ts">Exemplo</a>: Na linha 16, é possível observar o funcionamento do padrão de projeto, onde os contextos podem ser observados em: path nó inicial, authenticate, role, validade e habdle que é o nó folha.
+
+<img src="./media/images/cor.png" alt="Testes" title="Testes" width="700" />
 
 ### Porque Feature by Package?
 
-Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Domain Driven Design)**, sugerida por empresas como a **Rocketseat**, com o objetivo de tornar o código mais **flexível**, **escalável** e de **manutenção simples**.
+Feature by Package é uma arquitetura que utiliza conceitos do **DDD (Domain Driven Design)**, sugerida por empresas como a **Rocketseat**, com o objetivo de tornar o código mais **flexível**, **escalável** e de **manutenção simples**.
 
 ### Vantagens da arquitetura
 
@@ -31,13 +72,13 @@ Feature by Package (FBP) é uma arquitetura que utiliza conceitos do **DDD (Doma
 -   **Git**: Melhora o gerenciamento dos commits, evitando conflitos e etc;
 -   **Testes**: Facilita o desenvolvimento de testes de unidade e integração.
 
-### Outras informações
+## Outras informações
 
 O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como automação de comandos, além disso, o Postgres, MongoDB e Redis são containers do **Docker**.
 
 ## Diagrama
 
-\* importante observar nesse primeiro momento, apenas os relacionamentos.
+\* importante observar nesse primeiro momento, apenas os relacionamentos. diagrama na versão 4.0.
 
 <p align="center"><img src="./media/diagrams/diagram-v4.png" width="600" /></p>
 

@@ -1,4 +1,4 @@
-import { IRoleDTO } from '@modules/user/dtos/IRoleDTO';
+type IRoleDTO = 'ALL' | 'ADMIN' | 'USER' | 'MANAGER';
 
 interface IRegisterUserDTO {
     name: string;
@@ -11,4 +11,4 @@ interface IRegisterUserDTO {
     allowed?: boolean;
 }
 
-export { IRegisterUserDTO };
+export { IRoleDTO, IRegisterUserDTO };
