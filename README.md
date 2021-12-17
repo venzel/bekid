@@ -1,4 +1,4 @@
-# BeKid - Back-end
+a# BeKid - Back-end
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/bekid-backend/blob/master/LICENSE)
 
@@ -29,14 +29,18 @@
 
 -   Princípios do SOLID
 -   Clean code
--   Dependency inversion com tsyringe
+-   Dependency injection com tsyringe
 -   Testes com coverages
+
+## Telas
+
+<a href="./media/images/telas-2.png"><img src="./media/images/telas.png" alt="Telas" title="telas" /></a>
 
 ## Tests & coverages
 
 O programa é orientado a testes com métricas de coverages.
 
-<img src="./media/images/testes.png" alt="Testes" title="Testes" width="600" />
+<img src="./media/images/testes.png" alt="Testes" title="Testes" />
 
 ## Arquitetura & Padrões de projeto
 
@@ -58,7 +62,7 @@ O projeto está organizado da seguine forma:
 
 👉 <a href="https://github.com/venzel/bekid-backend/blob/master/src/modules/user/useCases/ShowUser/ShowUserMiddleware.ts">Exemplo</a>: Na linha 16, é possível observar o funcionamento do padrão de projeto, onde os contextos podem ser observados em: path nó inicial, authenticate, role, validade e habdle que é o nó folha.
 
-<img src="./media/images/cor.png" alt="Testes" title="Testes" width="700" />
+<img src="./media/images/cor.png" alt="Testes" title="Testes" />
 
 ### Porque Feature by Package?
 
@@ -80,7 +84,7 @@ O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como auto
 
 \* importante observar nesse primeiro momento, apenas os relacionamentos. diagrama na versão 4.0.
 
-<p align="center"><img src="./media/diagrams/diagram-v4.png" width="600" /></p>
+<p align="center"><img src="./media/diagrams/diagram-v4.png" /></p>
 
 ## Links
 
@@ -90,7 +94,7 @@ O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como auto
 
 ## Gitflow
 
-<p align="center"><img src="./media/images/gitflow-v1.png" width="500" /></p>
+<p align="center"><img src="./media/images/gitflow-v1.png" /></p>
 
 👉 [Documentação passo a passo](./faq/gitflow.md)
 
