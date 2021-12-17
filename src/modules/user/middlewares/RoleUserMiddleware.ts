@@ -9,9 +9,9 @@ class RoleUserMiddleware {
             const { user_token_role } = req.auth;
 
             if (typeof roles === 'string' && roles !== 'ALL' && user_token_role !== roles) {
-                throw new AppException(`Not authorized for this sector, only ${roles}!`, 401);
+                throw new AppException(`Not authorized for this sector, only ${roles}!`, 403);
             } else if (typeof roles === 'object' && !roles.includes(user_token_role as IRoleDTO)) {
-                throw new AppException(`Not authorized for this sector, only ${roles.join(', ')}!`, 401);
+                throw new AppException(`Not authorized for this sector, only ${roles.join(', ')}!`, 403);
             }
 
             return next();

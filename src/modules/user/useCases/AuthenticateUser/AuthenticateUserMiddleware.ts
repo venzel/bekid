@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { AuthenticateUserValidator } from './AuthenticateUserValidator';
 import { AuthenticateUserController } from '@modules/user/useCases/AuthenticateUser/AuthenticateUserController';
 import { IRoleDTO } from '@modules/user/dtos/IRoleDTO';
