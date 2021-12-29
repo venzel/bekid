@@ -88,7 +88,6 @@ O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como auto
 
 ## Links
 
-👉 <a href="https://github.com/venzel/bekid-tcc">Repositório TCC</a><br />
 👉 <a href="https://github.com/venzel/bekid-frontend">Repositório do front-end</a><br />
 👉 [FAQ geral](./FAQ.md)
 

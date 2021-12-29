@@ -43,19 +43,19 @@ services:
             - ${REDIS_PORT}:6379
         command: redis-server --requirepass ${REDIS_PASSWORD}
 
-    api:
-        container_name: api-node-${API_NAME}
-        image: venzel/bekid:v1
-        restart: always
-        depends_on:
-            - postgres
-            - mongodb
-            - redis
-        ports:
-            - ${SERVER_PORT_PRODUCTION}:${SERVER_PORT_PRODUCTION}
-        command: yarn start
-        logging:
-            driver: 'json-file'
-            options:
-                max-size: '10m'
-                max-file: '5'
+    # api:
+    #     container_name: api-node-${API_NAME}
+    #     image: venzel/bekid:v1
+    #     restart: always
+    #     depends_on:
+    #         - postgres
+    #         - mongodb
+    #         - redis
+    #     ports:
+    #         - ${SERVER_PORT_PRODUCTION}:${SERVER_PORT_PRODUCTION}
+    #     command: yarn start
+    #     logging:
+    #         driver: 'json-file'
+    #         options:
+    #             max-size: '10m'
+    #             max-file: '5'
