@@ -1,4 +1,4 @@
-a# BeKid - Back-end
+# Bekid
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/bekid-backend/blob/master/LICENSE)
 
@@ -32,39 +32,17 @@ a# BeKid - Back-end
 -   Dependency injection com tsyringe
 -   Testes com coverages
 
-## Telas
+## UX
 
 <a href="./media/images/telas-2.png"><img src="./media/images/telas.png" alt="Telas" title="telas" /></a>
 
-## Tests & coverages
+## Diagrama de relacionamentos
 
-O programa é orientado a testes com métricas de coverages.
+\* importante observar nesse primeiro momento, apenas os relacionamentos. diagrama na versão 4.0.
 
-<img src="./media/images/testes.png" alt="Testes" title="Testes" />
+<p align="center"><img src="./media/diagrams/diagram-v4.png" /></p>
 
-## Arquitetura & Padrões de projeto
-
-### Organização do projeto
-
-O projeto está organizado da seguine forma:
-
--   Modules
--   Domain
--   Controllers
--   Services
--   Repositories
-
-<img src="./media/images/folders.png" alt="Folders" title="Folders" width="400" />
-
-### Padrões de projeto
-
--   Nos use cases é explorado o padrão de projeto **Chain of Responsability**.
-
-👉 <a href="https://github.com/venzel/bekid-backend/blob/master/src/modules/user/useCases/ShowUser/ShowUserMiddleware.ts">Exemplo</a>: Na linha 16, é possível observar o funcionamento do padrão de projeto, onde os contextos podem ser observados em: path nó inicial, authenticate, role, validade e habdle que é o nó folha.
-
-<img src="./media/images/cor.png" alt="Testes" title="Testes" />
-
-### Porque Feature by Package?
+## Porque Feature by Package?
 
 Feature by Package é uma arquitetura que utiliza conceitos do **DDD (Domain Driven Design)**, sugerida por empresas como a **Rocketseat**, com o objetivo de tornar o código mais **flexível**, **escalável** e de **manutenção simples**.
 
@@ -76,26 +54,126 @@ Feature by Package é uma arquitetura que utiliza conceitos do **DDD (Domain Dri
 -   **Git**: Melhora o gerenciamento dos commits, evitando conflitos e etc;
 -   **Testes**: Facilita o desenvolvimento de testes de unidade e integração.
 
+Os módulos do projeto estão organizados da seguine forma:
+
+-   Models
+-   Infra
+-   Dtos
+-   Repositories
+-   Containers
+-   Providers
+-   UseCases (Middlewares, Controllers, Services, Validators)
+
+### Vote - Estrutura de pastas e arquivos módulo
+
+```
+├── containers
+│   └── index.ts
+├── dtos
+│   ├── ICreateVoteDTO.ts
+│   └── IDeleteVoteDTO.ts
+├── infra
+│   ├── http
+│   │   └── routes
+│   │       └── VoteRoutes.ts
+│   └── typeorm
+│       └── postgres
+│           ├── entities
+│           │   └── VotePostgresEntity.ts
+│           └── repositories
+│               └── VotePostgresRepository.ts
+├── models
+│   └── entities
+│       ├── IVoteEntity.ts
+│       └── VoteInMemoryEntity.ts
+├── repositories
+│   ├── IVoteRepository.ts
+│   └── VoteInMemoryRepository.ts
+└── useCases
+    ├── CreateVote
+    │   ├── CreateVoteController.ts
+    │   ├── CreateVoteMiddleware.ts
+    │   ├── CreateVoteService.ts
+    │   └── CreateVoteValidator.ts
+    ├── DeleteVote
+    │   ├── DeleteVoteController.ts
+    │   ├── DeleteVoteMiddleware.ts
+    │   ├── DeleteVoteService.ts
+    │   └── DeleteVoteValidator.ts
+    └── ListVote
+        ├── ListVoteController.ts
+        ├── ListVoteMiddleware.ts
+        └── ListVoteService.ts├── containers
+│   └── index.ts
+├── dtos
+│   ├── ICreateVoteDTO.ts
+│   └── IDeleteVoteDTO.ts
+├── infra
+│   ├── http
+│   │   └── routes
+│   │       └── VoteRoutes.ts
+│   └── typeorm
+│       └── postgres
+│           ├── entities
+│           │   └── VotePostgresEntity.ts
+│           └── repositories
+│               └── VotePostgresRepository.ts
+├── models
+│   └── entities
+│       ├── IVoteEntity.ts
+│       └── VoteInMemoryEntity.ts
+├── repositories
+│   ├── IVoteRepository.ts
+│   └── VoteInMemoryRepository.ts
+└── useCases
+    ├── CreateVote
+    │   ├── CreateVoteController.ts
+    │   ├── CreateVoteMiddleware.ts
+    │   ├── CreateVoteService.ts
+    │   └── CreateVoteValidator.ts
+    ├── DeleteVote
+    │   ├── DeleteVoteController.ts
+    │   ├── DeleteVoteMiddleware.ts
+    │   ├── DeleteVoteService.ts
+    │   └── DeleteVoteValidator.ts
+    └── ListVote
+        ├── ListVoteController.ts
+        ├── ListVoteMiddleware.ts
+        └── ListVoteService.ts
+```
+
+### Padrões de projeto
+
+-   Nos use cases é explorado o padrão de projeto **Chain of Responsability**.
+
+👉 <a href="https://github.com/venzel/bekid-backend/blob/master/src/modules/user/useCases/ShowUser/ShowUserMiddleware.ts">Exemplo</a>: Na linha 16, é possível observar o funcionamento do padrão de projeto, onde os contextos podem ser observados em: path nó inicial, authenticate, role, validade e habdle que é o nó folha.
+
+<img src="./media/images/cor.png" alt="Testes" title="Testes" />
+
+## Tests & coverages
+
+O programa é orientado a testes com métricas de coverages.
+
+<img src="./media/images/testes.png" alt="Testes" title="Testes" />
+
 ## Outras informações
 
 O projeto tem como gerencimento de pacotes o **Yarn** e o **Makefile** como automação de comandos, além disso, o Postgres, MongoDB e Redis são containers do **Docker**.
-
-## Diagrama
-
-\* importante observar nesse primeiro momento, apenas os relacionamentos. diagrama na versão 4.0.
-
-<p align="center"><img src="./media/diagrams/diagram-v4.png" /></p>
-
-## Links
-
-👉 <a href="https://github.com/venzel/bekid-frontend">Repositório do front-end</a><br />
-👉 [FAQ geral](./FAQ.md)
 
 ## Gitflow
 
 <p align="center"><img src="./media/images/gitflow-v1.png" /></p>
 
 👉 [Documentação passo a passo](./faq/gitflow.md)
+
+## Links
+
+👉 <a href="https://github.com/venzel/bekid-frontend">Repositório do front-end</a><br />
+👉 [FAQ geral](./FAQ.md)
+
+## Download do projeto no Insomnia
+
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Bekid&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fvenzel%2Fbekid-backend%2Fmaster%2Fexports-insomnia.json)
 
 ## Como executar o projeto
 
@@ -113,8 +191,11 @@ git clone https://github.com/venzel/bekid-backend
 # Para entrar na pasta do projeto
 cd bekid-backend
 
-# Para subir o container do mysql na porta 3306
+# Para rodar as seeds
 make up
+
+# Para subir o container do mysql na porta 3306
+make seed
 
 # Para executar o projeto na porta 3000
 make run
