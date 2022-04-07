@@ -4,11 +4,12 @@
 
 <hr />
 
-👉 [Tools](./geral/tools.md)<br />
 👉 [Source list Update](./geral/source-list-update.md)<br />
-👉 [ZSH install and configure](./geral/zsh-install-and-configure.md)<br />
-👉 [Ubuntu theme Dracula](./geral/ubuntu-theme-dracula.md)<br />
 👉 [Packages importants](./geral/packages-importants.md)<br />
+👉 [Configure user SSH](./geral/configure-user-ssh.md)<br />
+👉 [ZSH install and configure](./geral/zsh-install-and-configure.md)<br />
+👉 [Manager users and groups](./geral/manager-users-and-groups.md)<br />
+👉 [Ubuntu theme Dracula](./geral/ubuntu-theme-dracula.md)<br />
 👉 [Basic configurations](./geral/basic-configurations.md)<br />
 👉 [Java JDK 11 install and condifure](./geral/java-jdk-11-install-and-configure.md)<br />
 👉 [Install java with SDK](./geral/install-java-with-sdk.md)<br />
@@ -26,4 +27,5 @@
 👉 [Dump Postgres with Docker](./geral/dump-postgres-docker.md)<br />
 👉 [Git install and commands](./geral/git-install-and-commands.md)<br />
 👉 [Font JetBrains Mono](./geral/font-jetbrains-mono.md)<br />
+👉 [Tools and Services](./geral/tools-and-services.md)<br />
 👉 [PM2](./geral/pm2.md)

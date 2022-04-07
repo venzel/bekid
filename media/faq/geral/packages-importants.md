@@ -5,6 +5,12 @@
 ## Curl
 
 ```bash
+sudo apt-get install net-tools -y
+```
+
+## Curl
+
+```bash
 sudo apt-get install curl -y
 ```
 
@@ -23,5 +29,5 @@ sudo apt-get install git -y
 ## Others
 
 ```bash
-apt-get install gcc libc6-dev make -y
+sudo apt-get install gcc libc6-dev make -y
 ```
