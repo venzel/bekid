@@ -13,9 +13,18 @@
             "name": "login",
             "description": "",
             "method": "POST",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"email\": \"venzel@gmail.com\",\n\t\"password\": \"Kakodev1dro#\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"venzel@gmail.com\",\n\t\"password\": \"Kakodev1dro#\"\n}"
+            },
             "parameters": [],
-            "headers": [{ "name": "Content-Type", "value": "application/json", "id": "pair_f8f9649941b94c0c9bf080e5175d2d05" }],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_f8f9649941b94c0c9bf080e5175d2d05"
+                }
+            ],
             "authentication": {},
             "metaSortKey": -1608686983410,
             "isPrivate": false,
@@ -75,7 +84,13 @@
                 "text": "{\n\t\"name\": \"Tiago Gorby\",\n\t\"email\": \"tiagog@gmail.com\",\n\t\"password\": \"Kakodev1dro#\",\n\t\"role\": \"MANAGER\"\n}"
             },
             "parameters": [],
-            "headers": [{ "name": "Content-Type", "value": "application/json", "id": "pair_f8f9649941b94c0c9bf080e5175d2d05" }],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_f8f9649941b94c0c9bf080e5175d2d05"
+                }
+            ],
             "authentication": {},
             "metaSortKey": -1608686983360,
             "isPrivate": false,
@@ -149,7 +164,14 @@
             "description": "",
             "method": "GET",
             "body": {},
-            "parameters": [{ "name": "name", "value": "tiago", "description": "", "id": "pair_fabd1c6c365748f2b1a141d4d2742937" }],
+            "parameters": [
+                {
+                    "name": "name",
+                    "value": "tiago",
+                    "description": "",
+                    "id": "pair_fabd1c6c365748f2b1a141d4d2742937"
+                }
+            ],
             "headers": [],
             "authentication": {
                 "type": "bearer",
@@ -206,7 +228,12 @@
             },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_82f0297389ee47e6ad5bc7fd11097936" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_82f0297389ee47e6ad5bc7fd11097936"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -231,10 +258,18 @@
             "name": "forgot_password",
             "description": "",
             "method": "PUT",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"email\": \"liz@gmail.com\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"liz@gmail.com\"\n}"
+            },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_b7414178a93c46d6be481e0abe4c6f5f" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_b7414178a93c46d6be481e0abe4c6f5f"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -265,7 +300,12 @@
             },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_d5f55a18d70f48ffad7d312debdd38fb" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_d5f55a18d70f48ffad7d312debdd38fb"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -304,7 +344,13 @@
                 ]
             },
             "parameters": [],
-            "headers": [{ "name": "Content-Type", "value": "multipart/form-data", "id": "pair_e85cb0cfb7a9479d871ec7e7b9e982f1" }],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "multipart/form-data",
+                    "id": "pair_e85cb0cfb7a9479d871ec7e7b9e982f1"
+                }
+            ],
             "authentication": {
                 "type": "bearer",
                 "token": "{% response 'body', 'req_8d9b09c2124b4959b731a42695ec4530', 'b64::JC5kb2MudG9rZW4=::46b', 'no-history', 60 %}"
@@ -334,7 +380,12 @@
             },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_739227562a994d8a9abbfb7894d8bce6" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_739227562a994d8a9abbfb7894d8bce6"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -362,7 +413,12 @@
             "body": {},
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_d1c68d1f7ce04308bc7cdb9fc2ce1a92" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_d1c68d1f7ce04308bc7cdb9fc2ce1a92"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -390,7 +446,12 @@
             "body": {},
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_0f7b0421472d4ae2993d27430088d626" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_0f7b0421472d4ae2993d27430088d626"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -415,10 +476,18 @@
             "name": "create",
             "description": "",
             "method": "POST",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"Turma 5 - Fundamental\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"name\": \"Turma 5 - Fundamental\"\n}"
+            },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_284184090c414ac1b5ded8b708059e3d" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_284184090c414ac1b5ded8b708059e3d"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -455,10 +524,18 @@
             "name": "update",
             "description": "",
             "method": "PUT",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"group_id\": \"ae6c1927\",\n\t\"name\": \"Turma 2 - fundamental\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"group_id\": \"ae6c1927\",\n\t\"name\": \"Turma 2 - fundamental\"\n}"
+            },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_93075f87670b48f1a35174dadb729f3c" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_93075f87670b48f1a35174dadb729f3c"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -651,10 +728,18 @@
             "name": "create",
             "description": "",
             "method": "POST",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"group_id\": \"1cf685dd\",\n\t\"name\": \"Segunda campanha, 2022\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"group_id\": \"1cf685dd\",\n\t\"name\": \"Segunda campanha, 2022\"\n}"
+            },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_407a8240134a487796173343ec47f06f" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_407a8240134a487796173343ec47f06f"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -697,7 +782,12 @@
             },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_22db232f23b44cbf91062b7db994d334" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_22db232f23b44cbf91062b7db994d334"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -838,10 +928,18 @@
             "name": "create",
             "description": "",
             "method": "POST",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"Feliz\",\n\t\"slug\": \"feliz\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"name\": \"Feliz\",\n\t\"slug\": \"feliz\"\n}"
+            },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_df3d35fbca644cc580dfbaf9ab009065" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_df3d35fbca644cc580dfbaf9ab009065"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -884,7 +982,12 @@
             },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_c4e45b76a8da4c8fb9e74f737a4cba98" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_c4e45b76a8da4c8fb9e74f737a4cba98"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -987,10 +1090,18 @@
             "name": "create",
             "description": "",
             "method": "POST",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"emotion_id\": \"e400e694\",\n\t\"description\": \"Me bateram\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"emotion_id\": \"e400e694\",\n\t\"description\": \"Me bateram\"\n}"
+            },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_b5643a419833474b8292dd22c4ca6eaa" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_b5643a419833474b8292dd22c4ca6eaa"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -1027,10 +1138,18 @@
             "name": "update",
             "description": "",
             "method": "PUT",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"description\": \"Me apelidaram\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"description\": \"Me apelidaram\"\n}"
+            },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_b24f9f465e7f455b8b571d58d2cc0fb3" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_b24f9f465e7f455b8b571d58d2cc0fb3"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -1136,7 +1255,12 @@
             "body": {},
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_3c4f2028118b47b190e6aeb2cc9b141c" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_3c4f2028118b47b190e6aeb2cc9b141c"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -1228,7 +1352,12 @@
             "body": {},
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_3c4f2028118b47b190e6aeb2cc9b141c" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_3c4f2028118b47b190e6aeb2cc9b141c"
+                }
             ],
             "authentication": {
                 "type": "bearer",
@@ -1291,10 +1420,18 @@
             "name": "create",
             "description": "",
             "method": "POST",
-            "body": { "mimeType": "application/json", "text": "{\n\t\"vote_id\": \"2734bc3d\",\n\t\"message\": \"tudo certo!\"\n}" },
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"vote_id\": \"2734bc3d\",\n\t\"message\": \"tudo certo!\"\n}"
+            },
             "parameters": [],
             "headers": [
-                { "name": "Content-Type", "value": "application/json", "description": "", "id": "pair_3c4f2028118b47b190e6aeb2cc9b141c" }
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "description": "",
+                    "id": "pair_3c4f2028118b47b190e6aeb2cc9b141c"
+                }
             ],
             "authentication": {
                 "type": "bearer",

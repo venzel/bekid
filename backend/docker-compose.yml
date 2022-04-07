@@ -1,0 +1,61 @@
+version: '3.1'
+services:
+    postgres:
+        container_name: postgres-${API_NAME}
+        image: postgres:latest
+        restart: always
+        expose:
+            - ${POSTGRES_PORT}
+        ports:
+            - ${POSTGRES_PORT}:5432
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            PGDATA: /data/postgres
+        volumes:
+            - ./docker/postgres/configs/postgres.conf:/etc/postgresql/postgresql.conf
+            - ./docker/postgres/data:/var/lib/postgresql/data
+            - ./docker/postgres/entrypoints/postgres-init.sh:/docker-entrypoint-initdb.d/postgres-init.sh
+        command: postgres -c config_file=/etc/postgresql/postgresql.conf -p ${POSTGRES_PORT}
+
+    mongodb:
+        container_name: mongodb-${API_NAME}
+        image: mongo:latest
+        restart: always
+        command: mongod --port ${MONGODB_PORT}
+        ports:
+            - ${MONGODB_PORT}:27017
+        environment:
+            MONGO_INITDB_DATABASE: ${MONGODB_DB_NAME}
+            MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+        env_file:
+            - .env
+        volumes:
+            - ./docker/mongodb/entrypoints/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
+            - ./docker/mongodb/data:/data/db
+
+    redis:
+        container_name: redis-${API_NAME}
+        image: redis:alpine
+        restart: always
+        ports:
+            - ${REDIS_PORT}:6379
+        command: redis-server --requirepass ${REDIS_PASSWORD}
+
+    # api:
+    #     container_name: api-node-${API_NAME}
+    #     image: venzel/bekid:v1
+    #     restart: always
+    #     depends_on:
+    #         - postgres
+    #         - mongodb
+    #         - redis
+    #     ports:
+    #         - ${SERVER_PORT_PRODUCTION}:${SERVER_PORT_PRODUCTION}
+    #     command: yarn start
+    #     logging:
+    #         driver: 'json-file'
+    #         options:
+    #             max-size: '10m'
+    #             max-file: '5'

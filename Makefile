@@ -1,22 +1,3 @@
-include .env
-
-.PHONY: mig
-
-mig:
-	yarn mig
-
-.PHONY: migration
-
-migration:
-	yarn typeorm migration:run
-
-.PHONY: dev
-
-dev:
-	yarn dev
-
-.PHONY: up
-
 up:
 	docker-compose up -d
 

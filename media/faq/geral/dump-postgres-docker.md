@@ -1,5 +1,7 @@
 # Dump Postgres with Docker
 
+[FAQ](../FAQ.md)
+
 ## Backup
 
 ```bash
