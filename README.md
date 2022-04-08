@@ -15,8 +15,8 @@
 
 ## ⚓ Links
 
-👉 [Git do backend](https://github.com/venzel/bekid-backend)<br />
-👉 [Git do frontend](https://github.com/venzel/bekid-frontend)<br />
+👉 [Git do backend](https://github.com/venzel/bekid-backend) 🔒 (privado)<br />
+👉 [Git do frontend](https://github.com/venzel/bekid-frontend) 🔒 (privado)<br />
 👉 [Sistema em QA](https://qa.bekid.app)<br />
 👉 [Sistema em Produção](https://bekid.app)<br />
 👉 [FAQ Geral](./media/faq/FAQ.md)
@@ -416,6 +416,68 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
     ]
 }
 ```
+
+</details>
+
+<details>
+<summary>Requisitos funcionais</summary>
+
+-   **ADMIN**: É o gestor master do sistema, ator que tem acesso irrestrito ao painel administrativo.
+-   **GERENTE**: É considerado o professor, ator que irá gerir os alunos (usuários).
+-   **USUÁRIO**: É considerado o aluno, ator que paticipa da campanha e realia o voto.
+
+### Usuário
+
+1. O **USUÁRIO/GERENTE/ADMIN** deve poder efetuar o **login/logout**;
+2. O **USUÁRIO/GERENTE** deve poder se **cadastrar**;
+3. O **USUÁRIO/GERENTE** deve poder **alterar seus dados** (nome);
+4. O **USUÁRIO/GERENTE** deve poder **alterar sua senha**;
+5. O **USUÁRIO/GERENTE/ADMIN** deve poder **recuperar sua senha**;
+6. O **ADMIN** deve poder **visualizar os usuários** do sistema;
+7. O **ADMIN** deve poder **deletar um usuário** do sistema;
+8. O **ADMIN** deve poder **desabilitar/habilitar um usuário** do sistema.
+
+### Emotion
+
+1. O **ADMIN** deve poder **criar um emotion**;
+2. O **ADMIN** deve poder **alterar um emotion**;
+3. O **ADMIN** deve poder **habilitar/desabilitar um emotion**;
+4. O **ADMIN** deve poder **deletar um emotion**.
+
+### Razão
+
+1. O **ADMIN** deve poder **criar uma razão**;
+2. O **ADMIN** deve poder **alterar uma razão**;
+3. O **ADMIN** deve poder **habilitar/desabilitar uma razão**;
+4. O **ADMIN** deve poder **deletar uma razão**.
+
+### Ator
+
+1. O **ADMIN** deve poder **criar um ator**;
+2. O **ADMIN** deve poder **alterar um ator**;
+3. O **ADMIN** deve poder **habilitar/desabilitar um ator**;
+4. O **ADMIN** deve poder **deletar um ator**.
+
+### Grupo
+
+1. O **GERENTE** deve poder **criar um grupo**;
+2. O **GERENTE** deve poder **alterar um grupo**;
+3. O **GERENTE** deve poder **deletar um grupo**;
+4. O **GERENTE** deve poder **enviar uma solicitação para USUÁRIO entrar em um grupo**;
+5. O **GERENTE** deve poder **remover um USUÁRIO de um grupo**.
+
+### Campanha
+
+1. O **GERENTE** deve poder **criar uma campanha**;
+2. O **GERENTE** deve poder **alterar uma campanha**;
+3. O **GERENTE** deve poder **deletar uma campanha**;
+4. O **GERENTE** deve poder **iniciar uma campanha**;
+5. O **GERENTE** deve poder **finalizar uma campanha**.
+
+### Usuário
+
+1. O **USUÁRIO** deve poder **aceitar/negar a solicitação da entrada em um grupo**;
+2. O **USUÁRIO** deve poder **efetuar uma votação**;
 
 </details>
 
