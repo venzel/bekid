@@ -15,8 +15,8 @@
 
 ## ⚓ Links
 
-👉 [Git do backend](./backend/README.md)<br />
-👉 [Git do frontend](./frontend/README.md)<br />
+👉 [Git do backend](https://github.com/venzel/bekid-backend)<br />
+👉 [Git do frontend](https://github.com/venzel/bekid-frontend)<br />
 👉 [Sistema em QA](https://qa.bekid.app)<br />
 👉 [Sistema em Produção](https://bekid.app)<br />
 👉 [FAQ Geral](./media/faq/FAQ.md)

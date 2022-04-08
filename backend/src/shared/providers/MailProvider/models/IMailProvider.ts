@@ -1,3 +1,0 @@
-interface IMailProvider {}
-
-export { IMailProvider };
