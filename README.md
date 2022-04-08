@@ -163,8 +163,6 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 
 ## Diagrama de relacionamentos
 
-\* importante observar nesse primeiro momento, apenas os relacionamentos. diagrama na versão 4.0.
-
 <p align="center">
     <img src="./media/diagrams/diagram-v4.png" width="700" />
 </p>
@@ -426,7 +424,7 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 -   **GERENTE**: É considerado o professor, ator que irá gerir os alunos (usuários).
 -   **USUÁRIO**: É considerado o aluno, ator que paticipa da campanha e realia o voto.
 
-### Usuário
+### Usuário/Gerente/Admin
 
 1. O **USUÁRIO/GERENTE/ADMIN** deve poder efetuar o **login/logout**;
 2. O **USUÁRIO/GERENTE** deve poder se **cadastrar**;
@@ -478,6 +476,77 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 
 1. O **USUÁRIO** deve poder **aceitar/negar a solicitação da entrada em um grupo**;
 2. O **USUÁRIO** deve poder **efetuar uma votação**;
+
+</details>
+
+<details>
+<summary>Endpoints do backend (API)</summary>
+
+| Path                                                                                                                 | Método | Token | Role               | Descrição                       |
+| -------------------------------------------------------------------------------------------------------------------- | ------ | ----- | ------------------ | ------------------------------- |
+| **USER/MANAGER/ADMIN**                                                                                               |
+| [/login](https://bekid.app/api/v1/login)                                                                             | POST   |       | ALL                | Efetua login                    |
+| [/users](https://bekid.app/api/v1/users)                                                                             | POST   |       | USER/MANAGER       | Cria uma conta                  |
+| [/users](https://bekid.app/api/v1/users)                                                                             | GET    |       | ADMIN              | Lista usuários                  |
+| [/users/{id}](https://bekid.app/api/v1/users/1)                                                                      | GET    |       | ADMIN              | Exibe usuário                   |
+| [/users/{id}](https://bekid.app/api/v1/users/1)                                                                      | PUT    |       | ADMIN              | Atualiza usuário                |
+| [/users/{id}](https://bekid.app/api/v1/users/1)                                                                      | DELETE |       | ADMIN              | Deleta usuário                  |
+| [/change_password](https://bekid.app/api/v1/change_password)                                                         | PUT    |       | USER/MANAGER/ADMIN | Altera senha                    |
+| [/forgot_password](https://bekid.app/api/v1/forgot_password)                                                         | PUT    |       | USER/MANAGER/ADMIN | Esqueceu a senha                |
+| [/reset_password](https://bekid.app/api/v1/reset_password)                                                           | PATCH  |       | USER/MANAGER/ADMIN | Reseta a senha                  |
+| [/change_avatar](https://bekid.app/api/v1/change_avatar)                                                             | PATCH  |       | USER/MANAGER/ADMIN | Altera avatar                   |
+| [/change_profile](https://bekid.app/api/v1/change_profile)                                                           | PUT    |       | USER/MANAGER/ADMIN | Altera o perfil                 |
+| [/toggle_role/{id}](https://bekid.app/api/v1/toggle_role/1)                                                          | PATCH  |       | ADMIN              | Alterna a patente               |
+| [/toggle_allow/{id}](https://bekid.app/api/v1/toggle_allow/1)                                                        | PATCH  |       | ADMIN              | Alterna o status                |
+| **EMOTION**                                                                                                          |
+| [/emotions](https://bekid.app/api/v1/emotions)                                                                       | POST   |       | ADMIN              | Cria emotion                    |
+| [/emotions](https://bekid.app/api/v1/emotions)                                                                       | GET    |       | ADMIN              | Lista emotions                  |
+| [/emotions/{id}](https://bekid.app/api/v1/emotions/1)                                                                | GET    |       | ADMIN              | Exibe emotion                   |
+| [/emotions/{id}](https://bekid.app/api/v1/emotions/1)                                                                | PUT    |       | ADMIN              | Atualiza emotion                |
+| [/emotions/{id}](https://bekid.app/api/v1/emotions/1)                                                                | DELETE |       | ADMIN              | Deleta emotion                  |
+| **REASON**                                                                                                           |
+| [/reasons](https://bekid.app/api/v1/reasons)                                                                         | POST   |       | ADMIN              | Cria motivo                     |
+| [/reasons](https://bekid.app/api/v1/reasons)                                                                         | GET    |       | ADMIN              | Lista motivos                   |
+| [/reasons/{id}](https://bekid.app/api/v1/reasons/1)                                                                  | GET    |       | ADMIN              | Exibe motivo                    |
+| [/reasons/{id}](https://bekid.app/api/v1/reasons/1)                                                                  | PUT    |       | ADMIN              | Atualiza motivo                 |
+| [/reasons/{id}](https://bekid.app/api/v1/reasons/1)                                                                  | DELETE |       | ADMIN              | Deleta motivo                   |
+| **ACTOR**                                                                                                            |
+| [/actors](https://bekid.app/api/v1/actors)                                                                           | POST   |       | ADMIN              | Cria ator                       |
+| [/actors](https://bekid.app/api/v1/actors)                                                                           | GET    |       | ADMIN              | Lista ators                     |
+| [/actors/{id}](https://bekid.app/api/v1/actors/1)                                                                    | GET    |       | ADMIN              | Exibe ator                      |
+| [/actors/{id}](https://bekid.app/api/v1/actors/1)                                                                    | PUT    |       | ADMIN              | Atualiza ator                   |
+| [/actors/{id}](https://bekid.app/api/v1/actors/1)                                                                    | DELETE |       | ADMIN              | Deleta ator                     |
+| **GROUP**                                                                                                            |
+| [/groups](https://bekid.app/api/v1/groups)                                                                           | POST   |       | MANAGER            | Cria grupo                      |
+| [/groups](https://bekid.app/api/v1/groups)                                                                           | GET    |       | MANAGER            | Lista grupos                    |
+| [/groups/{id}](https://bekid.app/api/v1/groups/1)                                                                    | GET    |       | MANAGER            | Exibe grupo                     |
+| [/groups/{id}](https://bekid.app/api/v1/groups/1)                                                                    | PUT    |       | MANAGER            | Atualiza grupo                  |
+| [/groups/{id}](https://bekid.app/api/v1/groups/1)                                                                    | DELETE |       | MANAGER            | Deleta grupo                    |
+| **GROUP_QUEUE**                                                                                                      |
+| [/invite_user_in_group...](https://bekid.app/api/v1/invite_user_in_group?group_id=2&user_id=2)                       | GET    |       | MANAGER            | Convida usuário para um grupo   |
+| [/delete_invite_user_in_group...](https://bekid.app/api/v1/delete_invite_user_in_group?group_queue_id=2)             | GET    |       | MANAGER            | Deleta convite usuário p/ grupo |
+| [/monitore_group_queue](https://bekid.app/api/v1/monitore_group_queue)                                               | GET    |       | MANAGER            | Monitora a fila de grupos       |
+| **CAMPAIGN**                                                                                                         |
+| [/campaigns](https://bekid.app/api/v1/campaigns)                                                                     | POST   |       | MANAGER            | Cria campanha                   |
+| [/campaigns](https://bekid.app/api/v1/campaigns)                                                                     | GET    |       | MANAGER            | Lista campanhas                 |
+| [/campaigns/{id}](https://bekid.app/api/v1/campaigns/1)                                                              | GET    |       | MANAGER            | Exibe campanha                  |
+| [/campaigns/{id}](https://bekid.app/api/v1/campaigns/1)                                                              | PUT    |       | MANAGER            | Atualiza campanha               |
+| [/campaigns/{id}](https://bekid.app/api/v1/campaigns/1)                                                              | DELETE |       | MANAGER            | Deleta campanha                 |
+| **CAMPAIGN_QUEUE**                                                                                                   |
+| [/monitore_campaign_queue](https://bekid.app/api/v1/monitore_campaign_queue)                                         | GET    |       | MANAGER            | Monitora fila de campanhas      |
+| **VOTES**                                                                                                            |
+| [/votes?campaign_id={id}&emotion_id={id}](https://bekid.app/api/v1/add_one_user_in_group_queue?group_id=2&user_id=2) | PUT    |       | USER               | Cria voto                       |
+| [/votes](https://bekid.app/api/v1/votes)                                                                             | GET    |       | USER               | Lista votos                     |
+| [/votes/{id}](https://bekid.app/api/v1/votes/1)                                                                      | DELETE |       | USER               | Deleta voto                     |
+| **VOTE_ACTOR**                                                                                                       |
+| [/votes_actors](https://bekid.app/api/v1/votes_actors)                                                               | PUT    |       | USER               | Associa o ator ao voto          |
+| [/votes_actors](https://bekid.app/api/v1/votes_actors)                                                               | GET    |       | USER               | Lista os associações            |
+| **VOTE_REASON**                                                                                                      |
+| [/votes_reasos](https://bekid.app/api/v1/votes_reasons)                                                              | PUT    |       | USER               | Associa o motivo ao voto        |
+| [/votes_reasos](https://bekid.app/api/v1/votes_reasons)                                                              | GET    |       | USER               | Lista os motivos                |
+| **VOTE_COMMENT**                                                                                                     |
+| [/votes_comments](https://bekid.app/api/v1/votes_comments)                                                           | PUT    |       | USER               | Associa comentário ao voto      |
+| [/votes_comments](https://bekid.app/api/v1/votes_comments)                                                           | GET    |       | USER               | Lista os comentários            |
 
 </details>
 
