@@ -53,6 +53,12 @@ cp ~/.ssh/authorized_keys /home/<nome_ususario>/.ssh/authorized_keys
 cat /home/<nome_ususario>/.ssh/authorized_keys
 ```
 
+### Adiciona permissao a .ssh
+
+```bash
+chown <nome_usuario>:<nome_usuario> /home/<nome_ususario>/.ssh
+```
+
 ### Insere seguranca no arquivo authorized_keys
 
 ```bash
