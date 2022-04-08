@@ -119,7 +119,15 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 
 ### Telas do sistema (UX)
 
-<a href="./media/images/telas-2.png"><img src="./media/images/telas.png" alt="Telas" title="telas" /></a>
+<p align="center">
+  <img src="./media/ux/ux-v2.png" alt="Telas" title="telas" />
+</p>
+
+| Descrição      | Data de modificação | Versão | Link de download                 |
+| -------------- | ------------------- | ------ | -------------------------------- |
+| Segunda versão | 08 de abril de 2022 | v2     | [Download](./media/ux/ux-v1.pdf) |
+
+👉 [Link do arquivo PDF](./media/ux/ux-v1.pdf)
 
 ## Backend/Frontend
 
