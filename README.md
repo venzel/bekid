@@ -2,7 +2,7 @@
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/venzel/bekid-backend/blob/master/LICENSE)
 
-> **BeKid** é uma aplicação para o mapeamento de emoções e auxílio no combate ao bullying escolar.<br /> <a href="http://bekid.app">👉 bekid.app</a>
+> **BeKid** é uma aplicação para o mapeamento de emoções e auxílio no combate ao bullying escolar.<br /> <a href="https://bekid.app">👉 bekid.app</a>
 
 <p align="center"><img src="./media/logos/bekid-v1.png" width="240" /></p>
 
@@ -17,8 +17,8 @@
 
 👉 [Git do backend](./backend/README.md)<br />
 👉 [Git do frontend](./frontend/README.md)<br />
-👉 [Sistema em QA](http://qa.bekid.app)<br />
-👉 [Sistema em Produção](http://bekid.app)<br />
+👉 [Sistema em QA](https://qa.bekid.app)<br />
+👉 [Sistema em Produção](https://bekid.app)<br />
 👉 [FAQ Geral](./media/faq/FAQ.md)
 
 ## Etapas de desenvolvimento
