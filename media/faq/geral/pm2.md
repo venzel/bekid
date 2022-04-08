@@ -2,8 +2,6 @@
 
 [FAQ](../FAQ.md)
 
-> **Atencao:** desconsiderar o uso de acentos
-
 ## Add PATH .bashrc
 
 ```bash
