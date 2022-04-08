@@ -175,6 +175,250 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 
 👉 [Download do arquivo do Astah](./media/diagrams/diagram-relational-v1.asta)
 
+<details>
+<summary>JSON</summary>
+
+```json
+{
+    "USERS": [
+        {
+            "id": 1,
+            "name": "Vanessa",
+            "role": "ADMIN"
+        },
+        {
+            "id": 2,
+            "name": "tiago",
+            "role": "MANAGER"
+        },
+        {
+            "id": 3,
+            "name": "alex",
+            "role": "USER"
+        },
+        {
+            "id": 4,
+            "name": "liz",
+            "role": "USER"
+        }
+    ],
+    "GROUPS": [
+        {
+            "id": 1,
+            "manager_id": 2,
+            "name": "4 serie fundamental - turma A",
+            "users": []
+        },
+        {
+            "id": 2,
+            "manager_id": 2,
+            "name": "5 serie fundamental - turma A",
+            "users": []
+        }
+    ],
+    "GROUP_QUEUE": [
+        {
+            "id": 1,
+            "group_id": 2,
+            "user_id": 1,
+            "created_at": "26-12-2021"
+        }
+    ],
+    "GROUPS_USERS": [
+        {
+            "group_id": 1,
+            "user_id": 2,
+            "created_at": "26-12-2021"
+        },
+        {
+            "group_id": 1,
+            "user_id": 3,
+            "created_at": "26-12-2021"
+        },
+        {
+            "group_id": 1,
+            "user_id": 4,
+            "created_at": "26-12-2021"
+        }
+    ],
+    "CAMPAIGNS": [
+        {
+            "id": 1,
+            "group_id": 1,
+            "manager_id": 1,
+            "name": "Primeira dinamica em grupo",
+            "expiration": null
+        },
+        {
+            "id": 2,
+            "group_id": 1,
+            "manager_id": 1,
+            "name": "Segunda dinamica em grupo",
+            "expiration": "28-12-2021"
+        }
+    ],
+    "CAMPAIGN_QUEUE": [
+        {
+            "id": 1,
+            "campaign_id": 1,
+            "user_id": 2,
+            "created_at": "26-12-2021"
+        },
+        {
+            "id": 2,
+            "campaign_id": 1,
+            "user_id": 3,
+            "created_at": "26-12-2021"
+        },
+        {
+            "id": 3,
+            "campaign_id": 1,
+            "user_id": 4,
+            "created_at": "26-12-2021"
+        }
+    ],
+    "EMOTIONS": [
+        {
+            "id": 1,
+            "slug": "alegre",
+            "name": "Alegre"
+        },
+        {
+            "id": 2,
+            "slug": "triste",
+            "name": "Triste"
+        },
+        {
+            "id": 3,
+            "slug": "raiva",
+            "name": "Raiva"
+        },
+        {
+            "id": 4,
+            "slug": "medo",
+            "name": "Medo"
+        }
+    ],
+    "ACTORS": [
+        {
+            "id": 1,
+            "name": "Colega",
+            "slug": "colega"
+        },
+        {
+            "id": 2,
+            "name": "Pai",
+            "slug": "pai"
+        },
+        {
+            "id": 3,
+            "name": "Padastro",
+            "slug": "padastro"
+        },
+        {
+            "id": 4,
+            "name": "Mãe",
+            "slug": "mae"
+        },
+        {
+            "id": 5,
+            "name": "Madastra",
+            "slug": "madastra"
+        },
+        {
+            "id": 6,
+            "name": "Irmão",
+            "slug": "irmao"
+        },
+        {
+            "id": 7,
+            "name": "Escola",
+            "slug": "escola"
+        }
+    ],
+    "REASONS": [
+        {
+            "id": 1,
+            "emotion_id": 2,
+            "description": "Me apelidaram"
+        },
+        {
+            "id": 2,
+            "emotion_id": 2,
+            "description": "Bateram em mim"
+        },
+        {
+            "id": 3,
+            "emotion_id": 2,
+            "description": "Meu pai esta doente"
+        },
+        {
+            "id": 4,
+            "emotion_id": 2,
+            "description": "Cai da bicicleta"
+        }
+    ],
+    "VOTES": [
+        {
+            "id": 1,
+            "campaign_id": 1,
+            "emotion_id": 1,
+            "user_id": 2
+        },
+        {
+            "id": 2,
+            "campaign_id": 1,
+            "emotion_id": 1,
+            "user_id": 3
+        }
+    ],
+    "VOTES_ACTORS": [
+        {
+            "id": 1,
+            "vote_id": 1,
+            "actor_id": 1,
+            "user_id": 2
+        },
+        {
+            "id": 2,
+            "vote_id": 1,
+            "actor_id": 1,
+            "user_id": 2
+        }
+    ],
+    "VOTES_REASONS": [
+        {
+            "id": 1,
+            "vote_id": 1,
+            "user_id": 2,
+            "reason_id": 1
+        },
+        {
+            "id": 1,
+            "vote_id": 1,
+            "user_id": 2,
+            "reason_id": 2
+        },
+        {
+            "id": 1,
+            "vote_id": 1,
+            "user_id": 2,
+            "reason_id": 3
+        }
+    ],
+    "VOTES_COMMENTS": [
+        {
+            "id": 1,
+            "vote_id": 1,
+            "user_id": 2,
+            "message": "Estou com fome"
+        }
+    ]
+}
+```
+
+</details>
+
 ## Download do projeto no Insomnia
 
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Bekid&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fvenzel%2Fbekid-backend%2Fmaster%2Fexports-insomnia.json)
