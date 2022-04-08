@@ -18,6 +18,7 @@
 👉 [Yarn install](./geral/yarn-install.md)<br />
 👉 [Docker install](./geral/docker-install.md)<br />
 👉 [Docker compose install](./geral/docker-compose-install.md)<br />
+👉 [PHP FPM install and configure](./geral/php-fpm-install-and-configure.md)<br />
 👉 [Nginx install and configure](./geral/nginx-install-and-configure.md)<br />
 👉 [Letsencrypt configure](./geral/letsencrypt-configure.md)<br />
 👉 [Create daemon service](./geral/create-daemon-service-spring-boot.md)<br />

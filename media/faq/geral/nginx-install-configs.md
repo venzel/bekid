@@ -109,8 +109,6 @@ location / {
 }
 
 location /nginx_status {
-        #stub_status on;
-        #server_tokens off;
         access_log off;
         allow 127.0.0.1;
         deny all;
@@ -124,9 +122,9 @@ location ~ /.well-known {
         allow all;
 }
 
-location ~ \.php\{
+location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
 }
 
 location ~ /\.ht {
@@ -158,10 +156,6 @@ text/vnd.rim.location.xloc
 text/vtt
 text/x-component
 text/x-cross-domain-policy;
-
-location ~\* \.(jpg|jpeg|png|gif|ico|css|js|pdf)\{
-        expires 7d;
-}
 ```
 
 ### CONFIGURACOES / fastcgi-php.conf
