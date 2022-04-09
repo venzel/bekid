@@ -44,10 +44,10 @@
 | Levantamento do problema a ser resolvido **(Briefing)** | 3                   | 🔥          | 100%     |
 | Levantamento dos requisitos funcionais                  | 1                   | 🔥          | 100%     |
 | Definição das tecnologias utilizadas                    | 1                   | 🔥          | 100%     |
-| Criação da documentação no Git                          | 13                  | -           | 70%      |
+| Criação da documentação no Git                          | 13                  | -           | 85%      |
 | Diagramação das telas (UX Design)                       | 13                  | 🔥          | 100%     |
 | Configuração do ambiente de QA e produção               | 5                   | -           | 0%       |
-| Desenvolvimento do backend                              | 21                  | -           | 0%       |
+| Desenvolvimento do backend                              | 21                  | -           | 80%      |
 | Desenvolvimento do frontend                             | 21                  | -           | 0%       |
 | Integração do backend com o frontend                    | 21                  | -           | 0%       |
 
@@ -72,7 +72,7 @@
 
 -   NodeJs/Express
 -   Typescript / Javascript
--   TypeORM / Postgres / MongoDB
+-   TypeORM / Postgres / MongoDB / Redis
 -   Testes com métricas de coverages (**Jest**)
 
 👉 [Link para a documentação no git do backend](./backend/README.md)<br />
@@ -82,11 +82,13 @@
 <p align="left">
   <img src="./media/icons/postgres.svg" alt="Postgres" title="Postgres" width="35" height="35" />
   <img src="./media/icons/mongodb.svg" alt="MongoDB" title="MongoDB" width="35" height="35" />
+  <img src="./media/icons/redis.svg" alt="Redis" title="Redis" width="40" height="40" />
   <img src="./media/icons/docker.svg" alt="Docker" title="Docker" width="40" height="40" />
 </p>
 
 -   Postgres
 -   MongoDB
+-   Redis
 
 \* Os bancos de dados são provenientes de containers do docker.
 
@@ -428,9 +430,9 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 
 1. O **USUÁRIO/GERENTE/ADMIN** deve poder efetuar o **login/logout**;
 2. O **USUÁRIO/GERENTE** deve poder se **cadastrar**;
-3. O **USUÁRIO/GERENTE** deve poder **alterar seus dados** (nome);
-4. O **USUÁRIO/GERENTE** deve poder **alterar sua senha**;
-5. O **USUÁRIO/GERENTE/ADMIN** deve poder **recuperar sua senha**;
+3. O **USUÁRIO/GERENTE** deve poder **alterar o perfil** (nome);
+4. O **USUÁRIO/GERENTE** deve poder **alterar a senha**;
+5. O **USUÁRIO/GERENTE/ADMIN** deve poder **recuperar a senha**;
 6. O **ADMIN** deve poder **visualizar os usuários** do sistema;
 7. O **ADMIN** deve poder **deletar um usuário** do sistema;
 8. O **ADMIN** deve poder **desabilitar/habilitar um usuário** do sistema.
@@ -552,7 +554,7 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 
 ## Download do projeto no Insomnia
 
-[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Bekid&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fvenzel%2Fbekid-backend%2Fmaster%2Fexports-insomnia.json)
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Bekid&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fvenzel%2Fbekid-backend%2Fmaster%2./media/insomnia/Insomnia_2022-04-08.json)
 
 ## CI/CD
 
