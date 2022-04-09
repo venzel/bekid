@@ -163,6 +163,137 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 👉 [Link para faq do Docker](./media/faq/geral/docker-commands.md)<br />
 👉 [Link para faq do Certbot](./media/faq/geral/certbot.md)
 
+## Arquitetura
+
+### Organização do backend (Feature by Package)
+
+**Feature by Package** é uma arquitetura que utiliza conceitos do **DDD (Domain Driven Design)**, com o objetivo de tornar o código mais **flexível**, **escalável** e de **manutenção simples**.
+
+### Vantagens da arquitetura
+
+-   **Manutenção**: Facilita o engajamento de multiplas equipe e colaboradores em um projeto;
+-   **Escalável**: Facilita refatoramento do código monolítico para uma uma estrura de microserviços;
+-   **SOLID**: Facilita a aplicação de todos os princípios do SOLID;
+-   **Git**: Melhora o gerenciamento dos commits, evitando conflitos e etc;
+-   **Testes**: Facilita o desenvolvimento de testes de unidade e integração.
+
+### Estratégia de captura de erros com o Sentry
+
+<p align="center">
+    <img src="./media/images/sentry.png" alt="Sentry" />
+</p>
+
+O **Sentry** é um serviço open source para logar erros da aplicação.
+
+A aplicação é configurada para que sempre que ocorrer um erro do tipo 500, a exceção seja capturada e catalogada no Sentry, indicando exatamente a linha que ocorreu o erro, assim como dados de data e hora, tornando mais fácil a identificação de bugs, como mostra no exemplo abaixo:
+
+<p align="center">
+    <img src="./media/images/sentry-erro.png" alt="Sentry erro" width="700" />
+</p>
+
+👉 [Mais informações sobre o Sentry](https://blog.locaweb.com.br/temas/codigo-aberto/voce-consegue-prever-os-bugs-de-sua-aplicacao/)<br />
+👉 [Link oficial do serviço](https://sentry.io)
+
+## Tests com métricas coverages
+
+<p align="center">
+    <img src="./media/images/testes.png" alt="Testes" title="Testes" width="700" />
+</p>
+
+<details>
+<summary>Estrutura de módulos do backend</summary>
+
+-   Models
+-   Infra
+-   Dtos
+-   Repositories
+-   Containers
+-   Providers
+-   UseCases (Middlewares, Controllers, Services, Validators)
+
+</details>
+
+<details>
+<summary>Estrutura de arquivos dos módulos do backend</summary>
+
+```
+├── containers
+│   └── index.ts
+├── dtos
+│   ├── ICreateVoteDTO.ts
+│   └── IDeleteVoteDTO.ts
+├── infra
+│   ├── http
+│   │   └── routes
+│   │       └── VoteRoutes.ts
+│   └── typeorm
+│       └── postgres
+│           ├── entities
+│           │   └── VotePostgresEntity.ts
+│           └── repositories
+│               └── VotePostgresRepository.ts
+├── models
+│   └── entities
+│       ├── IVoteEntity.ts
+│       └── VoteInMemoryEntity.ts
+├── repositories
+│   ├── IVoteRepository.ts
+│   └── VoteInMemoryRepository.ts
+└── useCases
+    ├── CreateVote
+    │   ├── CreateVoteController.ts
+    │   ├── CreateVoteMiddleware.ts
+    │   ├── CreateVoteService.ts
+    │   └── CreateVoteValidator.ts
+    ├── DeleteVote
+    │   ├── DeleteVoteController.ts
+    │   ├── DeleteVoteMiddleware.ts
+    │   ├── DeleteVoteService.ts
+    │   └── DeleteVoteValidator.ts
+    └── ListVote
+        ├── ListVoteController.ts
+        ├── ListVoteMiddleware.ts
+        └── ListVoteService.ts├── containers
+│   └── index.ts
+├── dtos
+│   ├── ICreateVoteDTO.ts
+│   └── IDeleteVoteDTO.ts
+├── infra
+│   ├── http
+│   │   └── routes
+│   │       └── VoteRoutes.ts
+│   └── typeorm
+│       └── postgres
+│           ├── entities
+│           │   └── VotePostgresEntity.ts
+│           └── repositories
+│               └── VotePostgresRepository.ts
+├── models
+│   └── entities
+│       ├── IVoteEntity.ts
+│       └── VoteInMemoryEntity.ts
+├── repositories
+│   ├── IVoteRepository.ts
+│   └── VoteInMemoryRepository.ts
+└── useCases
+    ├── CreateVote
+    │   ├── CreateVoteController.ts
+    │   ├── CreateVoteMiddleware.ts
+    │   ├── CreateVoteService.ts
+    │   └── CreateVoteValidator.ts
+    ├── DeleteVote
+    │   ├── DeleteVoteController.ts
+    │   ├── DeleteVoteMiddleware.ts
+    │   ├── DeleteVoteService.ts
+    │   └── DeleteVoteValidator.ts
+    └── ListVote
+        ├── ListVoteController.ts
+        ├── ListVoteMiddleware.ts
+        └── ListVoteService.ts
+```
+
+</details>
+
 ## Diagrama de relacionamentos
 
 <p align="center">
