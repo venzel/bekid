@@ -11,7 +11,7 @@
 | Foto                                              | Nome                                        | Ativo | Dt. inativo | Atribuições                   |
 | ------------------------------------------------- | ------------------------------------------- | ----- | ----------- | ----------------------------- |
 | ![Enéas Almeida](./media/images/venzel-thumb.png) | [Enéas Almeida](https://github.com/venzel/) | 🔥    | -           | Manager, Arquiteto, FullStack |
-| ![Joab Maia](./media/images/joab-thumb.png)       | [Joab Maia](https://github.com/JoabMaia/)   | 🔥    | -           | Engenheiro de dados           |
+| ![Joab Maia](./media/images/joab-thumb.png)       | [Joab Maia](https://github.com/JoabMaia/)   | 🔥    | -           | Manager and System Analyst    |
 
 ## ⚓ Links
 
