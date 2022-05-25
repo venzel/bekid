@@ -297,7 +297,7 @@ A aplicação é configurada para que sempre que ocorrer um erro do tipo 500, a 
 ## Diagrama de relacionamentos
 
 <p align="center">
-    <img src="./media/diagrams/diagram-v4.png" width="700" />
+    <img src="./media/diagrams/diagram-v5.png" width="700" />
 </p>
 
 | Descrição                  | Data de modificação | Versão | Link de download                            |
