@@ -303,8 +303,9 @@ A aplicação é configurada para que sempre que ocorrer um erro do tipo 500, a 
 | Descrição                  | Data de modificação | Versão | Link de download                            |
 | -------------------------- | ------------------- | ------ | ------------------------------------------- |
 | Quarta versão do documento | 01 de abril de 2022 | v4     | [Download](./media/diagrams/diagram-v4.png) |
+| Quinta versão do documento | 25 de maio de 2022  | v5     | [Download](./media/diagrams/diagram-v5.png) |
 
-👉 [Download do arquivo do Astah](./media/diagrams/diagram-relational-v1.asta)
+👉 [Download do arquivo do Astah](./media/diagrams/diagram-relational-v2.asta)
 
 <details>
 <summary>JSON</summary>
