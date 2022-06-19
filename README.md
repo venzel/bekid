@@ -131,6 +131,68 @@ O **TypeORM** é um ORM que pode ser utilizado em plataformas como o Node, NestJ
 
 👉 [Link do arquivo PDF](./media/ux/ux-v1.pdf)
 
+### Prints do sistema
+
+<p align="center">
+  <img src="./media/screens/login.png" alt="Tela de login" title="tela de login" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/cadastro.png" alt="Cadastro" title="Cadastro" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/dashboard-admin.png" alt="Dashboard do admin" title="Dashboard do admin" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/escolas.png" alt="Lista de escolas" title="Lista de escolas" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/listagem-mobile.png" alt="Listagem de emotions mobile" title="Listagem de emotions mobile" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/desativar-ator.png" alt="Desativar ator" title="Desativar ator" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/confirma-exclusao.png" alt="Confirma exclusão" title="Confirma exclusão" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/dashboard-escola.png" alt="Dashboard do escola" title="Dashboard do escola" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/alunos-vinculados.png" alt="Editar campanha" title="Editar campanha" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/editar-campanha.png" alt="Editar campanha" title="Editar campanha" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/editar-campanha-mobile.png" alt="Editar campanha mobile" title="Editar campanha mobile" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/fila-usuario.png" alt="Fila de usuários" title="Fila de usuários" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/tela-voto-emotion.png" alt="Tela de voto do emotion" title="Tela de voto do emotion" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/tela-voto-autor.png" alt="Tela de voto do autor" title="Tela de voto do autor" />
+</p>
+
+<p align="center">
+  <img src="./media/screens/tela-voto-motivo.png" alt="Tela de voto do motivo" title="Tela de voto do motivo" />
+</p>
+
 ## Backend/Frontend
 
 <p align="left">
