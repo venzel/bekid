@@ -44,12 +44,12 @@
 | Levantamento do problema a ser resolvido **(Briefing)** | 3                   | 🔥          | 100%     |
 | Levantamento dos requisitos funcionais                  | 1                   | 🔥          | 100%     |
 | Definição das tecnologias utilizadas                    | 1                   | 🔥          | 100%     |
-| Criação da documentação no Git                          | 13                  | -           | 85%      |
+| Criação da documentação no Git                          | 13                  | 🔥          | 100%     |
 | Diagramação das telas (UX Design)                       | 13                  | 🔥          | 100%     |
-| Configuração do ambiente de QA e produção               | 5                   | -           | 0%       |
-| Desenvolvimento do backend                              | 21                  | -           | 80%      |
-| Desenvolvimento do frontend                             | 21                  | -           | 0%       |
-| Integração do backend com o frontend                    | 21                  | -           | 0%       |
+| Configuração do ambiente de QA e produção               | 5                   | 🔥          | 100%     |
+| Desenvolvimento do backend                              | 21                  | 🔥          | 100%     |
+| Desenvolvimento do frontend                             | 21                  | 🔥          | 100%     |
+| Integração do backend com o frontend                    | 21                  | 🔥          | 100%     |
 
 ### Significados dos esforços na escala Fibonacci
 

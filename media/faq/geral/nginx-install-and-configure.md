@@ -105,7 +105,11 @@ sudo nano /etc/nginx/snippets/cfg.conf
 # INSERE
 location / {
         index index.php index.html index.htm;
-        try_files $uri $uri/ /index.php?\$args;
+        try_files $uri $uri/ @router;
+}
+
+location @router {
+        rewrite ^.*$ /index.html last;
 }
 
 location /nginx_status {
